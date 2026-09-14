@@ -463,23 +463,26 @@
 
   // ส่งข้อมูลไป Google Sheets ผ่าน Google Apps Script
   // ใช้ text/plain เพื่อหลีกเลี่ยง CORS preflight จาก GitHub Pages
-  async function sendToGoogleSheets(data) {
-    try {
-      await fetch(GOOGLE_SHEETS_API, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8"
-        },
-        body: JSON.stringify(data)
-      });
+async function sendToGoogleSheets(data) {
+  try {
+    const payload = new URLSearchParams();
+    payload.append("payload", JSON.stringify(data));
 
-      return true;
-    } catch (error) {
-      console.error("ส่งข้อมูลไป Google Sheets ไม่สำเร็จ:", error);
-      return false;
-    }
+    await fetch(GOOGLE_SHEETS_API, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+      },
+      body: payload.toString()
+    });
+
+    return true;
+  } catch (error) {
+    console.error("ส่งข้อมูลไป Google Sheets ไม่สำเร็จ:", error);
+    return false;
   }
+}
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
