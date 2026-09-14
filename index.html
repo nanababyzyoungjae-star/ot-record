@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nana's OT</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: #fff7fb;
+      color: #3f3540;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 24px 16px 50px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #d85c91;
+      font-size: 32px;
+    }
+
+    header p {
+      margin: 6px 0 0;
+      color: #8c7782;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 5px 20px rgba(180, 100, 140, 0.08);
+      border: 1px solid #f5dce8;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 20px;
+      color: #b94879;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #685761;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid #e5ccd9;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      background: #fffafd;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #df75a2;
+      box-shadow: 0 0 0 3px rgba(223, 117, 162, 0.12);
+    }
+
+    textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 11px 18px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: #d85c91;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #c84b80;
+    }
+
+    .btn-secondary {
+      background: #f7e7ef;
+      color: #a63e6d;
+    }
+
+    .btn-danger {
+      background: #fff0f0;
+      color: #d04f4f;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .summary-box {
+      background: #fff4f8;
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .summary-box .number {
+      font-size: 27px;
+      font-weight: 700;
+      color: #d24f86;
+    }
+
+    .summary-box .label {
+      margin-top: 4px;
+      color: #8b7480;
+      font-size: 13px;
+    }
+
+    .period {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .period strong {
+      color: #b94879;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 650px;
+    }
+
+    th,
+    td {
+      padding: 12px 10px;
+      border-bottom: 1px solid #f1e3e9;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      background: #fff6fa;
+      color: #9b5274;
+    }
+
+    td.hours {
+      font-weight: 700;
+      color: #d04f86;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 30px;
+      color: #a28d97;
+    }
+
+    .footer {
+      text-align: center;
+      color: #ad98a3;
+      font-size: 12px;
+      margin-top: 25px;
+    }
+
+    @media (max-width: 650px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .full {
+        grid-column: auto;
+      }
+
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 27px;
+      }
+
+      .card {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <header>
+      <h1>🌸 Nana's OT</h1>
+      <p>ชีวิตจะทำแต่งานเลยหรอ</p>
+    </header>
+
+    <!-- ฟอร์มบันทึก -->
+    <div class="card">
+      <h2>📝 บันทึก OT</h2>
+
+      <form id="otForm">
+        <input type="hidden" id="editId">
+
+        <div class="form-grid">
+
+          <div>
+            <label for="date">วันที่</label>
+            <input type="date" id="date" required>
+          </div>
+
+          <div>
+            <label for="type">ประเภท</label>
+            <select id="type" style="
+              width:100%;
+              padding:11px 12px;
+              border:1px solid #e5ccd9;
+              border-radius:10px;
+              font-size:15px;
+              background:#fffafd;
+            ">
+              <option value="OT">OT</option>
+              <option value="WFH">WFH</option>
+              <option value="อื่น ๆ">อื่น ๆ</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="start">เวลาเริ่ม</label>
+            <input type="time" id="start" required>
+          </div>
+
+          <div>
+            <label for="end">เวลาสิ้นสุด</label>
+            <input type="time" id="end" required>
+          </div>
+
+          <div class="full">
+            <label for="note">หมายเหตุ</label>
+            <textarea id="note" placeholder="เช่น ปิดงานประจำเดือน / งานด่วน / Support ลูกค้า"></textarea>
+          </div>
+
+        </div>
+
+        <div class="buttons">
+          <button type="submit" class="btn-primary" id="saveBtn">
+            + บันทึก OT
+          </button>
+
+          <button type="button" class="btn-secondary" id="cancelBtn" style="display:none;">
+            ยกเลิกแก้ไข
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- สรุป -->
+    <div class="card">
+      <div class="period">
+        <h2 style="margin:0;">📊 สรุป OT</h2>
+        <strong id="periodText"></strong>
+      </div>
+
+      <div class="summary">
+        <div class="summary-box">
+          <div class="number" id="totalDays">0</div>
+          <div class="label">จำนวนวันที่ทำ OT</div>
+        </div>
+
+        <div class="summary-box">
+          <div class="number" id="totalHours">0</div>
+          <div class="label">ชั่วโมง OT รวม</div>
+        </div>
+
+        <div class="summary-box">
+          <div class="number" id="totalRecords">0</div>
+          <div class="label">รายการทั้งหมดในรอบ</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- รายการ -->
+    <div class="card">
+      <div class="period">
+        <h2 style="margin:0;">📋 รายการที่บันทึกแล้ว</h2>
+
+        <button class="btn-danger" onclick="clearAll()">
+          ล้างข้อมูลทั้งหมด
+        </button>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>วันที่</th>
+              <th>ประเภท</th>
+              <th>เริ่ม</th>
+              <th>สิ้นสุด</th>
+              <th>ชั่วโมง</th>
+              <th>หมายเหตุ</th>
+              <th>จัดการ</th>
+            </tr>
+          </thead>
+
+          <tbody id="otTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="footer">
+      Nana's OT • ข้อมูลถูกเก็บไว้ในเครื่องนี้
+    </div>
+
+  </div>
+
+<script>
+  const form = document.getElementById("otForm");
+  const dateInput = document.getElementById("date");
+  const startInput = document.getElementById("start");
+  const endInput = document.getElementById("end");
+  const typeInput = document.getElementById("type");
+  const noteInput = document.getElementById("note");
+  const editIdInput = document.getElementById("editId");
+  const table = document.getElementById("otTable");
+  const saveBtn = document.getElementById("saveBtn");
+  const cancelBtn = document.getElementById("cancelBtn");
+
+  let records = JSON.parse(localStorage.getItem("nanasOT") || "[]");
+
+  // ตั้งวันที่วันนี้เป็นค่าเริ่มต้น
+  dateInput.value = new Date().toISOString().split("T")[0];
+
+  function calculateHours(start, end) {
+    const [sh, sm] = start.split(":").map(Number);
+    const [eh, em] = end.split(":").map(Number);
+
+    let startMinutes = sh * 60 + sm;
+    let endMinutes = eh * 60 + em;
+
+    // รองรับกรณี OT ข้ามเที่ยงคืน
+    if (endMinutes < startMinutes) {
+      endMinutes += 24 * 60;
+    }
+
+    return (endMinutes - startMinutes) / 60;
+  }
+
+  function getCurrentPeriod() {
+    const today = new Date();
+
+    let year = today.getFullYear();
+    let month = today.getMonth();
+
+    // ถ้าวันปัจจุบันอยู่วันที่ 1-15
+    // รอบจะเริ่มวันที่ 16 ของเดือนก่อน
+    if (today.getDate() <= 15) {
+      month--;
+
+      if (month < 0) {
+        month = 11;
+        year--;
+      }
+    }
+
+    const start = new Date(year, month, 16);
+
+    let endMonth = month + 1;
+    let endYear = year;
+
+    if (endMonth > 11) {
+      endMonth = 0;
+      endYear++;
+    }
+
+    const end = new Date(endYear, endMonth, 15);
+
+    return { start, end };
+  }
+
+  function formatDate(dateString) {
+    const date = new Date(dateString + "T00:00:00");
+
+    return date.toLocaleDateString("th-TH", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric"
+    });
+  }
+
+  function getPeriodText() {
+    const { start, end } = getCurrentPeriod();
+
+    return `${start.toLocaleDateString("th-TH")} - ${end.toLocaleDateString("th-TH")}`;
+  }
+
+  function isInCurrentPeriod(dateString) {
+    const { start, end } = getCurrentPeriod();
+    const date = new Date(dateString + "T00:00:00");
+
+    return date >= start && date <= end;
+  }
+
+  function saveRecords() {
+    localStorage.setItem("nanasOT", JSON.stringify(records));
+  }
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    if (!dateInput.value || !startInput.value || !endInput.value) {
+      alert("กรุณากรอกวันที่และเวลาให้ครบค่ะ");
+      return;
+    }
+
+    const hours = calculateHours(startInput.value, endInput.value);
+
+    if (hours <= 0) {
+      alert("เวลาสิ้นสุดต้องไม่เท่ากับเวลาเริ่มค่ะ");
+      return;
+    }
+
+    const editId = editIdInput.value;
+
+    const data = {
+      id: editId || Date.now().toString(),
+      date: dateInput.value,
+      type: typeInput.value,
+      start: startInput.value,
+      end: endInput.value,
+      hours: hours,
+      note: noteInput.value.trim()
+    };
+
+    if (editId) {
+      records = records.map(item =>
+        item.id === editId ? data : item
+      );
+    } else {
+      records.push(data);
+    }
+
+    saveRecords();
+    resetForm();
+    render();
+  });
+
+  function editRecord(id) {
+    const item = records.find(r => r.id === id);
+
+    if (!item) return;
+
+    editIdInput.value = item.id;
+    dateInput.value = item.date;
+    typeInput.value = item.type;
+    startInput.value = item.start;
+    endInput.value = item.end;
+    noteInput.value = item.note;
+
+    saveBtn.textContent = "💾 บันทึกการแก้ไข";
+    cancelBtn.style.display = "inline-block";
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  }
+
+  function deleteRecord(id) {
+    if (!confirm("ต้องการลบรายการนี้ใช่ไหมคะ?")) return;
+
+    records = records.filter(r => r.id !== id);
+
+    saveRecords();
+    render();
+  }
+
+  function clearAll() {
+    if (!records.length) {
+      alert("ยังไม่มีข้อมูลให้ล้างค่ะ");
+      return;
+    }
+
+    if (!confirm("ต้องการลบข้อมูล OT ทั้งหมดหรือไม่?")) return;
+
+    records = [];
+    saveRecords();
+    render();
+  }
+
+  function resetForm() {
+    editIdInput.value = "";
+    dateInput.value = new Date().toISOString().split("T")[0];
+    typeInput.value = "OT";
+    startInput.value = "";
+    endInput.value = "";
+    noteInput.value = "";
+
+    saveBtn.textContent = "+ บันทึก OT";
+    cancelBtn.style.display = "none";
+  }
+
+  cancelBtn.addEventListener("click", resetForm);
+
+  function render() {
+    document.getElementById("periodText").textContent =
+      "รอบ " + getPeriodText();
+
+    const currentRecords = records
+      .filter(item => isInCurrentPeriod(item.date))
+      .sort((a, b) => b.date.localeCompare(a.date));
+
+    const totalHours = currentRecords.reduce(
+      (sum, item) => sum + Number(item.hours),
+      0
+    );
+
+    const uniqueDays = new Set(
+      currentRecords.map(item => item.date)
+    ).size;
+
+    document.getElementById("totalDays").textContent = uniqueDays;
+    document.getElementById("totalHours").textContent =
+      formatHours(totalHours);
+
+    document.getElementById("totalRecords").textContent =
+      currentRecords.length;
+
+    if (!currentRecords.length) {
+      table.innerHTML = `
+        <tr>
+          <td colspan="7" class="empty">
+            ยังไม่มีรายการ OT ในรอบนี้ 🌷
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    table.innerHTML = currentRecords.map(item => `
+      <tr>
+        <td>${formatDate(item.date)}</td>
+        <td>${escapeHTML(item.type)}</td>
+        <td>${item.start}</td>
+        <td>${item.end}</td>
+        <td class="hours">${formatHours(item.hours)} ชม.</td>
+        <td>${escapeHTML(item.note || "-")}</td>
+        <td>
+          <button
+            class="btn-secondary"
+            onclick="editRecord('${item.id}')">
+            แก้ไข
+          </button>
+
+          <button
+            class="btn-danger"
+            onclick="deleteRecord('${item.id}')">
+            ลบ
+          </button>
+        </td>
+      </tr>
+    `).join("");
+  }
+
+  function formatHours(hours) {
+    const h = Math.floor(hours);
+    const m = Math.round((hours - h) * 60);
+
+    if (m === 0) {
+      return h;
+    }
+
+    return `${h}.${String(Math.round(m / 6)).padStart(1, "0")}`;
+  }
+
+  function escapeHTML(value) {
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  render();
+</script>
+
+</body>
+</html>
