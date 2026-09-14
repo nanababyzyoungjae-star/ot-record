@@ -295,6 +295,14 @@
             ยกเลิกแก้ไข
           </button>
         </div>
+
+        <div id="syncStatus" style="
+          margin-top:10px;
+          font-size:13px;
+          color:#8b7480;
+        ">
+          ☁️ ข้อมูลจะถูกส่งไป Google Sheets เมื่อกดบันทึก
+        </div>
       </form>
     </div>
 
@@ -369,6 +377,10 @@
   const table = document.getElementById("otTable");
   const saveBtn = document.getElementById("saveBtn");
   const cancelBtn = document.getElementById("cancelBtn");
+
+  // Google Apps Script Web App สำหรับเก็บข้อมูล OT
+  const GOOGLE_SHEETS_API =
+    "https://script.google.com/macros/s/AKfycbzzopOmcphO3E4GkmH9TSk8jSyXCB3brYTvEf1FU8dY8MVlgSQIhCSiuSJMCBJiIFI/exec";
 
   let records = JSON.parse(localStorage.getItem("nanasOT") || "[]");
 
@@ -449,6 +461,26 @@
     localStorage.setItem("nanasOT", JSON.stringify(records));
   }
 
+  // ส่งข้อมูลไป Google Sheets ผ่าน Google Apps Script
+  // ใช้ text/plain เพื่อหลีกเลี่ยง CORS preflight จาก GitHub Pages
+  async function sendToGoogleSheets(data) {
+    try {
+      await fetch(GOOGLE_SHEETS_API, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8"
+        },
+        body: JSON.stringify(data)
+      });
+
+      return true;
+    } catch (error) {
+      console.error("ส่งข้อมูลไป Google Sheets ไม่สำเร็จ:", error);
+      return false;
+    }
+  }
+
   form.addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -484,9 +516,24 @@
       records.push(data);
     }
 
+    // เก็บไว้ในเครื่องก่อน เพื่อไม่ให้ข้อมูลหายหากอินเทอร์เน็ตมีปัญหา
     saveRecords();
     resetForm();
     render();
+
+    // ส่งข้อมูลรายการนี้ไป Google Sheets
+    const syncStatus = document.getElementById("syncStatus");
+    if (syncStatus) {
+      syncStatus.textContent = "☁️ กำลังส่งข้อมูลไป Google Sheets...";
+    }
+
+    sendToGoogleSheets(data).then(ok => {
+      if (syncStatus) {
+        syncStatus.textContent = ok
+          ? "☁️ ส่งข้อมูลไป Google Sheets แล้ว • ข้อมูลสำรองอยู่ในเครื่องนี้"
+          : "⚠️ บันทึกในเครื่องแล้ว แต่ส่ง Google Sheets ไม่สำเร็จ";
+      }
+    });
   });
 
   function editRecord(id) {
