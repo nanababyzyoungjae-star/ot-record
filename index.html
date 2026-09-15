@@ -382,7 +382,40 @@
   const GOOGLE_SHEETS_API =
     "https://script.google.com/macros/s/AKfycbzzopOmcphO3E4GkmH9TSk8jSyXCB3brYTvEf1FU8dY8MVlgSQIhCSiuSJMCBJiIFI/exec";
 
-  let records = JSON.parse(localStorage.getItem("nanasOT") || "[]");
+let records = [];
+
+async function loadRecordsFromGoogleSheets() {
+  try {
+    const response = await fetch(GOOGLE_SHEETS_API);
+    const result = await response.json();
+
+    if (result.success && Array.isArray(result.records)) {
+      records = result.records.map((item, index) => ({
+        id: "sheet-" + index,
+        date: normalizeDate(item.date),
+        type: "OT",
+        start: item.start || "",
+        end: item.end || "",
+        hours: Number(item.hours) || 0,
+        note: item.note || ""
+      }));
+
+      render();
+    }
+  } catch (error) {
+    console.error("โหลดข้อมูลจาก Google Sheets ไม่สำเร็จ:", error);
+  }
+}
+
+function normalizeDate(value) {
+  const date = new Date(value);
+
+  if (isNaN(date.getTime())) {
+    return String(value).substring(0, 10);
+  }
+
+  return date.toISOString().split("T")[0];
+}
 
   // ตั้งวันที่วันนี้เป็นค่าเริ่มต้น
   dateInput.value = new Date().toISOString().split("T")[0];
@@ -522,8 +555,7 @@ async function sendToGoogleSheets(data) {
     // เก็บไว้ในเครื่องก่อน เพื่อไม่ให้ข้อมูลหายหากอินเทอร์เน็ตมีปัญหา
     saveRecords();
     resetForm();
-    render();
-
+    loadRecordsFromGoogleSheets();
     // ส่งข้อมูลรายการนี้ไป Google Sheets
     const syncStatus = document.getElementById("syncStatus");
     if (syncStatus) {
@@ -676,7 +708,7 @@ async function sendToGoogleSheets(data) {
       .replaceAll("'", "&#039;");
   }
 
-  render();
+  loadRecordsFromGoogleSheets();
 </script>
 
 </body>
