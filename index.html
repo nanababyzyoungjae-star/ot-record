@@ -667,8 +667,8 @@ async function sendToGoogleSheets(data) {
       <tr>
         <td>${formatDate(item.date)}</td>
         <td>${escapeHTML(item.type)}</td>
-        <td>${item.start}</td>
-        <td>${item.end}</td>
+        <td>${formatTime(item.start)}</td>
+        <td>${formatTime(item.end)}</td>
         <td class="hours">${formatHours(item.hours)} ชม.</td>
         <td>${escapeHTML(item.note || "-")}</td>
         <td>
@@ -688,6 +688,32 @@ async function sendToGoogleSheets(data) {
     `).join("");
   }
 
+  function formatTime(value) {
+  if (!value) return "";
+
+  const text = String(value).trim();
+
+  // ถ้าเป็นเวลาอยู่แล้ว เช่น 18:00
+  const timeOnly = text.match(/^(\d{1,2}):(\d{2})/);
+
+  if (timeOnly) {
+    return `${timeOnly[1].padStart(2, "0")}:${timeOnly[2]}`;
+  }
+
+  // ถ้าเป็นวันที่พร้อมเวลา
+  const date = new Date(text);
+
+  if (!isNaN(date.getTime())) {
+    return date.toLocaleTimeString("th-TH", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+      timeZone: "Asia/Bangkok"
+    });
+  }
+
+  return text;
+}
   function formatHours(hours) {
     const h = Math.floor(hours);
     const m = Math.round((hours - h) * 60);
