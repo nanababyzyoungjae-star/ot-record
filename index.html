@@ -10,62 +10,95 @@
       box-sizing: border-box;
     }
 
+    html {
+      background: #d9d9d9;
+    }
+
     body {
+      position: relative;
+      min-height: 100vh;
       margin: 0;
       font-family: "Segoe UI", Tahoma, sans-serif;
-      background: #fff7fb;
-      color: #3f3540;
+      color: #4f5357;
+      overflow-x: hidden;
+      background: transparent;
+    }
+
+    /* ภาพพื้นหลังขาวดำ */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image: url("nanas-ot-bg.jpg");
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      filter: grayscale(100%) contrast(0.92) brightness(1.05);
+    }
+
+    /* ชั้นสีขาวบาง ๆ */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: rgba(255, 255, 255, 0.14);
+      pointer-events: none;
     }
 
     .container {
-      max-width: 1000px;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 820px;
       margin: auto;
-      padding: 24px 16px 50px;
+      padding: 18px 14px 45px;
     }
 
     header {
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 18px;
     }
 
-    header h1 {
-      margin: 0;
-      color: #d85c91;
-      font-size: 32px;
+    header h1,
+    header p {
+      display: none;
     }
 
     .ot-banner {
-    display: block;
-    width: 100%;
-    max-width: 1000px;
-    height: auto;
-    margin: 0 auto;
-    border-radius: 18px;
-}
-    header p {
-      margin: 6px 0 0;
-      color: #8c7782;
+      display: block;
+      width: 100%;
+      max-width: 760px;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 20px;
+      box-shadow: 0 10px 28px rgba(50, 50, 50, 0.16);
     }
 
+    /* กล่องกระจก */
     .card {
-      background: white;
-      border-radius: 18px;
-      padding: 20px;
-      margin-bottom: 18px;
-      box-shadow: 0 5px 20px rgba(180, 100, 140, 0.08);
-      border: 1px solid #f5dce8;
+      background: rgba(255, 255, 255, 0.68);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      border-radius: 20px;
+      padding: 18px;
+      margin-bottom: 16px;
+      box-shadow: 0 10px 30px rgba(60, 60, 60, 0.12);
     }
 
     .card h2 {
       margin-top: 0;
-      font-size: 20px;
-      color: #b94879;
+      font-size: 19px;
+      color: #555a5f;
+      font-weight: 700;
     }
 
     .form-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
+      gap: 12px;
     }
 
     label {
@@ -73,28 +106,32 @@
       font-size: 14px;
       font-weight: 600;
       margin-bottom: 6px;
-      color: #685761;
+      color: #5c6064;
     }
 
     input,
-    textarea {
+    textarea,
+    select {
       width: 100%;
       padding: 11px 12px;
-      border: 1px solid #e5ccd9;
-      border-radius: 10px;
+      border: 1px solid rgba(130, 130, 130, 0.28);
+      border-radius: 11px;
       font-size: 15px;
       outline: none;
-      background: #fffafd;
+      color: #4f5357;
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: none;
     }
 
     input:focus,
-    textarea:focus {
-      border-color: #df75a2;
-      box-shadow: 0 0 0 3px rgba(223, 117, 162, 0.12);
+    textarea:focus,
+    select:focus {
+      border-color: rgba(100, 105, 110, 0.55);
+      box-shadow: 0 0 0 3px rgba(120, 120, 120, 0.10);
     }
 
     textarea {
-      min-height: 70px;
+      min-height: 72px;
       resize: vertical;
     }
 
@@ -112,52 +149,58 @@
     }
 
     .btn-primary {
-      background: #d85c91;
+      background: rgba(105, 110, 115, 0.90);
       color: white;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 5px 14px rgba(60, 60, 60, 0.12);
     }
 
     .btn-primary:hover {
-      background: #c84b80;
+      background: rgba(80, 85, 90, 0.95);
     }
 
     .btn-secondary {
-      background: #f7e7ef;
-      color: #a63e6d;
+      background: rgba(255, 255, 255, 0.65);
+      color: #5e6368;
+      border: 1px solid rgba(120, 120, 120, 0.22);
     }
 
     .btn-danger {
-      background: #fff0f0;
-      color: #d04f4f;
+      background: rgba(245, 245, 245, 0.72);
+      color: #777b7f;
+      border: 1px solid rgba(120, 120, 120, 0.20);
     }
 
     .buttons {
       display: flex;
       gap: 8px;
       margin-top: 12px;
+      flex-wrap: wrap;
     }
 
     .summary {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      gap: 10px;
     }
 
     .summary-box {
-      background: #fff4f8;
+      background: rgba(255, 255, 255, 0.52);
+      border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 14px;
-      padding: 16px;
+      padding: 14px 8px;
       text-align: center;
     }
 
     .summary-box .number {
       font-size: 27px;
       font-weight: 700;
-      color: #d24f86;
+      color: #60656a;
     }
 
     .summary-box .label {
       margin-top: 4px;
-      color: #8b7480;
+      color: #777c80;
       font-size: 13px;
     }
 
@@ -171,11 +214,12 @@
     }
 
     .period strong {
-      color: #b94879;
+      color: #62676b;
     }
 
     .table-wrapper {
       overflow-x: auto;
+      border-radius: 12px;
     }
 
     table {
@@ -187,53 +231,101 @@
     th,
     td {
       padding: 12px 10px;
-      border-bottom: 1px solid #f1e3e9;
+      border-bottom: 1px solid rgba(100, 100, 100, 0.13);
       text-align: left;
       font-size: 14px;
+      color: #555a5e;
     }
 
     th {
-      background: #fff6fa;
-      color: #9b5274;
+      background: rgba(255, 255, 255, 0.58);
+      color: #64696d;
     }
 
     td.hours {
       font-weight: 700;
-      color: #d04f86;
+      color: #62676c;
     }
 
     .empty {
       text-align: center;
       padding: 30px;
-      color: #a28d97;
+      color: #85898d;
+    }
+
+    #syncStatus {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #777c80;
     }
 
     .footer {
       text-align: center;
-      color: #ad98a3;
+      color: rgba(80, 80, 80, 0.72);
       font-size: 12px;
       margin-top: 25px;
     }
 
     @media (max-width: 650px) {
-      .form-grid {
-        grid-template-columns: 1fr;
+      .container {
+        padding: 12px 10px 35px;
       }
 
-      .full {
-        grid-column: auto;
-      }
-
-      .summary {
-        grid-template-columns: 1fr;
-      }
-
-      header h1 {
-        font-size: 27px;
+      .ot-banner {
+        border-radius: 16px;
+        margin-bottom: 12px;
       }
 
       .card {
-        padding: 16px;
+        padding: 14px;
+        border-radius: 17px;
+      }
+
+      .card h2 {
+        font-size: 17px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+      }
+
+      .full {
+        grid-column: 1 / -1;
+      }
+
+      input,
+      textarea,
+      select {
+        font-size: 14px;
+        padding: 9px 10px;
+      }
+
+      label {
+        font-size: 13px;
+        margin-bottom: 4px;
+      }
+
+      button {
+        font-size: 13px;
+        padding: 9px 12px;
+      }
+
+      .summary {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 7px;
+      }
+
+      .summary-box {
+        padding: 11px 5px;
+      }
+
+      .summary-box .number {
+        font-size: 22px;
+      }
+
+      .summary-box .label {
+        font-size: 11px;
       }
     }
   </style>
@@ -243,8 +335,12 @@
   <div class="container">
 
     <header>
-  <img src="nanas-ot-banner.png" alt="Nana's OT" class="ot-banner">
-</header>
+      <img
+        src="nanas-ot-banner-final.png"
+        alt="Nana's OT"
+        class="ot-banner"
+      />
+    </header>
 
     <!-- ฟอร์มบันทึก -->
     <div class="card">
@@ -262,14 +358,7 @@
 
           <div>
             <label for="type">ประเภท</label>
-            <select id="type" style="
-              width:100%;
-              padding:11px 12px;
-              border:1px solid #e5ccd9;
-              border-radius:10px;
-              font-size:15px;
-              background:#fffafd;
-            ">
+            <select id="type">
               <option value="OT">OT</option>
               <option value="WFH">WFH</option>
               <option value="อื่น ๆ">อื่น ๆ</option>
@@ -288,7 +377,10 @@
 
           <div class="full">
             <label for="note">หมายเหตุ</label>
-            <textarea id="note" placeholder="เช่น ปิดงานประจำเดือน / งานด่วน / Support ลูกค้า"></textarea>
+            <textarea
+              id="note"
+              placeholder="เช่น ปิดงานประจำเดือน / งานด่วน / Support ลูกค้า"
+            ></textarea>
           </div>
 
         </div>
@@ -298,16 +390,17 @@
             + บันทึก OT
           </button>
 
-          <button type="button" class="btn-secondary" id="cancelBtn" style="display:none;">
+          <button
+            type="button"
+            class="btn-secondary"
+            id="cancelBtn"
+            style="display:none;"
+          >
             ยกเลิกแก้ไข
           </button>
         </div>
 
-        <div id="syncStatus" style="
-          margin-top:10px;
-          font-size:13px;
-          color:#8b7480;
-        ">
+        <div id="syncStatus">
           ☁️ ข้อมูลจะถูกส่งไป Google Sheets เมื่อกดบันทึก
         </div>
       </form>
@@ -321,6 +414,7 @@
       </div>
 
       <div class="summary">
+
         <div class="summary-box">
           <div class="number" id="totalDays">0</div>
           <div class="label">จำนวนวันที่ทำ OT</div>
@@ -335,21 +429,25 @@
           <div class="number" id="totalRecords">0</div>
           <div class="label">รายการทั้งหมดในรอบ</div>
         </div>
+
       </div>
     </div>
 
     <!-- รายการ -->
     <div class="card">
       <div class="period">
+
         <h2 style="margin:0;">📋 รายการที่บันทึกแล้ว</h2>
 
         <button class="btn-danger" onclick="clearAll()">
           ล้างข้อมูลทั้งหมด
         </button>
+
       </div>
 
       <div class="table-wrapper">
         <table>
+
           <thead>
             <tr>
               <th>วันที่</th>
@@ -363,12 +461,13 @@
           </thead>
 
           <tbody id="otTable"></tbody>
+
         </table>
       </div>
     </div>
 
     <div class="footer">
-      Nana's OT • ข้อมูลถูกเก็บไว้ในเครื่องนี้
+      Nana's OT • ข้อมูลถูกบันทึกในเครื่องและ Google Sheets
     </div>
 
   </div>
@@ -385,44 +484,47 @@
   const saveBtn = document.getElementById("saveBtn");
   const cancelBtn = document.getElementById("cancelBtn");
 
-  // Google Apps Script Web App สำหรับเก็บข้อมูล OT
+  // Google Apps Script Web App
   const GOOGLE_SHEETS_API =
     "https://script.google.com/macros/s/AKfycbzzopOmcphO3E4GkmH9TSk8jSyXCB3brYTvEf1FU8dY8MVlgSQIhCSiuSJMCBJiIFI/exec";
 
-let records = [];
+  let records = [];
 
-async function loadRecordsFromGoogleSheets() {
-  try {
-    const response = await fetch(GOOGLE_SHEETS_API);
-    const result = await response.json();
+  async function loadRecordsFromGoogleSheets() {
+    try {
+      const response = await fetch(GOOGLE_SHEETS_API);
+      const result = await response.json();
 
-    if (result.success && Array.isArray(result.records)) {
-      records = result.records.map((item, index) => ({
-        id: "sheet-" + index,
-        date: normalizeDate(item.date),
-        type: "OT",
-        start: item.start || "",
-        end: item.end || "",
-        hours: Number(item.hours) || 0,
-        note: item.note || ""
-      }));
+      if (result.success && Array.isArray(result.records)) {
+        records = result.records.map((item, index) => ({
+          id: "sheet-" + index,
+          date: normalizeDate(item.date),
+          type: "OT",
+          start: item.start || "",
+          end: item.end || "",
+          hours: Number(item.hours) || 0,
+          note: item.note || ""
+        }));
 
-      render();
+        render();
+      }
+    } catch (error) {
+      console.error(
+        "โหลดข้อมูลจาก Google Sheets ไม่สำเร็จ:",
+        error
+      );
     }
-  } catch (error) {
-    console.error("โหลดข้อมูลจาก Google Sheets ไม่สำเร็จ:", error);
-  }
-}
-
-function normalizeDate(value) {
-  const date = new Date(value);
-
-  if (isNaN(date.getTime())) {
-    return String(value).substring(0, 10);
   }
 
-  return date.toISOString().split("T")[0];
-}
+  function normalizeDate(value) {
+    const date = new Date(value);
+
+    if (isNaN(date.getTime())) {
+      return String(value).substring(0, 10);
+    }
+
+    return date.toISOString().split("T")[0];
+  }
 
   // ตั้งวันที่วันนี้เป็นค่าเริ่มต้น
   dateInput.value = new Date().toISOString().split("T")[0];
@@ -434,7 +536,7 @@ function normalizeDate(value) {
     let startMinutes = sh * 60 + sm;
     let endMinutes = eh * 60 + em;
 
-    // รองรับกรณี OT ข้ามเที่ยงคืน
+    // รองรับ OT ข้ามเที่ยงคืน
     if (endMinutes < startMinutes) {
       endMinutes += 24 * 60;
     }
@@ -448,8 +550,7 @@ function normalizeDate(value) {
     let year = today.getFullYear();
     let month = today.getMonth();
 
-    // ถ้าวันปัจจุบันอยู่วันที่ 1-15
-    // รอบจะเริ่มวันที่ 16 ของเดือนก่อน
+    // วันที่ 1-15 = รอบเริ่มวันที่ 16 ของเดือนก่อน
     if (today.getDate() <= 15) {
       month--;
 
@@ -471,7 +572,10 @@ function normalizeDate(value) {
 
     const end = new Date(endYear, endMonth, 15);
 
-    return { start, end };
+    return {
+      start,
+      end
+    };
   }
 
   function formatDate(dateString) {
@@ -485,57 +589,85 @@ function normalizeDate(value) {
   }
 
   function getPeriodText() {
-    const { start, end } = getCurrentPeriod();
+    const {
+      start,
+      end
+    } = getCurrentPeriod();
 
     return `${start.toLocaleDateString("th-TH")} - ${end.toLocaleDateString("th-TH")}`;
   }
 
   function isInCurrentPeriod(dateString) {
-    const { start, end } = getCurrentPeriod();
+    const {
+      start,
+      end
+    } = getCurrentPeriod();
+
     const date = new Date(dateString + "T00:00:00");
 
     return date >= start && date <= end;
   }
 
   function saveRecords() {
-    localStorage.setItem("nanasOT", JSON.stringify(records));
+    localStorage.setItem(
+      "nanasOT",
+      JSON.stringify(records)
+    );
   }
 
-  // ส่งข้อมูลไป Google Sheets ผ่าน Google Apps Script
-  // ใช้ text/plain เพื่อหลีกเลี่ยง CORS preflight จาก GitHub Pages
-async function sendToGoogleSheets(data) {
-  try {
-    const payload = new URLSearchParams();
-    payload.append("payload", JSON.stringify(data));
+  // ส่งข้อมูลไป Google Sheets
+  async function sendToGoogleSheets(data) {
+    try {
+      const payload = new URLSearchParams();
 
-    await fetch(GOOGLE_SHEETS_API, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-      },
-      body: payload.toString()
-    });
+      payload.append(
+        "payload",
+        JSON.stringify(data)
+      );
 
-    return true;
-  } catch (error) {
-    console.error("ส่งข้อมูลไป Google Sheets ไม่สำเร็จ:", error);
-    return false;
+      await fetch(GOOGLE_SHEETS_API, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type":
+            "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        body: payload.toString()
+      });
+
+      return true;
+
+    } catch (error) {
+      console.error(
+        "ส่งข้อมูลไป Google Sheets ไม่สำเร็จ:",
+        error
+      );
+
+      return false;
+    }
   }
-}
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    if (!dateInput.value || !startInput.value || !endInput.value) {
+    if (
+      !dateInput.value ||
+      !startInput.value ||
+      !endInput.value
+    ) {
       alert("กรุณากรอกวันที่และเวลาให้ครบค่ะ");
       return;
     }
 
-    const hours = calculateHours(startInput.value, endInput.value);
+    const hours = calculateHours(
+      startInput.value,
+      endInput.value
+    );
 
     if (hours <= 0) {
-      alert("เวลาสิ้นสุดต้องไม่เท่ากับเวลาเริ่มค่ะ");
+      alert(
+        "เวลาสิ้นสุดต้องไม่เท่ากับเวลาเริ่มค่ะ"
+      );
       return;
     }
 
@@ -559,27 +691,42 @@ async function sendToGoogleSheets(data) {
       records.push(data);
     }
 
-    // เก็บไว้ในเครื่องก่อน เพื่อไม่ให้ข้อมูลหายหากอินเทอร์เน็ตมีปัญหา
+    // เก็บข้อมูลในเครื่อง
     saveRecords();
-    resetForm();
-    loadRecordsFromGoogleSheets();
-    // ส่งข้อมูลรายการนี้ไป Google Sheets
-    const syncStatus = document.getElementById("syncStatus");
+    render();
+
+    const syncStatus =
+      document.getElementById("syncStatus");
+
     if (syncStatus) {
-      syncStatus.textContent = "☁️ กำลังส่งข้อมูลไป Google Sheets...";
+      syncStatus.textContent =
+        "☁️ กำลังส่งข้อมูลไป Google Sheets...";
     }
 
+    resetForm();
+
     sendToGoogleSheets(data).then(ok => {
+
       if (syncStatus) {
         syncStatus.textContent = ok
           ? "☁️ ส่งข้อมูลไป Google Sheets แล้ว • ข้อมูลสำรองอยู่ในเครื่องนี้"
           : "⚠️ บันทึกในเครื่องแล้ว แต่ส่ง Google Sheets ไม่สำเร็จ";
       }
+
+      // โหลดข้อมูลจาก Google Sheets หลังส่งสำเร็จ
+      if (ok) {
+        setTimeout(
+          loadRecordsFromGoogleSheets,
+          800
+        );
+      }
     });
   });
 
   function editRecord(id) {
-    const item = records.find(r => r.id === id);
+    const item = records.find(
+      r => r.id === id
+    );
 
     if (!item) return;
 
@@ -590,8 +737,11 @@ async function sendToGoogleSheets(data) {
     endInput.value = item.end;
     noteInput.value = item.note;
 
-    saveBtn.textContent = "💾 บันทึกการแก้ไข";
-    cancelBtn.style.display = "inline-block";
+    saveBtn.textContent =
+      "💾 บันทึกการแก้ไข";
+
+    cancelBtn.style.display =
+      "inline-block";
 
     window.scrollTo({
       top: 0,
@@ -600,9 +750,17 @@ async function sendToGoogleSheets(data) {
   }
 
   function deleteRecord(id) {
-    if (!confirm("ต้องการลบรายการนี้ใช่ไหมคะ?")) return;
+    if (
+      !confirm(
+        "ต้องการลบรายการนี้ใช่ไหมคะ?"
+      )
+    ) {
+      return;
+    }
 
-    records = records.filter(r => r.id !== id);
+    records = records.filter(
+      r => r.id !== id
+    );
 
     saveRecords();
     render();
@@ -614,52 +772,87 @@ async function sendToGoogleSheets(data) {
       return;
     }
 
-    if (!confirm("ต้องการลบข้อมูล OT ทั้งหมดหรือไม่?")) return;
+    if (
+      !confirm(
+        "ต้องการลบข้อมูล OT ทั้งหมดหรือไม่?"
+      )
+    ) {
+      return;
+    }
 
     records = [];
+
     saveRecords();
     render();
   }
 
   function resetForm() {
     editIdInput.value = "";
-    dateInput.value = new Date().toISOString().split("T")[0];
+
+    dateInput.value =
+      new Date().toISOString().split("T")[0];
+
     typeInput.value = "OT";
     startInput.value = "";
     endInput.value = "";
     noteInput.value = "";
 
-    saveBtn.textContent = "+ บันทึก OT";
-    cancelBtn.style.display = "none";
+    saveBtn.textContent =
+      "+ บันทึก OT";
+
+    cancelBtn.style.display =
+      "none";
   }
 
-  cancelBtn.addEventListener("click", resetForm);
+  cancelBtn.addEventListener(
+    "click",
+    resetForm
+  );
 
   function render() {
-    document.getElementById("periodText").textContent =
+    document.getElementById(
+      "periodText"
+    ).textContent =
       "รอบ " + getPeriodText();
 
     const currentRecords = records
-      .filter(item => isInCurrentPeriod(item.date))
-      .sort((a, b) => b.date.localeCompare(a.date));
+      .filter(item =>
+        isInCurrentPeriod(item.date)
+      )
+      .sort((a, b) =>
+        b.date.localeCompare(a.date)
+      );
 
-    const totalHours = currentRecords.reduce(
-      (sum, item) => sum + Number(item.hours),
-      0
-    );
+    const totalHours =
+      currentRecords.reduce(
+        (sum, item) =>
+          sum + Number(item.hours),
+        0
+      );
 
-    const uniqueDays = new Set(
-      currentRecords.map(item => item.date)
-    ).size;
+    const uniqueDays =
+      new Set(
+        currentRecords.map(
+          item => item.date
+        )
+      ).size;
 
-    document.getElementById("totalDays").textContent = uniqueDays;
-    document.getElementById("totalHours").textContent =
+    document.getElementById(
+      "totalDays"
+    ).textContent = uniqueDays;
+
+    document.getElementById(
+      "totalHours"
+    ).textContent =
       formatHours(totalHours);
 
-    document.getElementById("totalRecords").textContent =
+    document.getElementById(
+      "totalRecords"
+    ).textContent =
       currentRecords.length;
 
     if (!currentRecords.length) {
+
       table.innerHTML = `
         <tr>
           <td colspan="7" class="empty">
@@ -667,18 +860,41 @@ async function sendToGoogleSheets(data) {
           </td>
         </tr>
       `;
+
       return;
     }
 
-    table.innerHTML = currentRecords.map(item => `
+    table.innerHTML =
+      currentRecords.map(item => `
+
       <tr>
-        <td>${formatDate(item.date)}</td>
-        <td>${escapeHTML(item.type)}</td>
-        <td>${formatTime(item.start)}</td>
-        <td>${formatTime(item.end)}</td>
-        <td class="hours">${formatHours(item.hours)} ชม.</td>
-        <td>${escapeHTML(item.note || "-")}</td>
+
         <td>
+          ${formatDate(item.date)}
+        </td>
+
+        <td>
+          ${escapeHTML(item.type)}
+        </td>
+
+        <td>
+          ${formatTime(item.start)}
+        </td>
+
+        <td>
+          ${formatTime(item.end)}
+        </td>
+
+        <td class="hours">
+          ${formatHours(item.hours)} ชม.
+        </td>
+
+        <td>
+          ${escapeHTML(item.note || "-")}
+        </td>
+
+        <td>
+
           <button
             class="btn-secondary"
             onclick="editRecord('${item.id}')">
@@ -690,57 +906,97 @@ async function sendToGoogleSheets(data) {
             onclick="deleteRecord('${item.id}')">
             ลบ
           </button>
+
         </td>
+
       </tr>
+
     `).join("");
   }
 
   function formatTime(value) {
-  if (!value) return "";
+    if (!value) return "";
 
-  const text = String(value).trim();
+    const text =
+      String(value).trim();
 
-  // ถ้าเป็นเวลาอยู่แล้ว เช่น 18:00
-  const timeOnly = text.match(/^(\d{1,2}):(\d{2})/);
+    // เช่น 18:00
+    const timeOnly =
+      text.match(
+        /^(\d{1,2}):(\d{2})/
+      );
 
-  if (timeOnly) {
-    return `${timeOnly[1].padStart(2, "0")}:${timeOnly[2]}`;
+    if (timeOnly) {
+      return `${
+        timeOnly[1].padStart(2, "0")
+      }:${
+        timeOnly[2]
+      }`;
+    }
+
+    // วันที่พร้อมเวลา
+    const date =
+      new Date(text);
+
+    if (!isNaN(date.getTime())) {
+
+      return date.toLocaleTimeString(
+        "th-TH",
+        {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+          timeZone: "Asia/Bangkok"
+        }
+      );
+    }
+
+    return text;
   }
 
-  // ถ้าเป็นวันที่พร้อมเวลา
-  const date = new Date(text);
-
-  if (!isNaN(date.getTime())) {
-    return date.toLocaleTimeString("th-TH", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-      timeZone: "Asia/Bangkok"
-    });
-  }
-
-  return text;
-}
   function formatHours(hours) {
-    const h = Math.floor(hours);
-    const m = Math.round((hours - h) * 60);
+    const h =
+      Math.floor(hours);
+
+    const m =
+      Math.round(
+        (hours - h) * 60
+      );
 
     if (m === 0) {
       return h;
     }
 
-    return `${h}.${String(Math.round(m / 6)).padStart(1, "0")}`;
+    return `${h}.${String(
+      Math.round(m / 6)
+    ).padStart(1, "0")}`;
   }
 
   function escapeHTML(value) {
     return String(value)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
+      .replaceAll(
+        "&",
+        "&amp;"
+      )
+      .replaceAll(
+        "<",
+        "&lt;"
+      )
+      .replaceAll(
+        ">",
+        "&gt;"
+      )
+      .replaceAll(
+        '"',
+        "&quot;"
+      )
+      .replaceAll(
+        "'",
+        "&#039;"
+      );
   }
 
+  // โหลดข้อมูลจาก Google Sheets
   loadRecordsFromGoogleSheets();
 </script>
 
