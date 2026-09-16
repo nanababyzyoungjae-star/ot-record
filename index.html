@@ -12,7 +12,7 @@
   <style>
     /* =====================================================
        NANA'S OT
-       iOS Liquid Glass Style
+       iOS 27 / Liquid Glass Style
        ===================================================== */
 
     * {
@@ -22,7 +22,7 @@
 
     html {
       min-height: 100%;
-      background: #d8d8d8;
+      background: #bdbdbd;
     }
 
     body {
@@ -37,10 +37,12 @@
         Arial,
         sans-serif;
 
-      color: #50555a;
+      color: #50545a;
       overflow-x: hidden;
+
       background: transparent;
     }
+
 
     /* =====================================================
        BACKGROUND
@@ -50,6 +52,7 @@
       content: "";
       position: fixed;
       inset: 0;
+
       z-index: -3;
 
       background-image: url("nanas-ot-bg.jpg");
@@ -59,32 +62,36 @@
 
       filter:
         grayscale(100%)
-        contrast(0.90)
-        brightness(1.04);
+        contrast(0.88)
+        brightness(1.05);
 
-      transform: scale(1.02);
+      transform: scale(1.03);
     }
 
-    /* หมอกบาง ๆ */
+
+    /* แสงหมอกบาง ๆ เหมือน iOS */
+
     body::after {
       content: "";
       position: fixed;
       inset: 0;
+
       z-index: -2;
 
       background:
         linear-gradient(
           180deg,
-          rgba(255,255,255,0.16) 0%,
-          rgba(255,255,255,0.08) 45%,
-          rgba(255,255,255,0.16) 100%
+          rgba(255,255,255,0.13) 0%,
+          rgba(255,255,255,0.05) 45%,
+          rgba(255,255,255,0.14) 100%
         );
 
       pointer-events: none;
     }
 
+
     /* =====================================================
-       MAIN CONTAINER
+       CONTAINER
        ===================================================== */
 
     .container {
@@ -102,13 +109,14 @@
         max(35px, env(safe-area-inset-bottom));
     }
 
+
     /* =====================================================
        HEADER
        ===================================================== */
 
     header {
       width: 100%;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .ot-banner {
@@ -119,22 +127,23 @@
 
       margin: 0 auto;
 
-      border-radius: 22px;
+      border-radius: 24px;
 
       border:
         1px solid
-        rgba(255,255,255,0.78);
+        rgba(255,255,255,0.72);
 
       box-shadow:
-        0 12px 35px rgba(50,50,50,0.16),
-        inset 0 1px 0 rgba(255,255,255,0.70);
+        0 14px 38px rgba(35,35,35,0.16),
+        inset 0 1px 0 rgba(255,255,255,0.82);
 
       background:
         rgba(255,255,255,0.16);
     }
 
+
     /* =====================================================
-       GLASS CARD
+       LIQUID GLASS CARD
        ===================================================== */
 
     .card {
@@ -142,115 +151,148 @@
 
       width: 100%;
 
-      margin-bottom: 14px;
-      padding: 16px;
+      margin-bottom: 16px;
+      padding: 18px;
 
-      border-radius: 24px;
+      border-radius: 25px;
 
       /*
-        iOS Liquid Glass
-        ลดความทึบลงเพื่อให้เห็นพื้นหลัง
+        จุดสำคัญ:
+        ลดสีขาวลงมาก
+        เพื่อให้เห็นภาพพื้นหลังผ่านกล่อง
       */
+
       background:
         linear-gradient(
           135deg,
-          rgba(255,255,255,0.48),
-          rgba(255,255,255,0.22)
+          rgba(255,255,255,0.43) 0%,
+          rgba(255,255,255,0.25) 45%,
+          rgba(255,255,255,0.34) 100%
         );
 
       border:
         1px solid
-        rgba(255,255,255,0.70);
+        rgba(255,255,255,0.68);
+
+      /*
+        Blur แบบกระจก iOS
+      */
 
       backdrop-filter:
-        blur(22px)
+        blur(24px)
         saturate(125%);
 
       -webkit-backdrop-filter:
-        blur(22px)
+        blur(24px)
         saturate(125%);
 
       box-shadow:
-        0 12px 38px rgba(45,45,45,0.12),
-        inset 0 1px 0 rgba(255,255,255,0.82),
-        inset 0 -1px 0 rgba(255,255,255,0.18);
+        0 12px 35px
+        rgba(30,30,30,0.13),
+
+        inset 0 1px 0
+        rgba(255,255,255,0.78),
+
+        inset 0 -1px 0
+        rgba(255,255,255,0.22);
 
       overflow: hidden;
     }
 
-    /* แสงสะท้อนด้านบน */
+
+    /* แสงสะท้อนด้านบนของกระจก */
+
     .card::before {
       content: "";
+
       position: absolute;
 
       top: 0;
-      left: 4%;
-      right: 4%;
+      left: 0;
+      right: 0;
 
-      height: 1px;
+      height: 45%;
 
       background:
         linear-gradient(
-          90deg,
-          transparent,
-          rgba(255,255,255,0.95),
-          transparent
+          180deg,
+          rgba(255,255,255,0.25),
+          rgba(255,255,255,0)
         );
 
       pointer-events: none;
+
+      opacity: 0.75;
     }
 
-    /* แสงฟุ้งบาง ๆ */
+
+    /* แสงขอบบาง ๆ */
+
     .card::after {
       content: "";
+
       position: absolute;
 
-      top: -80px;
-      left: -80px;
+      inset: 1px;
 
-      width: 180px;
-      height: 180px;
+      border-radius: 24px;
 
-      background:
-        radial-gradient(
-          circle,
-          rgba(255,255,255,0.24),
-          transparent 70%
-        );
+      border:
+        1px solid
+        rgba(255,255,255,0.16);
 
       pointer-events: none;
     }
+
 
     /* =====================================================
        CARD TITLE
        ===================================================== */
 
     .card h2 {
+      position: relative;
+      z-index: 2;
+
       display: flex;
       align-items: center;
+
       gap: 8px;
 
-      margin: 0 0 15px;
+      margin:
+        0
+        0
+        16px;
 
-      color: #555a5f;
+      color:
+        rgba(70,74,79,0.92);
 
       font-size: 19px;
       line-height: 1.3;
 
-      font-weight: 600;
-      letter-spacing: -0.2px;
+      font-weight: 650;
+
+      letter-spacing: -0.3px;
+
+      text-shadow:
+        0 1px 1px
+        rgba(255,255,255,0.45);
     }
+
 
     /* =====================================================
        FORM
        ===================================================== */
 
     .form-grid {
+      position: relative;
+      z-index: 2;
+
       display: grid;
 
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns:
+        1fr 1fr;
 
-      gap: 11px;
+      gap: 12px;
     }
 
     .form-field {
@@ -261,19 +303,35 @@
       grid-column: 1 / -1;
     }
 
+
+    /* =====================================================
+       LABEL
+       ===================================================== */
+
     label {
       display: block;
 
-      margin: 0 0 6px 2px;
+      margin:
+        0
+        0
+        6px
+        3px;
 
-      color: #62676b;
+      color:
+        rgba(72,76,81,0.88);
 
       font-size: 13px;
-      font-weight: 600;
+
+      font-weight: 650;
+
+      text-shadow:
+        0 1px 1px
+        rgba(255,255,255,0.45);
     }
 
+
     /* =====================================================
-       LIQUID GLASS INPUT
+       LIQUID GLASS INPUTS
        ===================================================== */
 
     input,
@@ -283,126 +341,104 @@
 
       width: 100%;
 
-      min-height: 46px;
+      min-height: 48px;
 
       padding:
-        10px
-        12px;
+        11px
+        13px;
 
       border:
         1px solid
-        rgba(255,255,255,0.72);
+        rgba(255,255,255,0.62);
 
       border-radius: 15px;
 
       outline: none;
 
-      color: #4f5458;
+      color:
+        rgba(60,64,69,0.94);
 
       font-family: inherit;
+
       font-size: 15px;
 
       /*
-        โปร่งใสแบบ iOS
+        ใสกว่าของเดิมมาก
       */
+
       background:
         linear-gradient(
           135deg,
-          rgba(255,255,255,0.40),
+          rgba(255,255,255,0.34),
           rgba(255,255,255,0.19)
         );
 
       backdrop-filter:
-        blur(18px)
-        saturate(135%);
+        blur(15px)
+        saturate(125%);
 
       -webkit-backdrop-filter:
-        blur(18px)
-        saturate(135%);
+        blur(15px)
+        saturate(125%);
 
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.72),
-        inset 0 -1px 0 rgba(255,255,255,0.12),
-        0 2px 8px rgba(60,60,60,0.035);
+        inset 0 1px 0
+        rgba(255,255,255,0.58),
+
+        inset 0 -1px 0
+        rgba(255,255,255,0.10),
+
+        0 2px 8px
+        rgba(40,40,40,0.035);
 
       transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
         transform 0.15s ease;
     }
 
-    /* ช่องกรอกโปร่งขึ้นบนมือถือ */
-    @media (max-width: 650px) {
 
-      input,
-      textarea,
-      select {
-        background:
-          linear-gradient(
-            135deg,
-            rgba(255,255,255,0.34),
-            rgba(255,255,255,0.15)
-          );
-
-        backdrop-filter:
-          blur(20px)
-          saturate(140%);
-
-        -webkit-backdrop-filter:
-          blur(20px)
-          saturate(140%);
-
-        border:
-          1px solid
-          rgba(255,255,255,0.76);
-
-        box-shadow:
-          inset 0 1px 0 rgba(255,255,255,0.78),
-          inset 0 -1px 0 rgba(255,255,255,0.10),
-          0 3px 10px rgba(50,50,50,0.035);
-      }
-    }
+    /* placeholder */
 
     input::placeholder,
     textarea::placeholder {
-      color: #92969a;
-      opacity: 0.72;
+      color:
+        rgba(105,108,112,0.66);
+
+      opacity: 1;
     }
 
-    /* ตอนกดช่อง */
+
+    /* =====================================================
+       INPUT FOCUS
+       ===================================================== */
+
     input:focus,
     textarea:focus,
     select:focus {
+
       border-color:
-        rgba(255,255,255,0.92);
+        rgba(255,255,255,0.86);
 
       background:
         linear-gradient(
           135deg,
-          rgba(255,255,255,0.58),
-          rgba(255,255,255,0.28)
+          rgba(255,255,255,0.53),
+          rgba(255,255,255,0.30)
         );
 
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.92),
-        0 0 0 3px rgba(255,255,255,0.18),
-        0 6px 18px rgba(50,50,50,0.07);
+        inset 0 1px 0
+        rgba(255,255,255,0.82),
 
-      transform: translateY(-1px);
+        0 0 0 3px
+        rgba(255,255,255,0.18),
+
+        0 5px 16px
+        rgba(50,50,50,0.07);
     }
 
-    textarea {
-      min-height: 82px;
-
-      resize: vertical;
-
-      line-height: 1.5;
-    }
-
-    select {
-      appearance: auto;
-    }
 
     /* =====================================================
        DATE / TIME
@@ -410,8 +446,29 @@
 
     input[type="date"],
     input[type="time"] {
-      color-scheme: light;
+      color:
+        rgba(65,69,74,0.92);
     }
+
+
+    /* =====================================================
+       TEXTAREA
+       ===================================================== */
+
+    textarea {
+      min-height: 84px;
+
+      resize: vertical;
+
+      line-height: 1.5;
+    }
+
+
+    select {
+      appearance: auto;
+      -webkit-appearance: auto;
+    }
+
 
     /* =====================================================
        BUTTONS
@@ -421,6 +478,7 @@
       min-height: 44px;
 
       border: none;
+
       border-radius: 14px;
 
       padding:
@@ -428,8 +486,10 @@
         15px;
 
       font-family: inherit;
+
       font-size: 14px;
-      font-weight: 600;
+
+      font-weight: 650;
 
       cursor: pointer;
 
@@ -445,15 +505,23 @@
       transform: scale(0.97);
     }
 
+
     .buttons {
+      position: relative;
+      z-index: 2;
+
       display: flex;
 
       gap: 8px;
 
-      margin-top: 12px;
+      margin-top: 13px;
     }
 
-    /* ปุ่มหลักแบบกระจกเข้ม */
+
+    /* =====================================================
+       PRIMARY BUTTON
+       ===================================================== */
+
     .btn-primary {
       flex: 1;
 
@@ -462,108 +530,112 @@
       background:
         linear-gradient(
           135deg,
-          rgba(91,96,101,0.78),
-          rgba(75,80,85,0.68)
+          rgba(100,105,111,0.86),
+          rgba(76,81,86,0.80)
         );
 
       border:
         1px solid
-        rgba(255,255,255,0.38);
-
-      backdrop-filter:
-        blur(12px);
-
-      -webkit-backdrop-filter:
-        blur(12px);
+        rgba(255,255,255,0.42);
 
       box-shadow:
         0 7px 18px
-        rgba(50,50,50,0.13),
+        rgba(45,45,45,0.14),
+
         inset 0 1px 0
-        rgba(255,255,255,0.28);
+        rgba(255,255,255,0.30);
     }
 
     .btn-primary:hover {
       background:
         linear-gradient(
           135deg,
-          rgba(80,85,90,0.86),
-          rgba(65,70,75,0.76)
+          rgba(82,87,92,0.91),
+          rgba(65,70,75,0.86)
         );
     }
 
+
+    /* =====================================================
+       SECONDARY
+       ===================================================== */
+
     .btn-secondary {
-      color: #5e6367;
+      color:
+        rgba(70,74,78,0.90);
 
       background:
-        rgba(255,255,255,0.34);
+        rgba(255,255,255,0.32);
 
       border:
         1px solid
-        rgba(255,255,255,0.62);
-
-      backdrop-filter:
-        blur(14px);
-
-      -webkit-backdrop-filter:
-        blur(14px);
+        rgba(255,255,255,0.55);
 
       box-shadow:
         inset 0 1px 0
-        rgba(255,255,255,0.65),
-        0 3px 10px
-        rgba(60,60,60,0.04);
+        rgba(255,255,255,0.50);
     }
+
+
+    /* =====================================================
+       DANGER / CLEAR
+       ===================================================== */
 
     .btn-danger {
-      color: #696e72;
+      color:
+        rgba(80,84,88,0.82);
 
       background:
-        rgba(255,255,255,0.30);
+        rgba(255,255,255,0.28);
 
       border:
         1px solid
-        rgba(255,255,255,0.58);
-
-      backdrop-filter:
-        blur(14px);
-
-      -webkit-backdrop-filter:
-        blur(14px);
+        rgba(255,255,255,0.52);
 
       box-shadow:
         inset 0 1px 0
-        rgba(255,255,255,0.62);
+        rgba(255,255,255,0.42);
     }
+
 
     /* =====================================================
        GOOGLE SHEETS STATUS
        ===================================================== */
 
     #syncStatus {
+      position: relative;
+      z-index: 2;
+
       min-height: 20px;
 
-      margin-top: 10px;
+      margin-top: 11px;
 
-      color: #7b8084;
+      color:
+        rgba(80,84,88,0.72);
 
       font-size: 12px;
+
       line-height: 1.5;
     }
+
 
     /* =====================================================
        PERIOD
        ===================================================== */
 
     .period {
+      position: relative;
+      z-index: 2;
+
       display: flex;
 
       align-items: center;
+
       justify-content: space-between;
 
       gap: 10px;
 
-      margin-bottom: 14px;
+      margin-bottom: 15px;
     }
 
     .period h2 {
@@ -571,32 +643,39 @@
     }
 
     .period strong {
-      color: #676c70;
+      color:
+        rgba(75,79,83,0.78);
 
       font-size: 12px;
-      font-weight: 600;
+
+      font-weight: 650;
 
       white-space: nowrap;
     }
 
+
     /* =====================================================
-       SUMMARY
+       SUMMARY GLASS
        ===================================================== */
 
     .summary {
+      position: relative;
+      z-index: 2;
+
       display: grid;
 
       grid-template-columns:
         repeat(3, 1fr);
 
-      gap: 8px;
+      gap: 9px;
     }
+
 
     .summary-box {
       min-width: 0;
 
       padding:
-        13px
+        14px
         5px;
 
       text-align: center;
@@ -606,55 +685,65 @@
       background:
         linear-gradient(
           135deg,
-          rgba(255,255,255,0.35),
-          rgba(255,255,255,0.16)
+          rgba(255,255,255,0.32),
+          rgba(255,255,255,0.18)
         );
 
       border:
         1px solid
-        rgba(255,255,255,0.58);
+        rgba(255,255,255,0.57);
 
       backdrop-filter:
-        blur(17px)
-        saturate(125%);
+        blur(14px);
 
       -webkit-backdrop-filter:
-        blur(17px)
-        saturate(125%);
+        blur(14px);
 
       box-shadow:
         inset 0 1px 0
-        rgba(255,255,255,0.68),
-        0 4px 12px
-        rgba(60,60,60,0.035);
+        rgba(255,255,255,0.58),
+
+        0 3px 12px
+        rgba(40,40,40,0.035);
     }
 
+
     .summary-box .number {
-      color: #60666a;
+      color:
+        rgba(78,83,88,0.88);
 
       font-size: 25px;
+
       line-height: 1.1;
 
       font-weight: 700;
     }
 
+
     .summary-box .label {
       margin-top: 6px;
 
-      color: #777c80;
+      color:
+        rgba(90,94,98,0.70);
 
       font-size: 10.5px;
+
       line-height: 1.35;
     }
 
+
     /* =====================================================
-       RECORD LIST
+       RECORD HEADER
        ===================================================== */
 
     .records-header {
+      position: relative;
+      z-index: 2;
+
       display: flex;
 
       align-items: center;
+
       justify-content: space-between;
 
       gap: 8px;
@@ -678,19 +767,24 @@
       white-space: nowrap;
     }
 
+
     /* =====================================================
        TABLE
        ===================================================== */
 
     .table-wrapper {
+      position: relative;
+      z-index: 2;
+
       width: 100%;
 
       overflow-x: auto;
 
-      border-radius: 15px;
+      border-radius: 16px;
 
       -webkit-overflow-scrolling: touch;
     }
+
 
     table {
       width: 100%;
@@ -700,6 +794,7 @@
       min-width: 650px;
     }
 
+
     th,
     td {
       padding:
@@ -708,37 +803,43 @@
 
       border-bottom:
         1px solid
-        rgba(100,100,100,0.10);
+        rgba(255,255,255,0.18);
 
       text-align: left;
 
-      color: #5b6064;
+      color:
+        rgba(70,75,80,0.84);
 
       font-size: 13px;
 
       vertical-align: middle;
     }
 
-    th {
-      color: #676c70;
 
-      font-weight: 600;
+    th {
+      color:
+        rgba(70,74,79,0.78);
+
+      font-weight: 650;
 
       background:
-        rgba(255,255,255,0.28);
+        rgba(255,255,255,0.23);
 
       backdrop-filter:
-        blur(12px);
+        blur(10px);
 
       -webkit-backdrop-filter:
-        blur(12px);
+        blur(10px);
     }
 
+
     td.hours {
-      color: #5f6569;
+      color:
+        rgba(65,70,75,0.88);
 
       font-weight: 700;
     }
+
 
     td button {
       min-height: 34px;
@@ -748,21 +849,25 @@
         9px;
 
       margin:
-        2px
         2px;
 
       font-size: 11px;
     }
 
+
     .empty {
-      padding: 35px 15px !important;
+      padding:
+        35px
+        15px !important;
 
       text-align: center !important;
 
-      color: #85898d !important;
+      color:
+        rgba(80,85,90,0.62) !important;
 
       font-size: 13px !important;
     }
+
 
     /* =====================================================
        FOOTER
@@ -777,12 +882,17 @@
       text-align: center;
 
       color:
-        rgba(70,70,70,0.68);
+        rgba(60,64,68,0.62);
 
       font-size: 11px;
 
       line-height: 1.5;
+
+      text-shadow:
+        0 1px 1px
+        rgba(255,255,255,0.35);
     }
+
 
     /* =====================================================
        MOBILE RECORD CARDS
@@ -810,43 +920,46 @@
         width: 100%;
       }
 
+
       tbody tr {
         position: relative;
 
         margin-bottom: 10px;
-        padding: 11px;
+
+        padding: 12px;
 
         border-radius: 17px;
 
         background:
           linear-gradient(
             135deg,
-            rgba(255,255,255,0.31),
-            rgba(255,255,255,0.13)
+            rgba(255,255,255,0.30),
+            rgba(255,255,255,0.17)
           );
 
         border:
           1px solid
-          rgba(255,255,255,0.54);
+          rgba(255,255,255,0.50);
 
         backdrop-filter:
-          blur(17px)
-          saturate(125%);
+          blur(14px);
 
         -webkit-backdrop-filter:
-          blur(17px)
-          saturate(125%);
+          blur(14px);
 
         box-shadow:
           0 5px 15px
-          rgba(60,60,60,0.045),
+          rgba(40,40,40,0.06),
+
           inset 0 1px 0
-          rgba(255,255,255,0.58);
+          rgba(255,255,255,0.52);
       }
+
 
       tbody tr:last-child {
         margin-bottom: 0;
       }
+
 
       tbody td {
         display: grid;
@@ -869,12 +982,16 @@
         line-height: 1.4;
       }
 
+
       tbody td::before {
-        color: #85898c;
+        color:
+          rgba(85,89,93,0.65);
 
         font-size: 11px;
-        font-weight: 600;
+
+        font-weight: 650;
       }
+
 
       tbody td:nth-child(1)::before {
         content: "วันที่";
@@ -904,9 +1021,11 @@
         content: "จัดการ";
       }
 
+
       tbody td:nth-child(5) {
         font-weight: 700;
       }
+
 
       tbody td:nth-child(7) {
         display: flex;
@@ -921,8 +1040,9 @@
 
         border-top:
           1px solid
-          rgba(100,100,100,0.08);
+          rgba(255,255,255,0.22);
       }
+
 
       tbody td:nth-child(7)::before {
         display: block;
@@ -931,6 +1051,7 @@
 
         flex-shrink: 0;
       }
+
 
       tbody td:nth-child(7) button {
         flex: 1;
@@ -943,6 +1064,7 @@
       }
     }
 
+
     /* =====================================================
        SMALL MOBILE
        ===================================================== */
@@ -954,24 +1076,28 @@
         padding-right: 9px;
       }
 
-      .card {
-        padding: 13px;
 
-        border-radius: 21px;
+      .card {
+        padding: 14px;
+
+        border-radius: 22px;
       }
+
 
       .ot-banner {
-        border-radius: 18px;
+        border-radius: 20px;
       }
+
 
       .form-grid {
         gap: 8px;
       }
 
+
       input,
       textarea,
       select {
-        min-height: 44px;
+        min-height: 45px;
 
         padding:
           9px
@@ -982,17 +1108,21 @@
         border-radius: 14px;
       }
 
+
       label {
         font-size: 12px;
       }
+
 
       .card h2 {
         font-size: 17px;
       }
 
+
       .summary {
         gap: 5px;
       }
+
 
       .summary-box {
         padding:
@@ -1000,17 +1130,21 @@
           3px;
       }
 
+
       .summary-box .number {
         font-size: 21px;
       }
+
 
       .summary-box .label {
         font-size: 9.5px;
       }
 
+
       .period strong {
         font-size: 10.5px;
       }
+
 
       .records-header .btn-danger {
         font-size: 10.5px;
@@ -1020,6 +1154,7 @@
           8px;
       }
     }
+
 
     /* =====================================================
        DESKTOP / TABLET
@@ -1034,31 +1169,33 @@
           50px;
       }
 
+
       .card {
-        padding: 20px;
+        padding: 21px;
       }
+
 
       .card h2 {
         font-size: 20px;
       }
 
+
       input,
       textarea,
       select {
-        min-height: 48px;
+        min-height: 49px;
       }
     }
 
   </style>
 </head>
 
+
 <body>
 
   <div class="container">
 
-    <!-- ===================================================
-         HEADER
-         =================================================== -->
+    <!-- HEADER -->
 
     <header>
 
@@ -1071,13 +1208,14 @@
     </header>
 
 
-    <!-- ===================================================
-         FORM
-         =================================================== -->
+    <!-- FORM -->
 
     <div class="card">
 
-      <h2>📝 บันทึก OT</h2>
+      <h2>
+        📝 บันทึก OT
+      </h2>
+
 
       <form id="otForm">
 
@@ -1086,7 +1224,9 @@
           id="editId"
         />
 
+
         <div class="form-grid">
+
 
           <div class="form-field">
 
@@ -1206,9 +1346,7 @@
     </div>
 
 
-    <!-- ===================================================
-         SUMMARY
-         =================================================== -->
+    <!-- SUMMARY -->
 
     <div class="card">
 
@@ -1277,9 +1415,7 @@
     </div>
 
 
-    <!-- ===================================================
-         RECORDS
-         =================================================== -->
+    <!-- RECORDS -->
 
     <div class="card">
 
@@ -1288,6 +1424,7 @@
         <h2>
           📋 รายการที่บันทึกแล้ว
         </h2>
+
 
         <button
           class="btn-danger"
@@ -1308,11 +1445,17 @@
             <tr>
 
               <th>วันที่</th>
+
               <th>ประเภท</th>
+
               <th>เริ่ม</th>
+
               <th>สิ้นสุด</th>
+
               <th>ชั่วโมง</th>
+
               <th>หมายเหตุ</th>
+
               <th>จัดการ</th>
 
             </tr>
@@ -1329,9 +1472,7 @@
     </div>
 
 
-    <!-- ===================================================
-         FOOTER
-         =================================================== -->
+    <!-- FOOTER -->
 
     <div class="footer">
       Nana's OT • ข้อมูลถูกบันทึกในเครื่องและ Google Sheets
@@ -1450,8 +1591,10 @@
         error
       );
 
+
       const localData =
         localStorage.getItem("nanasOT");
+
 
       if (localData) {
 
@@ -1727,7 +1870,7 @@
 
 
   /* =====================================================
-     SEND TO GOOGLE SHEETS
+     SEND GOOGLE SHEETS
      ===================================================== */
 
   async function sendToGoogleSheets(
@@ -2064,11 +2207,14 @@
       "OT";
 
 
-    startInput.value = "";
+    startInput.value =
+      "";
 
-    endInput.value = "";
+    endInput.value =
+      "";
 
-    noteInput.value = "";
+    noteInput.value =
+      "";
 
 
     saveBtn.textContent =
@@ -2193,11 +2339,13 @@
                 )}
               </td>
 
+
               <td>
                 ${escapeHTML(
                   item.type
                 )}
               </td>
+
 
               <td>
                 ${formatTime(
@@ -2205,11 +2353,13 @@
                 )}
               </td>
 
+
               <td>
                 ${formatTime(
                   item.end
                 )}
               </td>
+
 
               <td class="hours">
                 ${formatHours(
@@ -2218,12 +2368,14 @@
                 ชม.
               </td>
 
+
               <td>
                 ${escapeHTML(
                   item.note ||
                   "-"
                 )}
               </td>
+
 
               <td>
 
@@ -2233,6 +2385,7 @@
                 >
                   ✏️ แก้ไข
                 </button>
+
 
                 <button
                   class="btn-danger"
