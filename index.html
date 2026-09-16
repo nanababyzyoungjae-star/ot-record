@@ -12,7 +12,7 @@
   <style>
     /* =====================================================
        NANA'S OT
-       Mobile First • Glassmorphism
+       iOS Liquid Glass Style
        ===================================================== */
 
     * {
@@ -39,7 +39,6 @@
 
       color: #50555a;
       overflow-x: hidden;
-
       background: transparent;
     }
 
@@ -51,7 +50,6 @@
       content: "";
       position: fixed;
       inset: 0;
-
       z-index: -3;
 
       background-image: url("nanas-ot-bg.jpg");
@@ -67,20 +65,19 @@
       transform: scale(1.02);
     }
 
-    /* ชั้นหมอกขาวบาง ๆ */
+    /* หมอกบาง ๆ */
     body::after {
       content: "";
       position: fixed;
       inset: 0;
-
       z-index: -2;
 
       background:
         linear-gradient(
           180deg,
-          rgba(255,255,255,0.20) 0%,
-          rgba(255,255,255,0.12) 45%,
-          rgba(255,255,255,0.20) 100%
+          rgba(255,255,255,0.16) 0%,
+          rgba(255,255,255,0.08) 45%,
+          rgba(255,255,255,0.16) 100%
         );
 
       pointer-events: none;
@@ -132,7 +129,8 @@
         0 12px 35px rgba(50,50,50,0.16),
         inset 0 1px 0 rgba(255,255,255,0.70);
 
-      background: rgba(255,255,255,0.18);
+      background:
+        rgba(255,255,255,0.16);
     }
 
     /* =====================================================
@@ -147,41 +145,78 @@
       margin-bottom: 14px;
       padding: 16px;
 
-      border-radius: 22px;
+      border-radius: 24px;
 
+      /*
+        iOS Liquid Glass
+        ลดความทึบลงเพื่อให้เห็นพื้นหลัง
+      */
       background:
         linear-gradient(
           135deg,
-          rgba(255,255,255,0.72),
-          rgba(255,255,255,0.48)
+          rgba(255,255,255,0.48),
+          rgba(255,255,255,0.22)
         );
 
       border:
         1px solid
-        rgba(255,255,255,0.78);
+        rgba(255,255,255,0.70);
 
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter:
+        blur(22px)
+        saturate(125%);
+
+      -webkit-backdrop-filter:
+        blur(22px)
+        saturate(125%);
 
       box-shadow:
-        0 10px 32px rgba(50,50,50,0.13),
-        inset 0 1px 0 rgba(255,255,255,0.72);
+        0 12px 38px rgba(45,45,45,0.12),
+        inset 0 1px 0 rgba(255,255,255,0.82),
+        inset 0 -1px 0 rgba(255,255,255,0.18);
 
       overflow: hidden;
     }
 
+    /* แสงสะท้อนด้านบน */
     .card::before {
       content: "";
       position: absolute;
 
       top: 0;
-      left: 0;
-      right: 0;
+      left: 4%;
+      right: 4%;
 
       height: 1px;
 
       background:
-        rgba(255,255,255,0.90);
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,0.95),
+          transparent
+        );
+
+      pointer-events: none;
+    }
+
+    /* แสงฟุ้งบาง ๆ */
+    .card::after {
+      content: "";
+      position: absolute;
+
+      top: -80px;
+      left: -80px;
+
+      width: 180px;
+      height: 180px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,0.24),
+          transparent 70%
+        );
 
       pointer-events: none;
     }
@@ -237,6 +272,10 @@
       font-weight: 600;
     }
 
+    /* =====================================================
+       LIQUID GLASS INPUT
+       ===================================================== */
+
     input,
     textarea,
     select {
@@ -252,9 +291,9 @@
 
       border:
         1px solid
-        rgba(125,125,125,0.24);
+        rgba(255,255,255,0.72);
 
-      border-radius: 13px;
+      border-radius: 15px;
 
       outline: none;
 
@@ -263,46 +302,115 @@
       font-family: inherit;
       font-size: 15px;
 
+      /*
+        โปร่งใสแบบ iOS
+      */
       background:
-        rgba(255,255,255,0.67);
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.40),
+          rgba(255,255,255,0.19)
+        );
+
+      backdrop-filter:
+        blur(18px)
+        saturate(135%);
+
+      -webkit-backdrop-filter:
+        blur(18px)
+        saturate(135%);
 
       box-shadow:
-        inset 0 1px 2px rgba(70,70,70,0.03);
+        inset 0 1px 0 rgba(255,255,255,0.72),
+        inset 0 -1px 0 rgba(255,255,255,0.12),
+        0 2px 8px rgba(60,60,60,0.035);
 
       transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease,
-        background 0.2s ease;
+        background 0.2s ease,
+        transform 0.15s ease;
+    }
+
+    /* ช่องกรอกโปร่งขึ้นบนมือถือ */
+    @media (max-width: 650px) {
+
+      input,
+      textarea,
+      select {
+        background:
+          linear-gradient(
+            135deg,
+            rgba(255,255,255,0.34),
+            rgba(255,255,255,0.15)
+          );
+
+        backdrop-filter:
+          blur(20px)
+          saturate(140%);
+
+        -webkit-backdrop-filter:
+          blur(20px)
+          saturate(140%);
+
+        border:
+          1px solid
+          rgba(255,255,255,0.76);
+
+        box-shadow:
+          inset 0 1px 0 rgba(255,255,255,0.78),
+          inset 0 -1px 0 rgba(255,255,255,0.10),
+          0 3px 10px rgba(50,50,50,0.035);
+      }
     }
 
     input::placeholder,
     textarea::placeholder {
-      color: #9a9da0;
-      opacity: 0.82;
+      color: #92969a;
+      opacity: 0.72;
     }
 
+    /* ตอนกดช่อง */
     input:focus,
     textarea:focus,
     select:focus {
       border-color:
-        rgba(90,95,100,0.46);
+        rgba(255,255,255,0.92);
 
       background:
-        rgba(255,255,255,0.82);
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.58),
+          rgba(255,255,255,0.28)
+        );
 
       box-shadow:
-        0 0 0 3px
-        rgba(110,110,110,0.09);
+        inset 0 1px 0 rgba(255,255,255,0.92),
+        0 0 0 3px rgba(255,255,255,0.18),
+        0 6px 18px rgba(50,50,50,0.07);
+
+      transform: translateY(-1px);
     }
 
     textarea {
       min-height: 82px;
+
       resize: vertical;
+
       line-height: 1.5;
     }
 
     select {
       appearance: auto;
+    }
+
+    /* =====================================================
+       DATE / TIME
+       ===================================================== */
+
+    input[type="date"],
+    input[type="time"] {
+      color-scheme: light;
     }
 
     /* =====================================================
@@ -313,7 +421,7 @@
       min-height: 44px;
 
       border: none;
-      border-radius: 13px;
+      border-radius: 14px;
 
       padding:
         10px
@@ -345,52 +453,87 @@
       margin-top: 12px;
     }
 
+    /* ปุ่มหลักแบบกระจกเข้ม */
     .btn-primary {
       flex: 1;
 
       color: #fff;
 
       background:
-        rgba(91,96,101,0.88);
+        linear-gradient(
+          135deg,
+          rgba(91,96,101,0.78),
+          rgba(75,80,85,0.68)
+        );
 
       border:
         1px solid
-        rgba(255,255,255,0.35);
+        rgba(255,255,255,0.38);
+
+      backdrop-filter:
+        blur(12px);
+
+      -webkit-backdrop-filter:
+        blur(12px);
 
       box-shadow:
-        0 6px 16px
-        rgba(60,60,60,0.13);
+        0 7px 18px
+        rgba(50,50,50,0.13),
+        inset 0 1px 0
+        rgba(255,255,255,0.28);
     }
 
     .btn-primary:hover {
       background:
-        rgba(72,77,82,0.94);
+        linear-gradient(
+          135deg,
+          rgba(80,85,90,0.86),
+          rgba(65,70,75,0.76)
+        );
     }
 
     .btn-secondary {
       color: #5e6367;
 
       background:
-        rgba(255,255,255,0.58);
+        rgba(255,255,255,0.34);
 
       border:
         1px solid
-        rgba(115,115,115,0.20);
+        rgba(255,255,255,0.62);
+
+      backdrop-filter:
+        blur(14px);
+
+      -webkit-backdrop-filter:
+        blur(14px);
 
       box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,0.65),
         0 3px 10px
-        rgba(60,60,60,0.05);
+        rgba(60,60,60,0.04);
     }
 
     .btn-danger {
       color: #696e72;
 
       background:
-        rgba(255,255,255,0.58);
+        rgba(255,255,255,0.30);
 
       border:
         1px solid
-        rgba(115,115,115,0.18);
+        rgba(255,255,255,0.58);
+
+      backdrop-filter:
+        blur(14px);
+
+      -webkit-backdrop-filter:
+        blur(14px);
+
+      box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,0.62);
     }
 
     /* =====================================================
@@ -458,18 +601,32 @@
 
       text-align: center;
 
-      border-radius: 16px;
+      border-radius: 17px;
 
       background:
-        rgba(255,255,255,0.48);
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.35),
+          rgba(255,255,255,0.16)
+        );
 
       border:
         1px solid
-        rgba(255,255,255,0.62);
+        rgba(255,255,255,0.58);
+
+      backdrop-filter:
+        blur(17px)
+        saturate(125%);
+
+      -webkit-backdrop-filter:
+        blur(17px)
+        saturate(125%);
 
       box-shadow:
         inset 0 1px 0
-        rgba(255,255,255,0.52);
+        rgba(255,255,255,0.68),
+        0 4px 12px
+        rgba(60,60,60,0.035);
     }
 
     .summary-box .number {
@@ -551,7 +708,7 @@
 
       border-bottom:
         1px solid
-        rgba(100,100,100,0.11);
+        rgba(100,100,100,0.10);
 
       text-align: left;
 
@@ -568,7 +725,13 @@
       font-weight: 600;
 
       background:
-        rgba(255,255,255,0.40);
+        rgba(255,255,255,0.28);
+
+      backdrop-filter:
+        blur(12px);
+
+      -webkit-backdrop-filter:
+        blur(12px);
     }
 
     td.hours {
@@ -653,18 +816,32 @@
         margin-bottom: 10px;
         padding: 11px;
 
-        border-radius: 16px;
+        border-radius: 17px;
 
         background:
-          rgba(255,255,255,0.43);
+          linear-gradient(
+            135deg,
+            rgba(255,255,255,0.31),
+            rgba(255,255,255,0.13)
+          );
 
         border:
           1px solid
-          rgba(255,255,255,0.55);
+          rgba(255,255,255,0.54);
+
+        backdrop-filter:
+          blur(17px)
+          saturate(125%);
+
+        -webkit-backdrop-filter:
+          blur(17px)
+          saturate(125%);
 
         box-shadow:
-          0 4px 13px
-          rgba(60,60,60,0.05);
+          0 5px 15px
+          rgba(60,60,60,0.045),
+          inset 0 1px 0
+          rgba(255,255,255,0.58);
       }
 
       tbody tr:last-child {
@@ -744,7 +921,7 @@
 
         border-top:
           1px solid
-          rgba(100,100,100,0.09);
+          rgba(100,100,100,0.08);
       }
 
       tbody td:nth-child(7)::before {
@@ -780,7 +957,7 @@
       .card {
         padding: 13px;
 
-        border-radius: 19px;
+        border-radius: 21px;
       }
 
       .ot-banner {
@@ -801,6 +978,8 @@
           10px;
 
         font-size: 14px;
+
+        border-radius: 14px;
       }
 
       label {
@@ -869,6 +1048,7 @@
         min-height: 48px;
       }
     }
+
   </style>
 </head>
 
@@ -881,11 +1061,13 @@
          =================================================== -->
 
     <header>
+
       <img
         src="nanas-ot-banner-final.png"
         alt="Nana's OT"
         class="ot-banner"
       />
+
     </header>
 
 
@@ -1125,33 +1307,13 @@
 
             <tr>
 
-              <th>
-                วันที่
-              </th>
-
-              <th>
-                ประเภท
-              </th>
-
-              <th>
-                เริ่ม
-              </th>
-
-              <th>
-                สิ้นสุด
-              </th>
-
-              <th>
-                ชั่วโมง
-              </th>
-
-              <th>
-                หมายเหตุ
-              </th>
-
-              <th>
-                จัดการ
-              </th>
+              <th>วันที่</th>
+              <th>ประเภท</th>
+              <th>เริ่ม</th>
+              <th>สิ้นสุด</th>
+              <th>ชั่วโมง</th>
+              <th>หมายเหตุ</th>
+              <th>จัดการ</th>
 
             </tr>
 
@@ -1288,9 +1450,6 @@
         error
       );
 
-      /* ถ้า Google Sheets โหลดไม่ได้
-         ใช้ข้อมูลจากเครื่องแทน */
-
       const localData =
         localStorage.getItem("nanasOT");
 
@@ -1380,8 +1539,6 @@
       eh * 60 + em;
 
 
-    /* รองรับ OT ข้ามเที่ยงคืน */
-
     if (
       endMinutes <
       startMinutes
@@ -1403,7 +1560,6 @@
 
   /* =====================================================
      CURRENT PAY PERIOD
-     16 - 15
      ===================================================== */
 
   function getCurrentPeriod() {
@@ -1418,9 +1574,6 @@
     let month =
       today.getMonth();
 
-
-    /* วันที่ 1-15
-       = รอบเริ่มวันที่ 16 เดือนก่อน */
 
     if (
       today.getDate() <= 15
@@ -1703,8 +1856,6 @@
       };
 
 
-      /* แก้ไข */
-
       if (editId) {
 
         records =
@@ -1717,16 +1868,12 @@
 
       }
 
-      /* เพิ่ม */
-
       else {
 
         records.push(data);
 
       }
 
-
-      /* เก็บข้อมูลในเครื่อง */
 
       saveRecords();
 
@@ -1750,8 +1897,6 @@
       resetForm();
 
 
-      /* ส่ง Google Sheets */
-
       sendToGoogleSheets(data)
         .then(ok => {
 
@@ -1766,8 +1911,6 @@
 
           }
 
-
-          /* โหลดข้อมูลใหม่ */
 
           if (ok) {
 
@@ -1921,14 +2064,11 @@
       "OT";
 
 
-    startInput.value =
-      "";
+    startInput.value = "";
 
-    endInput.value =
-      "";
+    endInput.value = "";
 
-    noteInput.value =
-      "";
+    noteInput.value = "";
 
 
     saveBtn.textContent =
@@ -1978,8 +2118,6 @@
         );
 
 
-    /* รวมชั่วโมง */
-
     const totalHours =
       currentRecords.reduce(
         (sum, item) =>
@@ -1989,8 +2127,6 @@
       );
 
 
-    /* จำนวนวัน */
-
     const uniqueDays =
       new Set(
         currentRecords.map(
@@ -1999,8 +2135,6 @@
         )
       ).size;
 
-
-    /* Summary */
 
     document.getElementById(
       "totalDays"
@@ -2021,8 +2155,6 @@
     ).textContent =
       currentRecords.length;
 
-
-    /* ไม่มีรายการ */
 
     if (
       !currentRecords.length
@@ -2048,8 +2180,6 @@
     }
 
 
-    /* แสดงรายการ */
-
     table.innerHTML =
       currentRecords
         .map(
@@ -2063,13 +2193,11 @@
                 )}
               </td>
 
-
               <td>
                 ${escapeHTML(
                   item.type
                 )}
               </td>
-
 
               <td>
                 ${formatTime(
@@ -2077,13 +2205,11 @@
                 )}
               </td>
 
-
               <td>
                 ${formatTime(
                   item.end
                 )}
               </td>
-
 
               <td class="hours">
                 ${formatHours(
@@ -2092,14 +2218,12 @@
                 ชม.
               </td>
 
-
               <td>
                 ${escapeHTML(
                   item.note ||
                   "-"
                 )}
               </td>
-
 
               <td>
 
@@ -2109,7 +2233,6 @@
                 >
                   ✏️ แก้ไข
                 </button>
-
 
                 <button
                   class="btn-danger"
@@ -2142,8 +2265,6 @@
       String(value).trim();
 
 
-    /* เช่น 18:00 */
-
     const timeOnly =
       text.match(
         /^(\d{1,2}):(\d{2})/
@@ -2161,8 +2282,6 @@
 
     }
 
-
-    /* วันที่พร้อมเวลา */
 
     const date =
       new Date(text);
