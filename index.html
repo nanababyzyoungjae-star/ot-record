@@ -1618,6 +1618,200 @@
           48px;
       }
     }
+    /* =========================================================
+   NANA'S OT — TEXT ONLY
+   ตัวหนังสือบาง เบา มีขอบและเงาแบบตัวอย่าง
+   ไม่เปลี่ยนโครงสร้าง / กล่อง / พื้นหลัง / ความโปร่งใส
+   ========================================================= */
+
+body {
+  font-family:
+    "Leelawadee UI",
+    "Noto Sans Thai",
+    "Segoe UI",
+    Tahoma,
+    Arial,
+    sans-serif;
+
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* หัวข้อ เช่น บันทึก OT / สรุป OT / รายการที่บันทึกแล้ว */
+.card h2,
+.section-title-text {
+  font-family:
+    "Leelawadee UI",
+    "Noto Sans Thai",
+    "Segoe UI",
+    Tahoma,
+    sans-serif;
+
+  font-weight: 400;
+
+  -webkit-text-stroke: 0.35px rgba(0, 0, 0, 0.65);
+
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.45),
+    0 0 1px rgba(255, 255, 255, 0.85);
+}
+
+/* ชื่อช่อง วันที่ / ประเภท / เวลาเริ่ม / เวลาสิ้นสุด / หมายเหตุ */
+label {
+  font-family:
+    "Leelawadee UI",
+    "Noto Sans Thai",
+    "Segoe UI",
+    Tahoma,
+    sans-serif;
+
+  font-weight: 400;
+
+  -webkit-text-stroke: 0.25px rgba(0, 0, 0, 0.60);
+
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.40),
+    0 0 1px rgba(255, 255, 255, 0.80);
+}
+
+/* ตัวหนังสือในช่องกรอก */
+input,
+textarea,
+select {
+  font-family:
+    "Leelawadee UI",
+    "Noto Sans Thai",
+    "Segoe UI",
+    Tahoma,
+    sans-serif;
+
+  font-weight: 400;
+
+  -webkit-text-stroke: 0.18px rgba(0, 0, 0, 0.50);
+
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.30);
+}
+
+/* Placeholder */
+input::placeholder,
+textarea::placeholder {
+  font-family:
+    "Leelawadee UI",
+    "Noto Sans Thai",
+    "Segoe UI",
+    Tahoma,
+    sans-serif;
+
+  font-weight: 400;
+
+  -webkit-text-stroke: 0.12px rgba(0, 0, 0, 0.35);
+
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* ปุ่ม */
+button {
+  font-family:
+    "Leelawadee UI",
+    "Noto Sans Thai",
+    "Segoe UI",
+    Tahoma,
+    sans-serif;
+
+  font-weight: 400;
+
+  -webkit-text-stroke: 0.15px rgba(0, 0, 0, 0.45);
+}
+
+/* ตัวเลขสรุป */
+.summary-box .number,
+.history-summary-box .number {
+  font-weight: 400;
+
+  -webkit-text-stroke: 0.18px rgba(0, 0, 0, 0.45);
+
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.30);
+}
+
+/* คำอธิบายใต้ตัวเลข */
+.summary-box .label,
+.history-summary-box .label {
+  font-weight: 400;
+
+  -webkit-text-stroke: 0.12px rgba(0, 0, 0, 0.35);
+
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* ช่วงวันที่ */
+.period,
+.period strong,
+.history-period-text {
+  font-weight: 400;
+
+  -webkit-text-stroke: 0.18px rgba(0, 0, 0, 0.45);
+
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.30);
+}
+
+/* ตาราง */
+th,
+td {
+  font-family:
+    "Leelawadee UI",
+    "Noto Sans Thai",
+    "Segoe UI",
+    Tahoma,
+    sans-serif;
+
+  font-weight: 400;
+
+  -webkit-text-stroke: 0.12px rgba(0, 0, 0, 0.40);
+
+  text-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+/* ชั่วโมง OT */
+td.hours {
+  font-weight: 400;
+}
+
+/* ข้อความสถานะ Google Sheets */
+#syncStatus {
+  font-weight: 400;
+
+  -webkit-text-stroke: 0.12px rgba(0, 0, 0, 0.35);
+
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* ข้อความยังไม่มีข้อมูล */
+.empty,
+.history-empty {
+  font-weight: 400;
+
+  -webkit-text-stroke: 0.12px rgba(0, 0, 0, 0.35);
+
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Footer */
+.footer {
+  font-weight: 400;
+
+  -webkit-text-stroke: 0.10px rgba(0, 0, 0, 0.30);
+
+  text-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.20);
+}
   </style>
 </head>
 
