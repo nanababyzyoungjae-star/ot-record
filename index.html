@@ -2,6 +2,7 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
@@ -10,9 +11,10 @@
   <title>Nana's OT</title>
 
   <style>
+
     /* =====================================================
        NANA'S OT
-       iOS LIQUID GLASS STYLE
+       iOS 27 STYLE • LIQUID GLASS
        Mobile First
        ===================================================== */
 
@@ -21,57 +23,84 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+
     html {
       min-height: 100%;
-      background: #d8d8d8;
+      background: #bdbdbd;
     }
+
 
     body {
       position: relative;
+
       min-height: 100vh;
+
       margin: 0;
       padding: 0;
 
       font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "SF Pro Text",
         "Segoe UI",
         Tahoma,
         Arial,
         sans-serif;
 
-      color: #50555a;
+      color: #4f5459;
+
       overflow-x: hidden;
 
       background: transparent;
+
+      -webkit-font-smoothing: antialiased;
     }
+
 
     /* =====================================================
        BACKGROUND
        ===================================================== */
 
     body::before {
+
       content: "";
+
       position: fixed;
+
       inset: 0;
 
       z-index: -3;
 
-      background-image: url("nanas-ot-bg.jpg");
+      background-image:
+        url("nanas-ot-bg.jpg");
+
       background-size: cover;
-      background-position: center center;
+
+      background-position:
+        center center;
+
       background-repeat: no-repeat;
 
       filter:
         grayscale(100%)
-        contrast(0.90)
-        brightness(1.04);
+        contrast(0.88)
+        brightness(1.02);
 
-      transform: scale(1.02);
+      transform:
+        scale(1.025);
     }
 
-    /* หมอกบาง ๆ บนภาพพื้นหลัง */
+
+    /* หมอกบางมาก
+       ไม่ทำให้พื้นหลังขาวจนเกินไป */
+
     body::after {
+
       content: "";
+
       position: fixed;
+
       inset: 0;
 
       z-index: -2;
@@ -80,22 +109,26 @@
         linear-gradient(
           180deg,
           rgba(255,255,255,0.10) 0%,
-          rgba(255,255,255,0.05) 45%,
-          rgba(255,255,255,0.12) 100%
+          rgba(255,255,255,0.04) 45%,
+          rgba(255,255,255,0.10) 100%
         );
 
       pointer-events: none;
     }
+
 
     /* =====================================================
        MAIN CONTAINER
        ===================================================== */
 
     .container {
+
       position: relative;
+
       z-index: 1;
 
       width: 100%;
+
       max-width: 760px;
 
       margin: 0 auto;
@@ -106,80 +139,90 @@
         max(35px, env(safe-area-inset-bottom));
     }
 
+
     /* =====================================================
        HEADER
        ===================================================== */
 
     header {
+
       width: 100%;
+
       margin-bottom: 14px;
     }
 
+
     .ot-banner {
+
       display: block;
 
       width: 100%;
+
       height: auto;
 
       margin: 0 auto;
 
-      border-radius: 22px;
-
-      border:
-        1px solid
-        rgba(255,255,255,0.72);
-
-      box-shadow:
-        0 12px 35px rgba(40,40,40,0.16),
-        inset 0 1px 0 rgba(255,255,255,0.78);
-
-      background:
-        rgba(255,255,255,0.12);
-
-      backdrop-filter:
-        blur(10px)
-        saturate(120%);
-
-      -webkit-backdrop-filter:
-        blur(10px)
-        saturate(120%);
-    }
-
-    /* =====================================================
-       LIQUID GLASS CARD
-       ===================================================== */
-
-    .card {
-      position: relative;
-
-      width: 100%;
-
-      margin-bottom: 14px;
-      padding: 16px;
-
       border-radius: 25px;
-
-      /*
-       * จุดสำคัญ:
-       * ลดความทึบจากเดิม .72/.48
-       * ให้พื้นหลังมองทะลุผ่านกล่องได้
-       */
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,0.30) 0%,
-          rgba(255,255,255,0.20) 45%,
-          rgba(235,235,235,0.25) 100%
-        );
 
       border:
         1px solid
         rgba(255,255,255,0.58);
 
+      box-shadow:
+
+        0 10px 30px
+        rgba(0,0,0,0.12),
+
+        inset 0 1px 0
+        rgba(255,255,255,0.70);
+
+      background:
+        rgba(255,255,255,0.08);
+
+      backdrop-filter:
+        blur(8px);
+
+      -webkit-backdrop-filter:
+        blur(8px);
+    }
+
+
+    /* =====================================================
+       GLASS CARD
+       iOS 27 / Notification Center style
+       ===================================================== */
+
+    .card {
+
+      position: relative;
+
+      width: 100%;
+
+      margin-bottom: 14px;
+
+      padding: 16px;
+
+      border-radius: 28px;
+
       /*
-       * Glass Blur
-       */
+        สำคัญที่สุด
+
+        เดิม 0.72 / 0.48 = ทึบเกินไป
+
+        ตอนนี้ใช้ 0.13
+        เพื่อให้ภาพพื้นหลังทะลุผ่าน
+      */
+
+      background:
+        rgba(255,255,255,0.13);
+
+      border:
+        1px solid
+        rgba(255,255,255,0.48);
+
+      /*
+        Glass blur
+      */
 
       backdrop-filter:
         blur(24px)
@@ -189,136 +232,171 @@
         blur(24px)
         saturate(125%);
 
-      /*
-       * เงาแบบกระจก
-       */
-
       box-shadow:
-        0 10px 35px rgba(35,35,35,0.13),
-        0 2px 8px rgba(35,35,35,0.06),
-        inset 0 1px 0 rgba(255,255,255,0.78),
-        inset 0 -1px 0 rgba(255,255,255,0.16);
+
+        0 10px 35px
+        rgba(0,0,0,0.10),
+
+        inset 0 1px 0
+        rgba(255,255,255,0.58),
+
+        inset 0 -1px 0
+        rgba(255,255,255,0.10);
 
       overflow: hidden;
-
-      /*
-       * ช่วยให้เบราว์เซอร์มือถือวาด blur ได้ดีขึ้น
-       */
-
-      isolation: isolate;
     }
 
+
     /*
-     * แสงสะท้อนด้านบนของกล่อง
-     */
+      แสงขอบด้านบน
+    */
 
     .card::before {
+
       content: "";
 
       position: absolute;
 
       top: 0;
+
       left: 0;
+
       right: 0;
 
-      height: 45%;
+      height: 1px;
 
       background:
-        linear-gradient(
-          180deg,
-          rgba(255,255,255,0.20),
-          rgba(255,255,255,0.03),
-          transparent
-        );
+        rgba(255,255,255,0.78);
 
       pointer-events: none;
-
-      z-index: -1;
     }
 
+
     /*
-     * ขอบแสงบาง ๆ
-     */
+      แสงฟุ้งบาง ๆ ด้านใน
+    */
 
     .card::after {
+
       content: "";
 
       position: absolute;
 
-      inset: 0;
+      top: -80px;
 
-      border-radius: inherit;
+      left: -30px;
 
-      box-shadow:
-        inset 0 0 0 0.5px rgba(255,255,255,0.55);
+      width: 180px;
+
+      height: 100px;
+
+      background:
+        rgba(255,255,255,0.07);
+
+      filter:
+        blur(25px);
 
       pointer-events: none;
     }
+
 
     /* =====================================================
        CARD TITLE
        ===================================================== */
 
     .card h2 {
+
+      position: relative;
+
+      z-index: 1;
+
       display: flex;
+
       align-items: center;
+
       gap: 8px;
 
-      margin: 0 0 15px;
+      margin:
+        0 0 15px;
 
-      color: #555a5f;
+      color:
+        #53585e;
 
-      font-size: 19px;
-      line-height: 1.3;
+      font-size:
+        19px;
 
-      font-weight: 600;
-      letter-spacing: -0.2px;
+      line-height:
+        1.3;
 
-      text-shadow:
-        0 1px 2px rgba(255,255,255,0.45);
+      font-weight:
+        650;
+
+      letter-spacing:
+        -0.3px;
     }
+
 
     /* =====================================================
        FORM
        ===================================================== */
 
     .form-grid {
+
       display: grid;
 
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns:
+        1fr 1fr;
 
       gap: 11px;
     }
 
+
     .form-field {
+
       min-width: 0;
     }
 
+
     .full {
-      grid-column: 1 / -1;
+
+      grid-column:
+        1 / -1;
     }
+
 
     label {
+
       display: block;
 
-      margin: 0 0 6px 2px;
+      margin:
+        0 0 6px 2px;
 
-      color: #62676b;
+      color:
+        #5c6267;
 
-      font-size: 13px;
-      font-weight: 600;
+      font-size:
+        13px;
+
+      font-weight:
+        600;
 
       text-shadow:
-        0 1px 2px rgba(255,255,255,0.45);
+        0 1px 1px
+        rgba(255,255,255,0.25);
     }
 
+
     /* =====================================================
-       LIQUID GLASS INPUTS
+       INPUT / TEXTAREA / SELECT
+       iOS LIQUID GLASS
        ===================================================== */
 
     input,
     textarea,
     select {
+
+      position: relative;
+
       display: block;
 
       width: 100%;
@@ -326,492 +404,656 @@
       min-height: 46px;
 
       padding:
-        10px
-        12px;
-
-      /*
-       * โปร่งใสขึ้นมาก
-       */
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,0.28),
-          rgba(255,255,255,0.16)
-        );
-
-      /*
-       * ขอบแบบ iOS
-       */
+        10px 12px;
 
       border:
         1px solid
-        rgba(255,255,255,0.62);
+        rgba(255,255,255,0.55);
 
-      border-radius: 17px;
+      border-radius:
+        18px;
 
       outline: none;
 
-      color: #4f5458;
+      color:
+        #4d5358;
 
-      font-family: inherit;
-      font-size: 15px;
+      font-family:
+        inherit;
+
+      font-size:
+        15px;
 
       /*
-       * blur ของตัวช่องเอง
-       */
+        โปร่งใสมาก
+      */
+
+      background:
+        rgba(255,255,255,0.12);
+
+      /*
+        กระจกของตัว input
+      */
 
       backdrop-filter:
         blur(18px)
-        saturate(120%);
+        saturate(130%);
 
       -webkit-backdrop-filter:
         blur(18px)
-        saturate(120%);
-
-      /*
-       * inner glass highlight
-       */
+        saturate(130%);
 
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.68),
-        inset 0 -1px 0 rgba(255,255,255,0.12),
-        0 2px 8px rgba(50,50,50,0.035);
+
+        inset 0 1px 0
+        rgba(255,255,255,0.55),
+
+        inset 0 -1px 0
+        rgba(255,255,255,0.08),
+
+        0 2px 10px
+        rgba(0,0,0,0.035);
 
       transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
+
         background 0.2s ease,
-        transform 0.2s ease;
+
+        border-color 0.2s ease,
+
+        box-shadow 0.2s ease;
     }
+
+
+    /* =====================================================
+       INPUT PLACEHOLDER
+       ===================================================== */
 
     input::placeholder,
     textarea::placeholder {
-      color: #8f9397;
-      opacity: 0.82;
+
+      color:
+        #74797e;
+
+      opacity:
+        0.70;
     }
 
-    /*
-     * ตอนแตะช่องกรอก
-     */
+
+    /* =====================================================
+       FOCUS
+       ===================================================== */
 
     input:focus,
     textarea:focus,
     select:focus {
+
       border-color:
-        rgba(255,255,255,0.82);
+        rgba(255,255,255,0.78);
 
       background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,0.38),
-          rgba(255,255,255,0.23)
-        );
+        rgba(255,255,255,0.18);
 
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.78),
+
         0 0 0 3px
-        rgba(255,255,255,0.14),
-        0 4px 14px
-        rgba(50,50,50,0.06);
+        rgba(255,255,255,0.12),
+
+        inset 0 1px 0
+        rgba(255,255,255,0.65),
+
+        0 3px 12px
+        rgba(0,0,0,0.04);
     }
+
 
     textarea {
-      min-height: 82px;
 
-      resize: vertical;
+      min-height:
+        82px;
 
-      line-height: 1.5;
+      resize:
+        vertical;
+
+      line-height:
+        1.5;
     }
+
 
     select {
-      appearance: auto;
-      -webkit-appearance: auto;
+
+      appearance:
+        auto;
+
+      -webkit-appearance:
+        auto;
     }
+
+
+    /* =====================================================
+       iOS DATE / TIME
+       ===================================================== */
+
+    input[type="date"],
+    input[type="time"] {
+
+      color:
+        #4f555a;
+
+      -webkit-appearance:
+        none;
+
+      appearance:
+        none;
+    }
+
+
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator {
+
+      opacity:
+        0.65;
+
+      filter:
+        grayscale(100%);
+    }
+
 
     /* =====================================================
        BUTTONS
        ===================================================== */
 
     button {
-      min-height: 44px;
 
-      border: none;
-      border-radius: 15px;
+      min-height:
+        44px;
+
+      border:
+        none;
+
+      border-radius:
+        16px;
 
       padding:
-        10px
-        15px;
+        10px 15px;
 
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 600;
+      font-family:
+        inherit;
 
-      cursor: pointer;
+      font-size:
+        14px;
+
+      font-weight:
+        600;
+
+      cursor:
+        pointer;
 
       transition:
+
         transform 0.15s ease,
+
         background 0.2s ease,
+
         box-shadow 0.2s ease;
 
-      touch-action: manipulation;
+      touch-action:
+        manipulation;
     }
+
 
     button:active {
-      transform: scale(0.97);
+
+      transform:
+        scale(0.97);
     }
+
 
     .buttons {
-      display: flex;
 
-      gap: 8px;
+      display:
+        flex;
 
-      margin-top: 12px;
+      gap:
+        8px;
+
+      margin-top:
+        12px;
     }
+
 
     /* =====================================================
        PRIMARY BUTTON
        ===================================================== */
 
     .btn-primary {
-      flex: 1;
 
-      color: #fff;
+      flex:
+        1;
+
+      color:
+        #ffffff;
 
       background:
-        linear-gradient(
-          135deg,
-          rgba(80,85,90,0.82),
-          rgba(65,70,75,0.72)
-        );
+        rgba(72,77,82,0.82);
 
       border:
         1px solid
-        rgba(255,255,255,0.30);
+        rgba(255,255,255,0.35);
 
       box-shadow:
+
         0 7px 18px
-        rgba(40,40,40,0.16),
+        rgba(0,0,0,0.12),
+
         inset 0 1px 0
-        rgba(255,255,255,0.22);
+        rgba(255,255,255,0.20);
     }
 
+
     .btn-primary:hover {
+
       background:
-        linear-gradient(
-          135deg,
-          rgba(70,75,80,0.90),
-          rgba(55,60,65,0.82)
-        );
+        rgba(65,70,75,0.90);
     }
+
 
     /* =====================================================
        SECONDARY BUTTON
        ===================================================== */
 
     .btn-secondary {
-      color: #5e6367;
+
+      color:
+        #565c61;
 
       background:
-        rgba(255,255,255,0.25);
+        rgba(255,255,255,0.14);
 
       border:
         1px solid
-        rgba(255,255,255,0.52);
-
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.60),
-        0 3px 10px
-        rgba(50,50,50,0.05);
+        rgba(255,255,255,0.42);
 
       backdrop-filter:
-        blur(12px);
+        blur(16px);
 
       -webkit-backdrop-filter:
-        blur(12px);
+        blur(16px);
+
+      box-shadow:
+
+        inset 0 1px 0
+        rgba(255,255,255,0.50),
+
+        0 3px 10px
+        rgba(0,0,0,0.04);
     }
+
 
     /* =====================================================
        DANGER BUTTON
        ===================================================== */
 
     .btn-danger {
-      color: #696e72;
+
+      color:
+        #5e6469;
 
       background:
-        rgba(255,255,255,0.24);
+        rgba(255,255,255,0.13);
 
       border:
         1px solid
-        rgba(255,255,255,0.48);
+        rgba(255,255,255,0.40);
+
+      backdrop-filter:
+        blur(16px);
+
+      -webkit-backdrop-filter:
+        blur(16px);
 
       box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.52);
+        inset 0 1px 0
+        rgba(255,255,255,0.40);
     }
+
 
     /* =====================================================
        GOOGLE SHEETS STATUS
        ===================================================== */
 
     #syncStatus {
-      min-height: 20px;
 
-      margin-top: 10px;
+      min-height:
+        20px;
 
-      color: #73787c;
+      margin-top:
+        10px;
 
-      font-size: 12px;
-      line-height: 1.5;
+      color:
+        #73797e;
 
-      text-shadow:
-        0 1px 2px rgba(255,255,255,0.40);
+      font-size:
+        12px;
+
+      line-height:
+        1.5;
     }
+
 
     /* =====================================================
        PERIOD
        ===================================================== */
 
     .period {
-      display: flex;
 
-      align-items: center;
-      justify-content: space-between;
+      display:
+        flex;
 
-      gap: 10px;
+      align-items:
+        center;
 
-      margin-bottom: 14px;
+      justify-content:
+        space-between;
+
+      gap:
+        10px;
+
+      margin-bottom:
+        14px;
     }
+
 
     .period h2 {
-      margin: 0;
+
+      margin:
+        0;
     }
+
 
     .period strong {
-      color: #676c70;
 
-      font-size: 12px;
-      font-weight: 600;
+      color:
+        #666c71;
 
-      white-space: nowrap;
+      font-size:
+        12px;
 
-      text-shadow:
-        0 1px 2px rgba(255,255,255,0.45);
+      font-weight:
+        600;
+
+      white-space:
+        nowrap;
     }
+
 
     /* =====================================================
        SUMMARY
        ===================================================== */
 
     .summary {
-      display: grid;
+
+      display:
+        grid;
 
       grid-template-columns:
         repeat(3, 1fr);
 
-      gap: 8px;
+      gap:
+        8px;
     }
 
+
     .summary-box {
-      min-width: 0;
+
+      min-width:
+        0;
 
       padding:
-        13px
-        5px;
+        13px 5px;
 
-      text-align: center;
+      text-align:
+        center;
 
-      border-radius: 18px;
-
-      /*
-       * โปร่งใสแบบ Notification Center
-       */
+      border-radius:
+        20px;
 
       background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,0.27),
-          rgba(255,255,255,0.14)
-        );
+        rgba(255,255,255,0.10);
 
       border:
         1px solid
-        rgba(255,255,255,0.55);
+        rgba(255,255,255,0.42);
 
       backdrop-filter:
-        blur(18px)
+        blur(16px)
         saturate(120%);
 
       -webkit-backdrop-filter:
-        blur(18px)
+        blur(16px)
         saturate(120%);
 
       box-shadow:
+
         inset 0 1px 0
-        rgba(255,255,255,0.65),
-        0 3px 10px
-        rgba(50,50,50,0.04);
+        rgba(255,255,255,0.48),
+
+        0 2px 8px
+        rgba(0,0,0,0.03);
     }
+
 
     .summary-box .number {
-      color: #60666a;
 
-      font-size: 25px;
-      line-height: 1.1;
+      color:
+        #5c6267;
 
-      font-weight: 700;
+      font-size:
+        25px;
 
-      text-shadow:
-        0 1px 2px rgba(255,255,255,0.45);
+      line-height:
+        1.1;
+
+      font-weight:
+        700;
     }
+
 
     .summary-box .label {
-      margin-top: 6px;
 
-      color: #777c80;
+      margin-top:
+        6px;
 
-      font-size: 10.5px;
-      line-height: 1.35;
+      color:
+        #70767b;
+
+      font-size:
+        10.5px;
+
+      line-height:
+        1.35;
     }
+
 
     /* =====================================================
        RECORD LIST
        ===================================================== */
 
     .records-header {
-      display: flex;
 
-      align-items: center;
-      justify-content: space-between;
+      display:
+        flex;
 
-      gap: 8px;
+      align-items:
+        center;
 
-      margin-bottom: 12px;
+      justify-content:
+        space-between;
+
+      gap:
+        8px;
+
+      margin-bottom:
+        12px;
     }
+
 
     .records-header h2 {
-      margin: 0;
+
+      margin:
+        0;
     }
+
 
     .records-header .btn-danger {
-      min-height: 38px;
+
+      min-height:
+        38px;
 
       padding:
-        7px
-        11px;
+        7px 11px;
 
-      font-size: 12px;
+      font-size:
+        12px;
 
-      white-space: nowrap;
+      white-space:
+        nowrap;
     }
+
 
     /* =====================================================
        TABLE
        ===================================================== */
 
     .table-wrapper {
-      width: 100%;
 
-      overflow-x: auto;
+      width:
+        100%;
 
-      border-radius: 17px;
+      overflow-x:
+        auto;
 
-      -webkit-overflow-scrolling: touch;
+      border-radius:
+        18px;
+
+      -webkit-overflow-scrolling:
+        touch;
     }
+
 
     table {
-      width: 100%;
 
-      border-collapse: collapse;
+      width:
+        100%;
 
-      min-width: 650px;
+      border-collapse:
+        collapse;
+
+      min-width:
+        650px;
     }
+
 
     th,
     td {
+
       padding:
-        10px
-        8px;
+        10px 8px;
 
       border-bottom:
         1px solid
         rgba(255,255,255,0.20);
 
-      text-align: left;
+      text-align:
+        left;
 
-      color: #5b6064;
+      color:
+        #5b6065;
 
-      font-size: 13px;
+      font-size:
+        13px;
 
-      vertical-align: middle;
+      vertical-align:
+        middle;
     }
+
 
     th {
-      color: #676c70;
 
-      font-weight: 600;
+      color:
+        #646a6f;
+
+      font-weight:
+        600;
 
       background:
-        rgba(255,255,255,0.18);
-
-      backdrop-filter:
-        blur(10px);
-
-      -webkit-backdrop-filter:
-        blur(10px);
+        rgba(255,255,255,0.08);
     }
+
 
     td.hours {
-      color: #5f6569;
 
-      font-weight: 700;
+      color:
+        #5b6166;
+
+      font-weight:
+        700;
     }
+
 
     td button {
-      min-height: 34px;
+
+      min-height:
+        34px;
 
       padding:
-        6px
-        9px;
+        6px 9px;
 
       margin:
-        2px
         2px;
 
-      font-size: 11px;
+      font-size:
+        11px;
     }
+
 
     .empty {
-      padding: 35px 15px !important;
 
-      text-align: center !important;
+      padding:
+        35px 15px !important;
 
-      color: #85898d !important;
+      text-align:
+        center !important;
 
-      font-size: 13px !important;
+      color:
+        #7d8388 !important;
+
+      font-size:
+        13px !important;
     }
+
 
     /* =====================================================
        FOOTER
        ===================================================== */
 
     .footer {
-      padding:
-        5px
-        0
-        15px;
 
-      text-align: center;
+      padding:
+        5px 0 15px;
+
+      text-align:
+        center;
 
       color:
-        rgba(70,70,70,0.68);
+        rgba(70,70,70,0.65);
 
-      font-size: 11px;
+      font-size:
+        11px;
 
-      line-height: 1.5;
-
-      text-shadow:
-        0 1px 2px rgba(255,255,255,0.35);
+      line-height:
+        1.5;
     }
+
 
     /* =====================================================
        MOBILE RECORD CARDS
@@ -820,47 +1062,66 @@
     @media (max-width: 650px) {
 
       .table-wrapper {
-        overflow: visible;
+
+        overflow:
+          visible;
       }
+
 
       table {
-        width: 100%;
-        min-width: 0;
+
+        width:
+          100%;
+
+        min-width:
+          0;
       }
 
+
       thead {
-        display: none;
+
+        display:
+          none;
       }
+
 
       tbody,
       tr,
       td {
-        display: block;
-        width: 100%;
+
+        display:
+          block;
+
+        width:
+          100%;
       }
 
+
       tbody tr {
-        position: relative;
 
-        margin-bottom: 10px;
-        padding: 11px;
+        position:
+          relative;
 
-        border-radius: 18px;
+        margin-bottom:
+          10px;
+
+        padding:
+          11px;
+
+        border-radius:
+          20px;
 
         /*
-         * รายการแต่ละอันก็เป็น glass
-         */
+          โปร่งใสแบบเดียวกับ
+          Notification Center
+        */
 
         background:
-          linear-gradient(
-            135deg,
-            rgba(255,255,255,0.24),
-            rgba(255,255,255,0.13)
-          );
+          rgba(255,255,255,0.10);
 
         border:
           1px solid
-          rgba(255,255,255,0.50);
+          rgba(255,255,255,0.40);
 
         backdrop-filter:
           blur(18px)
@@ -871,110 +1132,164 @@
           saturate(120%);
 
         box-shadow:
-          0 4px 15px
-          rgba(45,45,45,0.06),
+
+          0 5px 16px
+          rgba(0,0,0,0.06),
+
           inset 0 1px 0
-          rgba(255,255,255,0.58);
+          rgba(255,255,255,0.42);
       }
+
 
       tbody tr:last-child {
-        margin-bottom: 0;
+
+        margin-bottom:
+          0;
       }
 
+
       tbody td {
-        display: grid;
+
+        display:
+          grid;
 
         grid-template-columns:
           72px 1fr;
 
-        gap: 8px;
+        gap:
+          8px;
 
-        width: 100%;
+        width:
+          100%;
 
         padding:
-          5px
-          2px;
+          5px 2px;
 
-        border: none;
+        border:
+          none;
 
-        font-size: 12.5px;
+        font-size:
+          12.5px;
 
-        line-height: 1.4;
+        line-height:
+          1.4;
       }
+
 
       tbody td::before {
-        color: #85898c;
 
-        font-size: 11px;
-        font-weight: 600;
+        color:
+          #7a8085;
+
+        font-size:
+          11px;
+
+        font-weight:
+          600;
       }
+
 
       tbody td:nth-child(1)::before {
-        content: "วันที่";
+        content:
+          "วันที่";
       }
+
 
       tbody td:nth-child(2)::before {
-        content: "ประเภท";
+        content:
+          "ประเภท";
       }
+
 
       tbody td:nth-child(3)::before {
-        content: "เวลาเริ่ม";
+        content:
+          "เวลาเริ่ม";
       }
+
 
       tbody td:nth-child(4)::before {
-        content: "เวลาสิ้นสุด";
+        content:
+          "เวลาสิ้นสุด";
       }
+
 
       tbody td:nth-child(5)::before {
-        content: "ชั่วโมง";
+        content:
+          "ชั่วโมง";
       }
+
 
       tbody td:nth-child(6)::before {
-        content: "หมายเหตุ";
+        content:
+          "หมายเหตุ";
       }
+
 
       tbody td:nth-child(7)::before {
-        content: "จัดการ";
+        content:
+          "จัดการ";
       }
+
 
       tbody td:nth-child(5) {
-        font-weight: 700;
+
+        font-weight:
+          700;
       }
 
+
       tbody td:nth-child(7) {
-        display: flex;
 
-        align-items: center;
+        display:
+          flex;
 
-        gap: 7px;
+        align-items:
+          center;
 
-        padding-top: 9px;
+        gap:
+          7px;
 
-        margin-top: 4px;
+        padding-top:
+          9px;
+
+        margin-top:
+          4px;
 
         border-top:
           1px solid
-          rgba(255,255,255,0.25);
+          rgba(255,255,255,0.20);
       }
+
 
       tbody td:nth-child(7)::before {
-        display: block;
 
-        width: 72px;
+        display:
+          block;
 
-        flex-shrink: 0;
+        width:
+          72px;
+
+        flex-shrink:
+          0;
       }
+
 
       tbody td:nth-child(7) button {
-        flex: 1;
 
-        min-height: 38px;
+        flex:
+          1;
 
-        margin: 0;
+        min-height:
+          38px;
 
-        font-size: 12px;
+        margin:
+          0;
+
+        font-size:
+          12px;
       }
     }
+
 
     /* =====================================================
        SMALL MOBILE
@@ -983,78 +1298,119 @@
     @media (max-width: 390px) {
 
       .container {
-        padding-left: 9px;
-        padding-right: 9px;
+
+        padding-left:
+          9px;
+
+        padding-right:
+          9px;
       }
+
 
       .card {
-        padding: 13px;
 
-        border-radius: 22px;
+        padding:
+          13px;
+
+        border-radius:
+          24px;
       }
+
 
       .ot-banner {
-        border-radius: 18px;
+
+        border-radius:
+          20px;
       }
 
+
       .form-grid {
-        gap: 8px;
+
+        gap:
+          8px;
       }
+
 
       input,
       textarea,
       select {
-        min-height: 44px;
+
+        min-height:
+          44px;
 
         padding:
-          9px
-          10px;
+          9px 10px;
 
-        font-size: 14px;
+        font-size:
+          14px;
 
-        border-radius: 15px;
+        border-radius:
+          17px;
       }
+
 
       label {
-        font-size: 12px;
+
+        font-size:
+          12px;
       }
+
 
       .card h2 {
-        font-size: 17px;
+
+        font-size:
+          17px;
       }
+
 
       .summary {
-        gap: 5px;
+
+        gap:
+          5px;
       }
+
 
       .summary-box {
-        padding:
-          11px
-          3px;
 
-        border-radius: 16px;
+        padding:
+          11px 3px;
+
+        border-radius:
+          18px;
       }
+
 
       .summary-box .number {
-        font-size: 21px;
+
+        font-size:
+          21px;
       }
+
 
       .summary-box .label {
-        font-size: 9.5px;
+
+        font-size:
+          9.5px;
       }
+
 
       .period strong {
-        font-size: 10.5px;
+
+        font-size:
+          10.5px;
       }
+
 
       .records-header .btn-danger {
-        font-size: 10.5px;
+
+        font-size:
+          10.5px;
 
         padding:
-          6px
-          8px;
+          6px 8px;
       }
     }
+
 
     /* =====================================================
        DESKTOP / TABLET
@@ -1063,57 +1419,43 @@
     @media (min-width: 651px) {
 
       .container {
+
         padding:
-          20px
-          16px
-          50px;
+          20px 16px 50px;
       }
+
 
       .card {
-        padding: 20px;
+
+        padding:
+          20px;
       }
 
+
       .card h2 {
-        font-size: 20px;
+
+        font-size:
+          20px;
       }
+
 
       input,
       textarea,
       select {
-        min-height: 48px;
-      }
-    }
 
-    /* =====================================================
-       iOS / SAFARI GLASS ENHANCEMENT
-       ===================================================== */
-
-    @supports (
-      backdrop-filter: blur(20px)
-    ) {
-
-      .card,
-      input,
-      textarea,
-      select,
-      .summary-box,
-      tbody tr {
-        backdrop-filter:
-          blur(24px)
-          saturate(130%);
-
-        -webkit-backdrop-filter:
-          blur(24px)
-          saturate(130%);
+        min-height:
+          48px;
       }
     }
 
   </style>
 </head>
 
+
 <body>
 
   <div class="container">
+
 
     <!-- ===================================================
          HEADER
@@ -1136,16 +1478,22 @@
 
     <div class="card">
 
-      <h2>📝 บันทึก OT</h2>
+      <h2>
+        📝 บันทึก OT
+      </h2>
+
 
       <form id="otForm">
+
 
         <input
           type="hidden"
           id="editId"
         />
 
+
         <div class="form-grid">
+
 
           <div class="form-field">
 
@@ -1230,10 +1578,12 @@
 
           </div>
 
+
         </div>
 
 
         <div class="buttons">
+
 
           <button
             type="submit"
@@ -1253,12 +1603,14 @@
             ยกเลิกแก้ไข
           </button>
 
+
         </div>
 
 
         <div id="syncStatus">
           ☁️ ข้อมูลจะถูกส่งไป Google Sheets เมื่อกดบันทึก
         </div>
+
 
       </form>
 
@@ -1271,18 +1623,23 @@
 
     <div class="card">
 
+
       <div class="period">
+
 
         <h2>
           📊 สรุป OT
         </h2>
 
+
         <strong id="periodText"></strong>
+
 
       </div>
 
 
       <div class="summary">
+
 
         <div class="summary-box">
 
@@ -1331,6 +1688,7 @@
 
         </div>
 
+
       </div>
 
     </div>
@@ -1342,11 +1700,14 @@
 
     <div class="card">
 
+
       <div class="records-header">
+
 
         <h2>
           📋 รายการที่บันทึกแล้ว
         </h2>
+
 
         <button
           class="btn-danger"
@@ -1355,30 +1716,47 @@
           ล้างข้อมูลทั้งหมด
         </button>
 
+
       </div>
 
 
       <div class="table-wrapper">
 
+
         <table>
+
 
           <thead>
 
             <tr>
 
-              <th>วันที่</th>
+              <th>
+                วันที่
+              </th>
 
-              <th>ประเภท</th>
+              <th>
+                ประเภท
+              </th>
 
-              <th>เริ่ม</th>
+              <th>
+                เริ่ม
+              </th>
 
-              <th>สิ้นสุด</th>
+              <th>
+                สิ้นสุด
+              </th>
 
-              <th>ชั่วโมง</th>
+              <th>
+                ชั่วโมง
+              </th>
 
-              <th>หมายเหตุ</th>
+              <th>
+                หมายเหตุ
+              </th>
 
-              <th>จัดการ</th>
+              <th>
+                จัดการ
+              </th>
 
             </tr>
 
@@ -1387,9 +1765,12 @@
 
           <tbody id="otTable"></tbody>
 
+
         </table>
 
+
       </div>
+
 
     </div>
 
@@ -1399,13 +1780,17 @@
          =================================================== -->
 
     <div class="footer">
+
       Nana's OT • ข้อมูลถูกบันทึกในเครื่องและ Google Sheets
+
     </div>
+
 
   </div>
 
 
 <script>
+
 
   /* =====================================================
      ELEMENTS
@@ -1414,29 +1799,38 @@
   const form =
     document.getElementById("otForm");
 
+
   const dateInput =
     document.getElementById("date");
+
 
   const startInput =
     document.getElementById("start");
 
+
   const endInput =
     document.getElementById("end");
+
 
   const typeInput =
     document.getElementById("type");
 
+
   const noteInput =
     document.getElementById("note");
+
 
   const editIdInput =
     document.getElementById("editId");
 
+
   const table =
     document.getElementById("otTable");
 
+
   const saveBtn =
     document.getElementById("saveBtn");
+
 
   const cancelBtn =
     document.getElementById("cancelBtn");
@@ -1463,6 +1857,7 @@
 
       const response =
         await fetch(GOOGLE_SHEETS_API);
+
 
       const result =
         await response.json();
@@ -1518,6 +1913,7 @@
 
       const localData =
         localStorage.getItem("nanasOT");
+
 
       if (localData) {
 
@@ -1592,6 +1988,7 @@
         .split(":")
         .map(Number);
 
+
     const [eh, em] =
       end
         .split(":")
@@ -1600,6 +1997,7 @@
 
     let startMinutes =
       sh * 60 + sm;
+
 
     let endMinutes =
       eh * 60 + em;
@@ -1638,6 +2036,7 @@
     let year =
       today.getFullYear();
 
+
     let month =
       today.getMonth();
 
@@ -1652,6 +2051,7 @@
       if (month < 0) {
 
         month = 11;
+
         year--;
 
       }
@@ -1670,6 +2070,7 @@
     let endMonth =
       month + 1;
 
+
     let endYear =
       year;
 
@@ -1679,6 +2080,7 @@
     ) {
 
       endMonth = 0;
+
       endYear++;
 
     }
@@ -1923,8 +2325,6 @@
       };
 
 
-      /* แก้ไข */
-
       if (editId) {
 
         records =
@@ -1936,8 +2336,6 @@
           );
 
       }
-
-      /* เพิ่ม */
 
       else {
 
@@ -2016,17 +2414,22 @@
     editIdInput.value =
       item.id;
 
+
     dateInput.value =
       item.date;
+
 
     typeInput.value =
       item.type;
 
+
     startInput.value =
       item.start;
 
+
     endInput.value =
       item.end;
+
 
     noteInput.value =
       item.note;
@@ -2122,7 +2525,8 @@
 
   function resetForm() {
 
-    editIdInput.value = "";
+    editIdInput.value =
+      "";
 
 
     dateInput.value =
@@ -2135,11 +2539,16 @@
       "OT";
 
 
-    startInput.value = "";
+    startInput.value =
+      "";
 
-    endInput.value = "";
 
-    noteInput.value = "";
+    endInput.value =
+      "";
+
+
+    noteInput.value =
+      "";
 
 
     saveBtn.textContent =
@@ -2189,8 +2598,6 @@
         );
 
 
-    /* รวมชั่วโมง */
-
     const totalHours =
       currentRecords.reduce(
         (sum, item) =>
@@ -2200,8 +2607,6 @@
       );
 
 
-    /* จำนวนวัน */
-
     const uniqueDays =
       new Set(
         currentRecords.map(
@@ -2210,8 +2615,6 @@
         )
       ).size;
 
-
-    /* Summary */
 
     document.getElementById(
       "totalDays"
@@ -2232,8 +2635,6 @@
     ).textContent =
       currentRecords.length;
 
-
-    /* ไม่มีรายการ */
 
     if (
       !currentRecords.length
@@ -2258,8 +2659,6 @@
 
     }
 
-
-    /* แสดงรายการ */
 
     table.innerHTML =
       currentRecords
@@ -2472,7 +2871,9 @@
 
   loadRecordsFromGoogleSheets();
 
+
 </script>
+
 
 </body>
 </html>
