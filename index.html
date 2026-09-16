@@ -168,7 +168,6 @@
 
       border-radius: 28px;
 
-      /* โปร่งใส 100% */
       background:
         rgba(255,255,255,0.00);
 
@@ -176,11 +175,6 @@
         1px solid
         rgba(255,255,255,0.42);
 
-      /*
-        สำคัญ:
-        ไม่มี backdrop-filter
-        เพื่อให้รูปพื้นหลังคมชัด
-      */
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
 
@@ -358,10 +352,6 @@
       font-size:
         15px;
 
-      /*
-        ช่องกรอกใสมาก
-        ไม่มี backdrop-filter
-      */
       background:
         rgba(255,255,255,0.05);
 
@@ -829,6 +819,259 @@
     }
 
     /* =====================================================
+       HISTORY SELECT
+       ===================================================== */
+
+    .history-select-wrap {
+      position:
+        relative;
+
+      margin-bottom:
+        14px;
+    }
+
+    .history-select-label {
+      display:
+        block;
+
+      margin:
+        0 0 6px 2px;
+
+      color:
+        #ffffff;
+
+      font-size:
+        12px;
+
+      font-weight:
+        600;
+
+      -webkit-text-stroke:
+        0.2px
+        rgba(0,0,0,0.70);
+
+      text-shadow:
+        0 1px 2px
+        rgba(0,0,0,0.80);
+    }
+
+    #historyPeriodSelect {
+      width:
+        100%;
+
+      min-height:
+        46px;
+
+      padding:
+        10px 38px 10px 13px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.50);
+
+      border-radius:
+        18px;
+
+      outline:
+        none;
+
+      color:
+        #ffffff;
+
+      background:
+        rgba(255,255,255,0.05);
+
+      font-family:
+        inherit;
+
+      font-size:
+        14px;
+
+      font-weight:
+        600;
+
+      -webkit-text-stroke:
+        0.2px
+        rgba(0,0,0,0.70);
+
+      text-shadow:
+        0 1px 2px
+        rgba(0,0,0,0.80);
+
+      box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,0.45),
+
+        0 2px 10px
+        rgba(0,0,0,0.025);
+    }
+
+    #historyPeriodSelect:focus {
+      border-color:
+        rgba(255,255,255,0.72);
+
+      background:
+        rgba(255,255,255,0.09);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(255,255,255,0.09),
+
+        inset 0 1px 0
+        rgba(255,255,255,0.58);
+    }
+
+    #historyPeriodSelect option {
+      color:
+        #333333;
+
+      background:
+        #ffffff;
+
+      font-weight:
+        500;
+    }
+
+    /* =====================================================
+       HISTORY INFO
+       ===================================================== */
+
+    .history-info {
+      display:
+        none;
+
+      margin-bottom:
+        14px;
+    }
+
+    .history-period-text {
+      margin-bottom:
+        10px;
+
+      color:
+        #ffffff;
+
+      font-size:
+        13px;
+
+      font-weight:
+        650;
+
+      -webkit-text-stroke:
+        0.25px
+        rgba(0,0,0,0.75);
+
+      text-shadow:
+        0 1px 2px
+        rgba(0,0,0,0.85);
+    }
+
+    .history-summary {
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap:
+        8px;
+    }
+
+    .history-summary-box {
+      min-width:
+        0;
+
+      padding:
+        10px 5px;
+
+      text-align:
+        center;
+
+      border-radius:
+        18px;
+
+      background:
+        rgba(255,255,255,0.00);
+
+      border:
+        1px solid
+        rgba(255,255,255,0.30);
+
+      box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,0.30);
+    }
+
+    .history-summary-box .number {
+      color:
+        #ffffff;
+
+      font-size:
+        19px;
+
+      font-weight:
+        700;
+
+      line-height:
+        1.1;
+
+      -webkit-text-stroke:
+        0.25px
+        rgba(0,0,0,0.75);
+
+      text-shadow:
+        0 1px 2px
+        rgba(0,0,0,0.85);
+    }
+
+    .history-summary-box .label {
+      margin-top:
+        4px;
+
+      color:
+        #ffffff;
+
+      font-size:
+        9.5px;
+
+      line-height:
+        1.3;
+
+      -webkit-text-stroke:
+        0.2px
+        rgba(0,0,0,0.70);
+
+      text-shadow:
+        0 1px 2px
+        rgba(0,0,0,0.80);
+    }
+
+    .history-empty {
+      display:
+        none;
+
+      padding:
+        20px 10px;
+
+      text-align:
+        center;
+
+      color:
+        #ffffff;
+
+      font-size:
+        12px;
+
+      -webkit-text-stroke:
+        0.2px
+        rgba(0,0,0,0.70);
+
+      text-shadow:
+        0 1px 2px
+        rgba(0,0,0,0.80);
+    }
+
+    /* =====================================================
        TABLE
        ===================================================== */
 
@@ -1179,6 +1422,29 @@
         font-size:
           12px;
       }
+
+      .history-summary {
+        gap:
+          5px;
+      }
+
+      .history-summary-box {
+        padding:
+          9px 3px;
+
+        border-radius:
+          16px;
+      }
+
+      .history-summary-box .number {
+        font-size:
+          17px;
+      }
+
+      .history-summary-box .label {
+        font-size:
+          8.8px;
+      }
     }
 
     /* =====================================================
@@ -1273,6 +1539,11 @@
 
         padding:
           6px 8px;
+      }
+
+      #historyPeriodSelect {
+        font-size:
+          13px;
       }
     }
 
@@ -1453,7 +1724,7 @@
     </div>
 
     <!-- =================================================
-         SUMMARY
+         CURRENT SUMMARY
          ================================================= -->
 
     <div class="card">
@@ -1520,7 +1791,7 @@
     </div>
 
     <!-- =================================================
-         RECORDS
+         CURRENT RECORDS
          ================================================= -->
 
     <div class="card">
@@ -1589,6 +1860,159 @@
     </div>
 
     <!-- =================================================
+         HISTORY
+         ================================================= -->
+
+    <div class="card">
+
+      <div class="records-header">
+
+        <h2>
+          🗂️ ประวัติ OT
+        </h2>
+
+      </div>
+
+      <div class="history-select-wrap">
+
+        <label
+          for="historyPeriodSelect"
+          class="history-select-label"
+        >
+          เลือกรอบ OT
+        </label>
+
+        <select
+          id="historyPeriodSelect"
+        >
+          <option value="">
+            เลือกรอบ OT ที่ต้องการดู
+          </option>
+        </select>
+
+      </div>
+
+      <div
+        class="history-info"
+        id="historyInfo"
+      >
+
+        <div
+          class="history-period-text"
+          id="historyPeriodText"
+        ></div>
+
+        <div class="history-summary">
+
+          <div class="history-summary-box">
+
+            <div
+              class="number"
+              id="historyDays"
+            >
+              0
+            </div>
+
+            <div class="label">
+              จำนวนวันที่ทำ OT
+            </div>
+
+          </div>
+
+          <div class="history-summary-box">
+
+            <div
+              class="number"
+              id="historyHours"
+            >
+              0
+            </div>
+
+            <div class="label">
+              ชั่วโมง OT รวม
+            </div>
+
+          </div>
+
+          <div class="history-summary-box">
+
+            <div
+              class="number"
+              id="historyRecords"
+            >
+              0
+            </div>
+
+            <div class="label">
+              รายการทั้งหมด
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div
+        class="history-empty"
+        id="historyEmpty"
+      >
+        ยังไม่มีข้อมูลในรอบนี้ 🌷
+      </div>
+
+      <div
+        class="table-wrapper"
+        id="historyTableWrapper"
+        style="display:none;"
+      >
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>
+                วันที่
+              </th>
+
+              <th>
+                ประเภท
+              </th>
+
+              <th>
+                เริ่ม
+              </th>
+
+              <th>
+                สิ้นสุด
+              </th>
+
+              <th>
+                ชั่วโมง
+              </th>
+
+              <th>
+                หมายเหตุ
+              </th>
+
+              <th>
+                จัดการ
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="historyTable"></tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+    <!-- =================================================
          FOOTER
          ================================================= -->
 
@@ -1634,6 +2058,51 @@
   const cancelBtn =
     document.getElementById("cancelBtn");
 
+  const historyPeriodSelect =
+    document.getElementById(
+      "historyPeriodSelect"
+    );
+
+  const historyInfo =
+    document.getElementById(
+      "historyInfo"
+    );
+
+  const historyPeriodText =
+    document.getElementById(
+      "historyPeriodText"
+    );
+
+  const historyDays =
+    document.getElementById(
+      "historyDays"
+    );
+
+  const historyHours =
+    document.getElementById(
+      "historyHours"
+    );
+
+  const historyRecords =
+    document.getElementById(
+      "historyRecords"
+    );
+
+  const historyEmpty =
+    document.getElementById(
+      "historyEmpty"
+    );
+
+  const historyTableWrapper =
+    document.getElementById(
+      "historyTableWrapper"
+    );
+
+  const historyTable =
+    document.getElementById(
+      "historyTable"
+    );
+
 
   /* =====================================================
      GOOGLE SHEETS API
@@ -1655,7 +2124,9 @@
     try {
 
       const response =
-        await fetch(GOOGLE_SHEETS_API);
+        await fetch(
+          GOOGLE_SHEETS_API
+        );
 
       const result =
         await response.json();
@@ -1673,7 +2144,9 @@
                 "sheet-" + index,
 
               date:
-                normalizeDate(item.date),
+                normalizeDate(
+                  item.date
+                ),
 
               type:
                 item.type || "OT",
@@ -1696,6 +2169,9 @@
         saveRecords();
 
         render();
+
+        renderHistoryPeriods();
+
       }
 
     } catch (error) {
@@ -1706,16 +2182,22 @@
       );
 
       const localData =
-        localStorage.getItem("nanasOT");
+        localStorage.getItem(
+          "nanasOT"
+        );
 
       if (localData) {
 
         try {
 
           records =
-            JSON.parse(localData);
+            JSON.parse(
+              localData
+            );
 
           render();
+
+          renderHistoryPeriods();
 
         } catch (e) {
 
@@ -1736,15 +2218,55 @@
 
   function normalizeDate(value) {
 
+    if (
+      value === null ||
+      value === undefined ||
+      value === ""
+    ) {
+
+      return "";
+
+    }
+
+    const text =
+      String(value).trim();
+
+    /*
+      รองรับวันที่จาก Google Sheets
+      ที่อาจมาเป็น YYYY-MM-DD
+      หรือ ISO Date
+    */
+
+    const direct =
+      text.match(
+        /^(\d{4})-(\d{2})-(\d{2})/
+      );
+
+    if (direct) {
+
+      return (
+        direct[1] +
+        "-" +
+        direct[2] +
+        "-" +
+        direct[3]
+      );
+
+    }
+
     const date =
       new Date(value);
 
     if (
-      isNaN(date.getTime())
+      isNaN(
+        date.getTime()
+      )
     ) {
 
-      return String(value)
-        .substring(0, 10);
+      return text.substring(
+        0,
+        10
+      );
 
     }
 
@@ -1876,6 +2398,151 @@
 
 
   /* =====================================================
+     GET PERIOD FOR ANY DATE
+     ===================================================== */
+
+  function getPeriodForDate(
+    dateString
+  ) {
+
+    if (!dateString) {
+      return null;
+    }
+
+    const date =
+      new Date(
+        dateString +
+        "T00:00:00"
+      );
+
+    if (
+      isNaN(
+        date.getTime()
+      )
+    ) {
+
+      return null;
+
+    }
+
+    let year =
+      date.getFullYear();
+
+    let month =
+      date.getMonth();
+
+    if (
+      date.getDate() <= 15
+    ) {
+
+      month--;
+
+      if (month < 0) {
+
+        month = 11;
+        year--;
+
+      }
+
+    }
+
+    const start =
+      new Date(
+        year,
+        month,
+        16
+      );
+
+    let endMonth =
+      month + 1;
+
+    let endYear =
+      year;
+
+    if (
+      endMonth > 11
+    ) {
+
+      endMonth = 0;
+      endYear++;
+
+    }
+
+    const end =
+      new Date(
+        endYear,
+        endMonth,
+        15
+      );
+
+    return {
+      start,
+      end
+    };
+
+  }
+
+
+  /* =====================================================
+     PERIOD KEY
+     ===================================================== */
+
+  function getPeriodKey(
+    period
+  ) {
+
+    if (!period) {
+      return "";
+    }
+
+    return (
+      formatISODate(period.start) +
+      "_" +
+      formatISODate(period.end)
+    );
+
+  }
+
+
+  /* =====================================================
+     FORMAT ISO DATE
+     ===================================================== */
+
+  function formatISODate(
+    date
+  ) {
+
+    const year =
+      date.getFullYear();
+
+    const month =
+      String(
+        date.getMonth() + 1
+      ).padStart(
+        2,
+        "0"
+      );
+
+    const day =
+      String(
+        date.getDate()
+      ).padStart(
+        2,
+        "0"
+      );
+
+    return (
+      year +
+      "-" +
+      month +
+      "-" +
+      day
+    );
+
+  }
+
+
+  /* =====================================================
      FORMAT DATE
      ===================================================== */
 
@@ -1902,39 +2569,65 @@
 
 
   /* =====================================================
-     PERIOD TEXT
+     FORMAT PERIOD
      ===================================================== */
 
-  function getPeriodText() {
+  function formatPeriod(
+    period
+  ) {
 
-    const {
-      start,
-      end
-    } =
-      getCurrentPeriod();
+    if (!period) {
+      return "";
+    }
 
-    return `${start.toLocaleDateString(
-      "th-TH"
-    )} - ${end.toLocaleDateString(
-      "th-TH"
-    )}`;
+    return (
+      period.start.toLocaleDateString(
+        "th-TH",
+        {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric"
+        }
+      ) +
+      " - " +
+      period.end.toLocaleDateString(
+        "th-TH",
+        {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric"
+        }
+      )
+    );
 
   }
 
 
   /* =====================================================
-     CHECK CURRENT PERIOD
+     PERIOD TEXT
      ===================================================== */
 
-  function isInCurrentPeriod(
-    dateString
+  function getPeriodText() {
+
+    return formatPeriod(
+      getCurrentPeriod()
+    );
+
+  }
+
+
+  /* =====================================================
+     CHECK PERIOD
+     ===================================================== */
+
+  function isDateInPeriod(
+    dateString,
+    period
   ) {
 
-    const {
-      start,
-      end
-    } =
-      getCurrentPeriod();
+    if (!period || !dateString) {
+      return false;
+    }
 
     const date =
       new Date(
@@ -1943,8 +2636,20 @@
       );
 
     return (
-      date >= start &&
-      date <= end
+      date >= period.start &&
+      date <= period.end
+    );
+
+  }
+
+
+  function isInCurrentPeriod(
+    dateString
+  ) {
+
+    return isDateInPeriod(
+      dateString,
+      getCurrentPeriod()
     );
 
   }
@@ -1958,7 +2663,9 @@
 
     localStorage.setItem(
       "nanasOT",
-      JSON.stringify(records)
+      JSON.stringify(
+        records
+      )
     );
 
   }
@@ -1979,7 +2686,9 @@
 
       payload.append(
         "payload",
-        JSON.stringify(data)
+        JSON.stringify(
+          data
+        )
       );
 
       await fetch(
@@ -2036,6 +2745,7 @@
         );
 
         return;
+
       }
 
 
@@ -2053,6 +2763,7 @@
         );
 
         return;
+
       }
 
 
@@ -2099,7 +2810,9 @@
 
       } else {
 
-        records.push(data);
+        records.push(
+          data
+        );
 
       }
 
@@ -2107,6 +2820,8 @@
       saveRecords();
 
       render();
+
+      renderHistoryPeriods();
 
 
       const syncStatus =
@@ -2126,29 +2841,33 @@
       resetForm();
 
 
-      sendToGoogleSheets(data)
-        .then(ok => {
+      sendToGoogleSheets(
+        data
+      )
+        .then(
+          ok => {
 
-          if (syncStatus) {
+            if (syncStatus) {
 
-            syncStatus.textContent =
-              ok
-                ? "☁️ ส่งข้อมูลไป Google Sheets แล้ว • ข้อมูลสำรองอยู่ในเครื่องนี้"
-                : "⚠️ บันทึกในเครื่องแล้ว แต่ส่ง Google Sheets ไม่สำเร็จ";
+              syncStatus.textContent =
+                ok
+                  ? "☁️ ส่งข้อมูลไป Google Sheets แล้ว • ข้อมูลสำรองอยู่ในเครื่องนี้"
+                  : "⚠️ บันทึกในเครื่องแล้ว แต่ส่ง Google Sheets ไม่สำเร็จ";
+
+            }
+
+
+            if (ok) {
+
+              setTimeout(
+                loadRecordsFromGoogleSheets,
+                800
+              );
+
+            }
 
           }
-
-
-          if (ok) {
-
-            setTimeout(
-              loadRecordsFromGoogleSheets,
-              800
-            );
-
-          }
-
-        });
+        );
 
     }
   );
@@ -2158,14 +2877,19 @@
      EDIT RECORD
      ===================================================== */
 
-  function editRecord(id) {
+  function editRecord(
+    id
+  ) {
 
     const item =
       records.find(
-        r => r.id === id
+        r =>
+          r.id === id
       );
 
-    if (!item) return;
+    if (!item) {
+      return;
+    }
 
 
     editIdInput.value =
@@ -2194,10 +2918,12 @@
       "block";
 
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+    window.scrollTo(
+      {
+        top: 0,
+        behavior: "smooth"
+      }
+    );
 
   }
 
@@ -2206,7 +2932,9 @@
      DELETE RECORD
      ===================================================== */
 
-  function deleteRecord(id) {
+  function deleteRecord(
+    id
+  ) {
 
     if (
       !confirm(
@@ -2221,12 +2949,15 @@
 
     records =
       records.filter(
-        r => r.id !== id
+        r =>
+          r.id !== id
       );
 
     saveRecords();
 
     render();
+
+    renderHistoryPeriods();
 
   }
 
@@ -2264,6 +2995,8 @@
     saveRecords();
 
     render();
+
+    renderHistoryPeriods();
 
   }
 
@@ -2314,7 +3047,30 @@
 
 
   /* =====================================================
-     RENDER
+     GET CURRENT RECORDS
+     ===================================================== */
+
+  function getCurrentRecords() {
+
+    return records
+      .filter(
+        item =>
+          isInCurrentPeriod(
+            item.date
+          )
+      )
+      .sort(
+        (a, b) =>
+          b.date.localeCompare(
+            a.date
+          )
+      );
+
+  }
+
+
+  /* =====================================================
+     RENDER CURRENT SUMMARY + RECORDS
      ===================================================== */
 
   function render() {
@@ -2327,19 +3083,7 @@
 
 
     const currentRecords =
-      records
-        .filter(
-          item =>
-            isInCurrentPeriod(
-              item.date
-            )
-        )
-        .sort(
-          (a, b) =>
-            b.date.localeCompare(
-              a.date
-            )
-        );
+      getCurrentRecords();
 
 
     const totalHours =
@@ -2403,69 +3147,403 @@
     table.innerHTML =
       currentRecords
         .map(
-          item => `
+          item =>
+            createRecordRow(
+              item
+            )
+        )
+        .join("");
 
-            <tr>
+  }
 
-              <td>
-                ${formatDate(
-                  item.date
-                )}
-              </td>
 
-              <td>
-                ${escapeHTML(
-                  item.type
-                )}
-              </td>
+  /* =====================================================
+     CREATE RECORD ROW
+     ===================================================== */
 
-              <td>
-                ${formatTime(
-                  item.start
-                )}
-              </td>
+  function createRecordRow(
+    item
+  ) {
 
-              <td>
-                ${formatTime(
-                  item.end
-                )}
-              </td>
+    return `
 
-              <td class="hours">
-                ${formatHours(
-                  item.hours
-                )}
-                ชม.
-              </td>
+      <tr>
 
-              <td>
-                ${escapeHTML(
-                  item.note ||
-                  "-"
-                )}
-              </td>
+        <td>
+          ${formatDate(
+            item.date
+          )}
+        </td>
 
-              <td>
+        <td>
+          ${escapeHTML(
+            item.type
+          )}
+        </td>
 
-                <button
-                  class="btn-secondary"
-                  onclick="editRecord('${item.id}')"
-                >
-                  ✏️ แก้ไข
-                </button>
+        <td>
+          ${formatTime(
+            item.start
+          )}
+        </td>
 
-                <button
-                  class="btn-danger"
-                  onclick="deleteRecord('${item.id}')"
-                >
-                  🗑️ ลบ
-                </button>
+        <td>
+          ${formatTime(
+            item.end
+          )}
+        </td>
 
-              </td>
+        <td class="hours">
+          ${formatHours(
+            item.hours
+          )}
+          ชม.
+        </td>
 
-            </tr>
+        <td>
+          ${escapeHTML(
+            item.note ||
+            "-"
+          )}
+        </td>
 
-          `
+        <td>
+
+          <button
+            class="btn-secondary"
+            onclick="editRecord('${escapeHTML(item.id)}')"
+          >
+            ✏️ แก้ไข
+          </button>
+
+          <button
+            class="btn-danger"
+            onclick="deleteRecord('${escapeHTML(item.id)}')"
+          >
+            🗑️ ลบ
+          </button>
+
+        </td>
+
+      </tr>
+
+    `;
+
+  }
+
+
+  /* =====================================================
+     HISTORY PERIODS
+     ===================================================== */
+
+  function getHistoryPeriods() {
+
+    const periodMap =
+      new Map();
+
+
+    /*
+      เพิ่มรอบปัจจุบันเสมอ
+      เพื่อให้ Dropdown มีรอบปัจจุบันด้วย
+    */
+
+    const currentPeriod =
+      getCurrentPeriod();
+
+    periodMap.set(
+      getPeriodKey(
+        currentPeriod
+      ),
+      currentPeriod
+    );
+
+
+    /*
+      สร้างรอบจากข้อมูลจริงทั้งหมด
+    */
+
+    records.forEach(
+      item => {
+
+        const period =
+          getPeriodForDate(
+            item.date
+          );
+
+        if (!period) {
+          return;
+        }
+
+        periodMap.set(
+          getPeriodKey(
+            period
+          ),
+          period
+        );
+
+      }
+    );
+
+
+    return Array.from(
+      periodMap.values()
+    )
+      .sort(
+        (a, b) =>
+          b.start -
+          a.start
+      );
+
+  }
+
+
+  /* =====================================================
+     RENDER HISTORY DROPDOWN
+     ===================================================== */
+
+  function renderHistoryPeriods() {
+
+    const periods =
+      getHistoryPeriods();
+
+    const oldValue =
+      historyPeriodSelect.value;
+
+
+    historyPeriodSelect.innerHTML = `
+      <option value="">
+        เลือกรอบ OT ที่ต้องการดู
+      </option>
+    `;
+
+
+    periods.forEach(
+      period => {
+
+        const option =
+          document.createElement(
+            "option"
+          );
+
+        option.value =
+          getPeriodKey(
+            period
+          );
+
+        option.textContent =
+          formatPeriod(
+            period
+          );
+
+        historyPeriodSelect.appendChild(
+          option
+        );
+
+      }
+    );
+
+
+    /*
+      ถ้ายังเลือกรอบเดิมอยู่
+      ให้คงค่าที่เลือกไว้
+    */
+
+    if (
+      oldValue &&
+      periods.some(
+        period =>
+          getPeriodKey(
+            period
+          ) === oldValue
+      )
+    ) {
+
+      historyPeriodSelect.value =
+        oldValue;
+
+      renderHistory();
+
+    }
+
+  }
+
+
+  /* =====================================================
+     FIND PERIOD BY KEY
+     ===================================================== */
+
+  function findPeriodByKey(
+    key
+  ) {
+
+    return getHistoryPeriods()
+      .find(
+        period =>
+          getPeriodKey(
+            period
+          ) === key
+      );
+
+  }
+
+
+  /* =====================================================
+     HISTORY SELECT CHANGE
+     ===================================================== */
+
+  historyPeriodSelect.addEventListener(
+    "change",
+    function() {
+
+      renderHistory();
+
+    }
+  );
+
+
+  /* =====================================================
+     RENDER HISTORY
+     ===================================================== */
+
+  function renderHistory() {
+
+    const key =
+      historyPeriodSelect.value;
+
+
+    if (!key) {
+
+      historyInfo.style.display =
+        "none";
+
+      historyEmpty.style.display =
+        "none";
+
+      historyTableWrapper.style.display =
+        "none";
+
+      historyTable.innerHTML =
+        "";
+
+      return;
+
+    }
+
+
+    const period =
+      findPeriodByKey(
+        key
+      );
+
+
+    if (!period) {
+
+      historyInfo.style.display =
+        "none";
+
+      historyEmpty.style.display =
+        "block";
+
+      historyTableWrapper.style.display =
+        "none";
+
+      return;
+
+    }
+
+
+    const periodRecords =
+      records
+        .filter(
+          item =>
+            isDateInPeriod(
+              item.date,
+              period
+            )
+        )
+        .sort(
+          (a, b) =>
+            b.date.localeCompare(
+              a.date
+            )
+        );
+
+
+    const totalHours =
+      periodRecords.reduce(
+        (sum, item) =>
+          sum +
+          Number(item.hours),
+        0
+      );
+
+
+    const uniqueDays =
+      new Set(
+        periodRecords.map(
+          item =>
+            item.date
+        )
+      ).size;
+
+
+    historyInfo.style.display =
+      "block";
+
+
+    historyPeriodText.textContent =
+      "รอบ " +
+      formatPeriod(
+        period
+      );
+
+
+    historyDays.textContent =
+      uniqueDays;
+
+
+    historyHours.textContent =
+      formatHours(
+        totalHours
+      );
+
+
+    historyRecords.textContent =
+      periodRecords.length;
+
+
+    if (
+      !periodRecords.length
+    ) {
+
+      historyEmpty.style.display =
+        "block";
+
+      historyTableWrapper.style.display =
+        "none";
+
+      historyTable.innerHTML =
+        "";
+
+      return;
+
+    }
+
+
+    historyEmpty.style.display =
+      "none";
+
+    historyTableWrapper.style.display =
+      "block";
+
+
+    historyTable.innerHTML =
+      periodRecords
+        .map(
+          item =>
+            createRecordRow(
+              item
+            )
         )
         .join("");
 
@@ -2476,12 +3554,17 @@
      FORMAT TIME
      ===================================================== */
 
-  function formatTime(value) {
+  function formatTime(
+    value
+  ) {
 
-    if (!value) return "";
+    if (!value) {
+      return "";
+    }
 
     const text =
       String(value).trim();
+
 
     const timeOnly =
       text.match(
@@ -2493,7 +3576,10 @@
 
       return `${
         timeOnly[1]
-          .padStart(2, "0")
+          .padStart(
+            2,
+            "0"
+          )
       }:${
         timeOnly[2]
       }`;
@@ -2534,10 +3620,14 @@
      FORMAT HOURS
      ===================================================== */
 
-  function formatHours(hours) {
+  function formatHours(
+    hours
+  ) {
 
     const h =
-      Math.floor(hours);
+      Math.floor(
+        hours
+      );
 
     const m =
       Math.round(
@@ -2553,8 +3643,13 @@
 
 
     return `${h}.${String(
-      Math.round(m / 6)
-    ).padStart(1, "0")}`;
+      Math.round(
+        m / 6
+      )
+    ).padStart(
+      1,
+      "0"
+    )}`;
 
   }
 
@@ -2563,7 +3658,9 @@
      ESCAPE HTML
      ===================================================== */
 
-  function escapeHTML(value) {
+  function escapeHTML(
+    value
+  ) {
 
     return String(value)
 
