@@ -15,7 +15,7 @@
     /* =====================================================
        NANA'S OT
        iOS 27 STYLE • LIQUID GLASS
-       Mobile First
+       VERSION: CLEAR GLASS
        ===================================================== */
 
     * {
@@ -23,14 +23,18 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+
     html {
       min-height: 100%;
-      background: #8f8f8f;
+      background: #bdbdbd;
     }
+
 
     body {
       position: relative;
+
       min-height: 100vh;
+
       margin: 0;
       padding: 0;
 
@@ -45,12 +49,12 @@
         sans-serif;
 
       color: #4f5459;
+
       overflow-x: hidden;
+
       background: transparent;
 
       -webkit-font-smoothing: antialiased;
-
-      isolation: isolate;
     }
 
 
@@ -59,12 +63,14 @@
        ===================================================== */
 
     body::before {
+
       content: "";
 
       position: fixed;
+
       inset: 0;
 
-      z-index: -2;
+      z-index: -3;
 
       background-image:
         url("nanas-ot-bg.jpg");
@@ -76,35 +82,37 @@
 
       background-repeat: no-repeat;
 
-      /*
-        ลดความสว่างของภาพลงเล็กน้อย
-        เพื่อให้กระจกด้านบนมองเห็นชัด
-      */
-
       filter:
         grayscale(100%)
-        contrast(0.95)
-        brightness(0.82);
+        contrast(0.88)
+        brightness(1.02);
 
       transform:
         scale(1.025);
     }
 
 
-    /*
-      ไม่ฟอกพื้นหลังด้วยสีขาวมากเกินไป
-    */
+    /* =====================================================
+       VERY LIGHT OVERLAY
+       ===================================================== */
 
     body::after {
+
       content: "";
 
       position: fixed;
+
       inset: 0;
 
-      z-index: -1;
+      z-index: -2;
 
       background:
-        rgba(255,255,255,0.025);
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0.06) 0%,
+          rgba(255,255,255,0.02) 45%,
+          rgba(255,255,255,0.06) 100%
+        );
 
       pointer-events: none;
     }
@@ -115,11 +123,13 @@
        ===================================================== */
 
     .container {
+
       position: relative;
 
       z-index: 1;
 
       width: 100%;
+
       max-width: 760px;
 
       margin: 0 auto;
@@ -136,14 +146,19 @@
        ===================================================== */
 
     header {
+
       width: 100%;
+
       margin-bottom: 14px;
     }
 
+
     .ot-banner {
+
       display: block;
 
       width: 100%;
+
       height: auto;
 
       margin: 0 auto;
@@ -152,32 +167,30 @@
 
       border:
         1px solid
-        rgba(255,255,255,0.48);
+        rgba(255,255,255,0.52);
 
       box-shadow:
-        0 12px 35px
-        rgba(0,0,0,0.18),
+
+        0 10px 30px
+        rgba(0,0,0,0.12),
 
         inset 0 1px 0
-        rgba(255,255,255,0.65);
+        rgba(255,255,255,0.70);
 
       background:
-        rgba(255,255,255,0.05);
-
-      backdrop-filter:
-        blur(8px);
-
-      -webkit-backdrop-filter:
-        blur(8px);
+        rgba(255,255,255,0.06);
     }
 
 
     /* =====================================================
-       GLASS CARD
-       iOS NOTIFICATION CENTER STYLE
+       MAIN GLASS CARD
+       
+       สำคัญ:
+       CARD เป็นตัวเดียวที่เบลอพื้นหลัง
        ===================================================== */
 
     .card {
+
       position: relative;
 
       width: 100%;
@@ -189,9 +202,8 @@
       border-radius: 28px;
 
       /*
-        สำคัญมาก:
-        ลดสีขาวลงอีก
-        และเติมสีเข้มบาง ๆ แบบ Notification Center
+        ใส่มากพอให้เห็นขอบกระจก
+        แต่ไม่ขาวทึบ
       */
 
       background:
@@ -201,8 +213,13 @@
           rgba(255,255,255,0.055)
         );
 
+      border:
+        1px solid
+        rgba(255,255,255,0.38);
+
       /*
-        กระจกด้านหลัง
+        เบลอเฉพาะพื้นหลัง
+        ที่อยู่ "ด้านหลัง CARD"
       */
 
       backdrop-filter:
@@ -213,101 +230,71 @@
         blur(30px)
         saturate(135%);
 
-      /*
-        ขอบกระจกบาง ๆ
-      */
-
-      border:
-        1px solid
-        rgba(255,255,255,0.36);
-
-      /*
-        เงา + highlight
-      */
-
       box-shadow:
 
         0 14px 42px
-        rgba(0,0,0,0.18),
+        rgba(0,0,0,0.17),
 
         inset 0 1px 0
-        rgba(255,255,255,0.48),
+        rgba(255,255,255,0.50),
 
         inset 0 -1px 0
-        rgba(255,255,255,0.08),
-
-        inset 0 0 0 0.5px
-        rgba(255,255,255,0.10);
+        rgba(255,255,255,0.08);
 
       overflow: hidden;
-
-      /*
-        ช่วยให้ layer ของ glass
-        แยกจากพื้นหลังชัดขึ้น
-      */
-
-      isolation: isolate;
     }
 
 
     /* =====================================================
-       GLASS TOP HIGHLIGHT
+       TOP GLASS HIGHLIGHT
        ===================================================== */
 
     .card::before {
+
       content: "";
 
       position: absolute;
 
       top: 0;
-      left: 1px;
-      right: 1px;
+
+      left: 0;
+
+      right: 0;
 
       height: 1px;
 
       background:
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,0.15),
-          rgba(255,255,255,0.72),
-          rgba(255,255,255,0.15)
-        );
+        rgba(255,255,255,0.80);
 
       pointer-events: none;
-
-      z-index: 5;
     }
 
 
     /* =====================================================
-       SOFT LIGHT INSIDE GLASS
+       VERY SOFT INTERNAL LIGHT
        ===================================================== */
 
     .card::after {
+
       content: "";
 
       position: absolute;
 
-      top: -100px;
-      left: -40px;
+      top: -80px;
 
-      width: 240px;
-      height: 140px;
+      left: -30px;
+
+      width: 180px;
+
+      height: 100px;
 
       background:
-        radial-gradient(
-          ellipse,
-          rgba(255,255,255,0.10) 0%,
-          rgba(255,255,255,0.035) 45%,
-          transparent 75%
-        );
+        rgba(255,255,255,0.055);
 
       filter:
-        blur(22px);
+        blur(25px);
 
       pointer-events: none;
-
-      z-index: 0;
     }
 
 
@@ -316,9 +303,10 @@
        ===================================================== */
 
     .card h2 {
+
       position: relative;
 
-      z-index: 10;
+      z-index: 1;
 
       display: flex;
 
@@ -330,7 +318,7 @@
         0 0 15px;
 
       color:
-        #4d5358;
+        #4f555a;
 
       font-size:
         19px;
@@ -346,7 +334,7 @@
 
       text-shadow:
         0 1px 2px
-        rgba(255,255,255,0.30);
+        rgba(255,255,255,0.20);
     }
 
 
@@ -355,8 +343,6 @@
        ===================================================== */
 
     .form-grid {
-      position: relative;
-      z-index: 10;
 
       display: grid;
 
@@ -366,21 +352,22 @@
       gap: 11px;
     }
 
+
     .form-field {
+
       min-width: 0;
     }
 
+
     .full {
+
       grid-column:
         1 / -1;
     }
 
 
-    /* =====================================================
-       LABEL
-       ===================================================== */
-
     label {
+
       display: block;
 
       margin:
@@ -403,12 +390,18 @@
 
     /* =====================================================
        INPUT / TEXTAREA / SELECT
-       GLASS
+       
+       สำคัญ:
+       ไม่มี backdrop-filter
+       ไม่มี blur
+       
+       ตัวหนังสือและช่องกรอกจะคม
        ===================================================== */
 
     input,
     textarea,
     select {
+
       position: relative;
 
       display: block;
@@ -422,7 +415,7 @@
 
       border:
         1px solid
-        rgba(255,255,255,0.38);
+        rgba(255,255,255,0.42);
 
       border-radius:
         18px;
@@ -439,23 +432,12 @@
         15px;
 
       /*
-        ใสมาก
+        โปร่งใส
+        แต่ไม่เบลอ
       */
 
       background:
         rgba(255,255,255,0.075);
-
-      /*
-        เบลอพื้นหลัง
-      */
-
-      backdrop-filter:
-        blur(20px)
-        saturate(130%);
-
-      -webkit-backdrop-filter:
-        blur(20px)
-        saturate(130%);
 
       box-shadow:
 
@@ -484,26 +466,30 @@
 
     input::placeholder,
     textarea::placeholder {
+
       color:
-        #666c71;
+        #73797e;
 
       opacity:
-        0.66;
+        0.68;
     }
 
 
     /* =====================================================
        FOCUS
+       
+       ไม่มี blur เช่นกัน
        ===================================================== */
 
     input:focus,
     textarea:focus,
     select:focus {
+
       border-color:
-        rgba(255,255,255,0.62);
+        rgba(255,255,255,0.64);
 
       background:
-        rgba(255,255,255,0.12);
+        rgba(255,255,255,0.115);
 
       box-shadow:
 
@@ -518,11 +504,8 @@
     }
 
 
-    /* =====================================================
-       TEXTAREA
-       ===================================================== */
-
     textarea {
+
       min-height:
         82px;
 
@@ -534,11 +517,8 @@
     }
 
 
-    /* =====================================================
-       SELECT
-       ===================================================== */
-
     select {
+
       appearance:
         auto;
 
@@ -553,8 +533,9 @@
 
     input[type="date"],
     input[type="time"] {
+
       color:
-        #4c5257;
+        #4d5358;
 
       -webkit-appearance:
         none;
@@ -563,10 +544,12 @@
         none;
     }
 
+
     input[type="date"]::-webkit-calendar-picker-indicator,
     input[type="time"]::-webkit-calendar-picker-indicator {
+
       opacity:
-        0.62;
+        0.65;
 
       filter:
         grayscale(100%);
@@ -578,6 +561,7 @@
        ===================================================== */
 
     button {
+
       min-height:
         44px;
 
@@ -614,15 +598,15 @@
         manipulation;
     }
 
+
     button:active {
+
       transform:
         scale(0.97);
     }
 
 
     .buttons {
-      position: relative;
-      z-index: 10;
 
       display:
         flex;
@@ -640,6 +624,7 @@
        ===================================================== */
 
     .btn-primary {
+
       flex:
         1;
 
@@ -647,24 +632,26 @@
         #ffffff;
 
       background:
-        rgba(55,60,65,0.70);
+        rgba(72,77,82,0.78);
 
       border:
         1px solid
-        rgba(255,255,255,0.30);
+        rgba(255,255,255,0.32);
 
       box-shadow:
 
-        0 8px 20px
-        rgba(0,0,0,0.16),
+        0 7px 18px
+        rgba(0,0,0,0.12),
 
         inset 0 1px 0
-        rgba(255,255,255,0.22);
+        rgba(255,255,255,0.20);
     }
 
+
     .btn-primary:hover {
+
       background:
-        rgba(45,50,55,0.78);
+        rgba(65,70,75,0.86);
     }
 
 
@@ -673,29 +660,28 @@
        ===================================================== */
 
     .btn-secondary {
+
       color:
-        #51575c;
+        #555b60;
 
       background:
-        rgba(255,255,255,0.09);
+        rgba(255,255,255,0.10);
 
       border:
         1px solid
-        rgba(255,255,255,0.34);
+        rgba(255,255,255,0.38);
 
-      backdrop-filter:
-        blur(18px);
-
-      -webkit-backdrop-filter:
-        blur(18px);
+      /*
+        ไม่มี blur
+      */
 
       box-shadow:
 
         inset 0 1px 0
-        rgba(255,255,255,0.42),
+        rgba(255,255,255,0.44),
 
         0 3px 10px
-        rgba(0,0,0,0.045);
+        rgba(0,0,0,0.035);
     }
 
 
@@ -704,21 +690,20 @@
        ===================================================== */
 
     .btn-danger {
+
       color:
-        #555b60;
+        #5d6368;
 
       background:
-        rgba(255,255,255,0.085);
+        rgba(255,255,255,0.095);
 
       border:
         1px solid
-        rgba(255,255,255,0.32);
+        rgba(255,255,255,0.36);
 
-      backdrop-filter:
-        blur(18px);
-
-      -webkit-backdrop-filter:
-        blur(18px);
+      /*
+        ไม่มี blur
+      */
 
       box-shadow:
 
@@ -732,8 +717,6 @@
        ===================================================== */
 
     #syncStatus {
-      position: relative;
-      z-index: 10;
 
       min-height:
         20px;
@@ -742,17 +725,13 @@
         10px;
 
       color:
-        #656b70;
+        #70767b;
 
       font-size:
         12px;
 
       line-height:
         1.5;
-
-      text-shadow:
-        0 1px 2px
-        rgba(255,255,255,0.25);
     }
 
 
@@ -761,8 +740,6 @@
        ===================================================== */
 
     .period {
-      position: relative;
-      z-index: 10;
 
       display:
         flex;
@@ -780,14 +757,18 @@
         14px;
     }
 
+
     .period h2 {
+
       margin:
         0;
     }
 
+
     .period strong {
+
       color:
-        #60666b;
+        #62686d;
 
       font-size:
         12px;
@@ -802,11 +783,11 @@
 
     /* =====================================================
        SUMMARY
+       
+       ไม่มี backdrop-filter
        ===================================================== */
 
     .summary {
-      position: relative;
-      z-index: 10;
 
       display:
         grid;
@@ -820,6 +801,7 @@
 
 
     .summary-box {
+
       min-width:
         0;
 
@@ -839,13 +821,9 @@
         1px solid
         rgba(255,255,255,0.32);
 
-      backdrop-filter:
-        blur(20px)
-        saturate(125%);
-
-      -webkit-backdrop-filter:
-        blur(20px)
-        saturate(125%);
+      /*
+        ไม่เบลอ
+      */
 
       box-shadow:
 
@@ -861,8 +839,9 @@
 
 
     .summary-box .number {
+
       color:
-        #555b60;
+        #585e63;
 
       font-size:
         25px;
@@ -872,19 +851,16 @@
 
       font-weight:
         700;
-
-      text-shadow:
-        0 1px 2px
-        rgba(255,255,255,0.25);
     }
 
 
     .summary-box .label {
+
       margin-top:
         6px;
 
       color:
-        #686e73;
+        #6e7479;
 
       font-size:
         10.5px;
@@ -895,12 +871,10 @@
 
 
     /* =====================================================
-       RECORD LIST
+       RECORD HEADER
        ===================================================== */
 
     .records-header {
-      position: relative;
-      z-index: 10;
 
       display:
         flex;
@@ -918,12 +892,16 @@
         12px;
     }
 
+
     .records-header h2 {
+
       margin:
         0;
     }
 
+
     .records-header .btn-danger {
+
       min-height:
         38px;
 
@@ -943,8 +921,6 @@
        ===================================================== */
 
     .table-wrapper {
-      position: relative;
-      z-index: 10;
 
       width:
         100%;
@@ -961,6 +937,7 @@
 
 
     table {
+
       width:
         100%;
 
@@ -974,18 +951,19 @@
 
     th,
     td {
+
       padding:
         10px 8px;
 
       border-bottom:
         1px solid
-        rgba(255,255,255,0.14);
+        rgba(255,255,255,0.18);
 
       text-align:
         left;
 
       color:
-        #565c61;
+        #585e63;
 
       font-size:
         13px;
@@ -996,8 +974,9 @@
 
 
     th {
+
       color:
-        #5e6469;
+        #60666b;
 
       font-weight:
         600;
@@ -1008,8 +987,9 @@
 
 
     td.hours {
+
       color:
-        #565c61;
+        #575d62;
 
       font-weight:
         700;
@@ -1017,6 +997,7 @@
 
 
     td button {
+
       min-height:
         34px;
 
@@ -1032,6 +1013,7 @@
 
 
     .empty {
+
       padding:
         35px 15px !important;
 
@@ -1039,7 +1021,7 @@
         center !important;
 
       color:
-        #70767b !important;
+        #777d82 !important;
 
       font-size:
         13px !important;
@@ -1051,6 +1033,7 @@
        ===================================================== */
 
     .footer {
+
       padding:
         5px 0 15px;
 
@@ -1058,33 +1041,33 @@
         center;
 
       color:
-        rgba(50,50,50,0.62);
+        rgba(70,70,70,0.62);
 
       font-size:
         11px;
 
       line-height:
         1.5;
-
-      text-shadow:
-        0 1px 2px
-        rgba(255,255,255,0.20);
     }
 
 
     /* =====================================================
        MOBILE RECORD CARDS
+       
+       ไม่มี backdrop-filter
        ===================================================== */
 
     @media (max-width: 650px) {
 
       .table-wrapper {
+
         overflow:
           visible;
       }
 
 
       table {
+
         width:
           100%;
 
@@ -1094,6 +1077,7 @@
 
 
       thead {
+
         display:
           none;
       }
@@ -1102,6 +1086,7 @@
       tbody,
       tr,
       td {
+
         display:
           block;
 
@@ -1111,6 +1096,7 @@
 
 
       tbody tr {
+
         position:
           relative;
 
@@ -1130,37 +1116,30 @@
           1px solid
           rgba(255,255,255,0.32);
 
-        backdrop-filter:
-          blur(22px)
-          saturate(125%);
-
-        -webkit-backdrop-filter:
-          blur(22px)
-          saturate(125%);
+        /*
+          สำคัญ:
+          ไม่เบลอรายการด้านใน
+        */
 
         box-shadow:
 
-          0 7px 20px
-          rgba(0,0,0,0.10),
+          0 5px 16px
+          rgba(0,0,0,0.055),
 
           inset 0 1px 0
-          rgba(255,255,255,0.38),
-
-          inset 0 -1px 0
-          rgba(255,255,255,0.06);
-
-        isolation:
-          isolate;
+          rgba(255,255,255,0.40);
       }
 
 
       tbody tr:last-child {
+
         margin-bottom:
           0;
       }
 
 
       tbody td {
+
         display:
           grid;
 
@@ -1188,8 +1167,9 @@
 
 
       tbody td::before {
+
         color:
-          #73797e;
+          #777d82;
 
         font-size:
           11px;
@@ -1200,54 +1180,63 @@
 
 
       tbody td:nth-child(1)::before {
+
         content:
           "วันที่";
       }
 
 
       tbody td:nth-child(2)::before {
+
         content:
           "ประเภท";
       }
 
 
       tbody td:nth-child(3)::before {
+
         content:
           "เวลาเริ่ม";
       }
 
 
       tbody td:nth-child(4)::before {
+
         content:
           "เวลาสิ้นสุด";
       }
 
 
       tbody td:nth-child(5)::before {
+
         content:
           "ชั่วโมง";
       }
 
 
       tbody td:nth-child(6)::before {
+
         content:
           "หมายเหตุ";
       }
 
 
       tbody td:nth-child(7)::before {
+
         content:
           "จัดการ";
       }
 
 
       tbody td:nth-child(5) {
+
         font-weight:
           700;
       }
 
 
       tbody td:nth-child(7) {
+
         display:
           flex;
 
@@ -1265,11 +1254,12 @@
 
         border-top:
           1px solid
-          rgba(255,255,255,0.14);
+          rgba(255,255,255,0.16);
       }
 
 
       tbody td:nth-child(7)::before {
+
         display:
           block;
 
@@ -1282,6 +1272,7 @@
 
 
       tbody td:nth-child(7) button {
+
         flex:
           1;
 
@@ -1304,6 +1295,7 @@
     @media (max-width: 390px) {
 
       .container {
+
         padding-left:
           9px;
 
@@ -1313,6 +1305,7 @@
 
 
       .card {
+
         padding:
           13px;
 
@@ -1322,12 +1315,14 @@
 
 
       .ot-banner {
+
         border-radius:
           20px;
       }
 
 
       .form-grid {
+
         gap:
           8px;
       }
@@ -1336,6 +1331,7 @@
       input,
       textarea,
       select {
+
         min-height:
           44px;
 
@@ -1351,24 +1347,28 @@
 
 
       label {
+
         font-size:
           12px;
       }
 
 
       .card h2 {
+
         font-size:
           17px;
       }
 
 
       .summary {
+
         gap:
           5px;
       }
 
 
       .summary-box {
+
         padding:
           11px 3px;
 
@@ -1378,24 +1378,28 @@
 
 
       .summary-box .number {
+
         font-size:
           21px;
       }
 
 
       .summary-box .label {
+
         font-size:
           9.5px;
       }
 
 
       .period strong {
+
         font-size:
           10.5px;
       }
 
 
       .records-header .btn-danger {
+
         font-size:
           10.5px;
 
@@ -1412,18 +1416,21 @@
     @media (min-width: 651px) {
 
       .container {
+
         padding:
           20px 16px 50px;
       }
 
 
       .card {
+
         padding:
           20px;
       }
 
 
       .card h2 {
+
         font-size:
           20px;
       }
@@ -1432,6 +1439,7 @@
       input,
       textarea,
       select {
+
         min-height:
           48px;
       }
@@ -1473,6 +1481,7 @@
 
 
       <form id="otForm">
+
 
         <input
           type="hidden"
@@ -1572,6 +1581,7 @@
 
         <div class="buttons">
 
+
           <button
             type="submit"
             class="btn-primary"
@@ -1590,11 +1600,14 @@
             ยกเลิกแก้ไข
           </button>
 
+
         </div>
 
 
         <div id="syncStatus">
+
           ☁️ ข้อมูลจะถูกส่งไป Google Sheets เมื่อกดบันทึก
+
         </div>
 
 
@@ -1609,13 +1622,17 @@
 
     <div class="card">
 
+
       <div class="period">
+
 
         <h2>
           📊 สรุป OT
         </h2>
 
+
         <strong id="periodText"></strong>
+
 
       </div>
 
@@ -1682,7 +1699,9 @@
 
     <div class="card">
 
+
       <div class="records-header">
+
 
         <h2>
           📋 รายการที่บันทึกแล้ว
@@ -1696,12 +1715,15 @@
           ล้างข้อมูลทั้งหมด
         </button>
 
+
       </div>
 
 
       <div class="table-wrapper">
 
+
         <table>
+
 
           <thead>
 
@@ -1742,9 +1764,12 @@
 
           <tbody id="otTable"></tbody>
 
+
         </table>
 
+
       </div>
+
 
     </div>
 
@@ -1773,29 +1798,38 @@
   const form =
     document.getElementById("otForm");
 
+
   const dateInput =
     document.getElementById("date");
+
 
   const startInput =
     document.getElementById("start");
 
+
   const endInput =
     document.getElementById("end");
+
 
   const typeInput =
     document.getElementById("type");
 
+
   const noteInput =
     document.getElementById("note");
+
 
   const editIdInput =
     document.getElementById("editId");
 
+
   const table =
     document.getElementById("otTable");
 
+
   const saveBtn =
     document.getElementById("saveBtn");
+
 
   const cancelBtn =
     document.getElementById("cancelBtn");
@@ -1823,8 +1857,10 @@
       const response =
         await fetch(GOOGLE_SHEETS_API);
 
+
       const result =
         await response.json();
+
 
       if (
         result.success &&
@@ -1859,6 +1895,7 @@
             })
           );
 
+
         saveRecords();
 
         render();
@@ -1872,8 +1909,10 @@
         error
       );
 
+
       const localData =
         localStorage.getItem("nanasOT");
+
 
       if (localData) {
 
@@ -1906,6 +1945,7 @@
     const date =
       new Date(value);
 
+
     if (
       isNaN(date.getTime())
     ) {
@@ -1914,6 +1954,7 @@
         .substring(0, 10);
 
     }
+
 
     return date
       .toISOString()
@@ -1946,16 +1987,20 @@
         .split(":")
         .map(Number);
 
+
     const [eh, em] =
       end
         .split(":")
         .map(Number);
 
+
     let startMinutes =
       sh * 60 + sm;
 
+
     let endMinutes =
       eh * 60 + em;
+
 
     if (
       endMinutes <
@@ -1966,6 +2011,7 @@
         24 * 60;
 
     }
+
 
     return (
       endMinutes -
@@ -1985,11 +2031,14 @@
     const today =
       new Date();
 
+
     let year =
       today.getFullYear();
 
+
     let month =
       today.getMonth();
+
 
     if (
       today.getDate() <= 15
@@ -1997,14 +2046,17 @@
 
       month--;
 
+
       if (month < 0) {
 
         month = 11;
+
         year--;
 
       }
 
     }
+
 
     const start =
       new Date(
@@ -2013,20 +2065,25 @@
         16
       );
 
+
     let endMonth =
       month + 1;
 
+
     let endYear =
       year;
+
 
     if (
       endMonth > 11
     ) {
 
       endMonth = 0;
+
       endYear++;
 
     }
+
 
     const end =
       new Date(
@@ -2034,6 +2091,7 @@
         endMonth,
         15
       );
+
 
     return {
       start,
@@ -2056,6 +2114,7 @@
         dateString +
         "T00:00:00"
       );
+
 
     return date.toLocaleDateString(
       "th-TH",
@@ -2081,6 +2140,7 @@
     } =
       getCurrentPeriod();
 
+
     return `${start.toLocaleDateString(
       "th-TH"
     )} - ${end.toLocaleDateString(
@@ -2104,11 +2164,13 @@
     } =
       getCurrentPeriod();
 
+
     const date =
       new Date(
         dateString +
         "T00:00:00"
       );
+
 
     return (
       date >= start &&
@@ -2145,10 +2207,12 @@
       const payload =
         new URLSearchParams();
 
+
       payload.append(
         "payload",
         JSON.stringify(data)
       );
+
 
       await fetch(
         GOOGLE_SHEETS_API,
@@ -2167,6 +2231,7 @@
         }
       );
 
+
       return true;
 
     } catch (error) {
@@ -2175,6 +2240,7 @@
         "ส่งข้อมูลไป Google Sheets ไม่สำเร็จ:",
         error
       );
+
 
       return false;
 
@@ -2193,6 +2259,7 @@
 
       e.preventDefault();
 
+
       if (
         !dateInput.value ||
         !startInput.value ||
@@ -2207,11 +2274,13 @@
 
       }
 
+
       const hours =
         calculateHours(
           startInput.value,
           endInput.value
         );
+
 
       if (hours <= 0) {
 
@@ -2223,8 +2292,10 @@
 
       }
 
+
       const editId =
         editIdInput.value;
+
 
       const data = {
 
@@ -2252,6 +2323,7 @@
 
       };
 
+
       if (editId) {
 
         records =
@@ -2270,14 +2342,17 @@
 
       }
 
+
       saveRecords();
 
       render();
+
 
       const syncStatus =
         document.getElementById(
           "syncStatus"
         );
+
 
       if (syncStatus) {
 
@@ -2286,7 +2361,9 @@
 
       }
 
+
       resetForm();
+
 
       sendToGoogleSheets(data)
         .then(ok => {
@@ -2301,6 +2378,7 @@
                 : "⚠️ บันทึกในเครื่องแล้ว แต่ส่ง Google Sheets ไม่สำเร็จ";
 
           }
+
 
           if (ok) {
 
@@ -2328,31 +2406,41 @@
         r => r.id === id
       );
 
+
     if (!item) return;
+
 
     editIdInput.value =
       item.id;
 
+
     dateInput.value =
       item.date;
+
 
     typeInput.value =
       item.type;
 
+
     startInput.value =
       item.start;
+
 
     endInput.value =
       item.end;
 
+
     noteInput.value =
       item.note;
+
 
     saveBtn.textContent =
       "💾 บันทึกการแก้ไข";
 
+
     cancelBtn.style.display =
       "block";
+
 
     window.scrollTo({
       top: 0,
@@ -2378,10 +2466,12 @@
 
     }
 
+
     records =
       records.filter(
         r => r.id !== id
       );
+
 
     saveRecords();
 
@@ -2406,6 +2496,7 @@
 
     }
 
+
     if (
       !confirm(
         "ต้องการลบข้อมูล OT ทั้งหมดหรือไม่?"
@@ -2416,7 +2507,9 @@
 
     }
 
+
     records = [];
+
 
     saveRecords();
 
@@ -2434,25 +2527,32 @@
     editIdInput.value =
       "";
 
+
     dateInput.value =
       new Date()
         .toISOString()
         .split("T")[0];
 
+
     typeInput.value =
       "OT";
+
 
     startInput.value =
       "";
 
+
     endInput.value =
       "";
+
 
     noteInput.value =
       "";
 
+
     saveBtn.textContent =
       "+ บันทึก OT";
+
 
     cancelBtn.style.display =
       "none";
@@ -2478,6 +2578,7 @@
       "รอบ " +
       getPeriodText();
 
+
     const currentRecords =
       records
 
@@ -2495,6 +2596,7 @@
             )
         );
 
+
     const totalHours =
       currentRecords.reduce(
         (sum, item) =>
@@ -2502,6 +2604,7 @@
           Number(item.hours),
         0
       );
+
 
     const uniqueDays =
       new Set(
@@ -2511,10 +2614,12 @@
         )
       ).size;
 
+
     document.getElementById(
       "totalDays"
     ).textContent =
       uniqueDays;
+
 
     document.getElementById(
       "totalHours"
@@ -2523,10 +2628,12 @@
         totalHours
       );
 
+
     document.getElementById(
       "totalRecords"
     ).textContent =
       currentRecords.length;
+
 
     if (
       !currentRecords.length
@@ -2551,6 +2658,7 @@
 
     }
 
+
     table.innerHTML =
       currentRecords
         .map(
@@ -2564,11 +2672,13 @@
                 )}
               </td>
 
+
               <td>
                 ${escapeHTML(
                   item.type
                 )}
               </td>
+
 
               <td>
                 ${formatTime(
@@ -2576,11 +2686,13 @@
                 )}
               </td>
 
+
               <td>
                 ${formatTime(
                   item.end
                 )}
               </td>
+
 
               <td class="hours">
                 ${formatHours(
@@ -2589,12 +2701,14 @@
                 ชม.
               </td>
 
+
               <td>
                 ${escapeHTML(
                   item.note ||
                   "-"
                 )}
               </td>
+
 
               <td>
 
@@ -2604,6 +2718,7 @@
                 >
                   ✏️ แก้ไข
                 </button>
+
 
                 <button
                   class="btn-danger"
@@ -2631,13 +2746,16 @@
 
     if (!value) return "";
 
+
     const text =
       String(value).trim();
+
 
     const timeOnly =
       text.match(
         /^(\d{1,2}):(\d{2})/
       );
+
 
     if (timeOnly) {
 
@@ -2650,8 +2768,10 @@
 
     }
 
+
     const date =
       new Date(text);
+
 
     if (
       !isNaN(
@@ -2672,6 +2792,7 @@
 
     }
 
+
     return text;
 
   }
@@ -2686,16 +2807,19 @@
     const h =
       Math.floor(hours);
 
+
     const m =
       Math.round(
         (hours - h) * 60
       );
+
 
     if (m === 0) {
 
       return h;
 
     }
+
 
     return `${h}.${String(
       Math.round(m / 6)
@@ -2745,6 +2869,7 @@
      ===================================================== */
 
   loadRecordsFromGoogleSheets();
+
 
 </script>
 
