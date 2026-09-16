@@ -2,16 +2,13 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
   />
-
   <title>Nana's OT</title>
 
   <style>
-
     /* =====================================================
        NANA'S OT
        iOS 27 STYLE • LIQUID GLASS
@@ -23,18 +20,14 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-
     html {
       min-height: 100%;
       background: #bdbdbd;
     }
 
-
     body {
       position: relative;
-
       min-height: 100vh;
-
       margin: 0;
       padding: 0;
 
@@ -49,27 +42,19 @@
         sans-serif;
 
       color: #4f5459;
-
       overflow-x: hidden;
-
       background: transparent;
-
       -webkit-font-smoothing: antialiased;
     }
-
 
     /* =====================================================
        BACKGROUND
        ===================================================== */
 
     body::before {
-
       content: "";
-
       position: fixed;
-
       inset: 0;
-
       z-index: -3;
 
       background-image:
@@ -91,18 +76,10 @@
         scale(1.025);
     }
 
-
-    /* หมอกบางมาก
-       เพื่อให้พื้นหลังยังเห็นชัด */
-
     body::after {
-
       content: "";
-
       position: fixed;
-
       inset: 0;
-
       z-index: -2;
 
       background:
@@ -116,19 +93,15 @@
       pointer-events: none;
     }
 
-
     /* =====================================================
        MAIN CONTAINER
        ===================================================== */
 
     .container {
-
       position: relative;
-
       z-index: 1;
 
       width: 100%;
-
       max-width: 760px;
 
       margin: 0 auto;
@@ -139,25 +112,19 @@
         max(35px, env(safe-area-inset-bottom));
     }
 
-
     /* =====================================================
        HEADER
        ===================================================== */
 
     header {
-
       width: 100%;
-
       margin-bottom: 14px;
     }
 
-
     .ot-banner {
-
       display: block;
 
       width: 100%;
-
       height: auto;
 
       margin: 0 auto;
@@ -169,7 +136,6 @@
         rgba(255,255,255,0.58);
 
       box-shadow:
-
         0 10px 30px
         rgba(0,0,0,0.12),
 
@@ -177,7 +143,7 @@
         rgba(255,255,255,0.70);
 
       background:
-        rgba(255,255,255,0.08);
+        rgba(255,255,255,0.05);
 
       backdrop-filter:
         blur(5px);
@@ -186,17 +152,11 @@
         blur(5px);
     }
 
-
     /* =====================================================
        GLASS CARD
-       iOS 27 / Notification Center style
-       
-       ปรับความเบลอจาก 24px → 5px
-       เพื่อให้ภาพด้านหลังเห็นรายละเอียดชัดขึ้น
        ===================================================== */
 
     .card {
-
       position: relative;
 
       width: 100%;
@@ -208,90 +168,69 @@
       border-radius: 28px;
 
       /*
-        ความโปร่งใสของกล่อง
-        ยังคงไว้ที่ 13%
+        0.05 = ใสมาก
       */
-
       background:
-        rgba(255,255,255,0.13);
+        rgba(255,255,255,0.05);
 
       border:
         1px solid
-        rgba(255,255,255,0.48);
+        rgba(255,255,255,0.42);
 
       /*
-        ลดความเบลอของภาพด้านหลัง
-        จากเดิม 24px เหลือ 5px
+        เบลอภาพด้านหลังเพียง 5px
       */
-
       backdrop-filter:
         blur(5px)
-        saturate(125%);
+        saturate(120%);
 
       -webkit-backdrop-filter:
         blur(5px)
-        saturate(125%);
+        saturate(120%);
 
       box-shadow:
-
         0 10px 35px
-        rgba(0,0,0,0.10),
+        rgba(0,0,0,0.08),
 
         inset 0 1px 0
-        rgba(255,255,255,0.58),
+        rgba(255,255,255,0.55),
 
         inset 0 -1px 0
-        rgba(255,255,255,0.10);
+        rgba(255,255,255,0.08);
 
       overflow: hidden;
     }
 
-
-    /* =====================================================
-       TOP HIGHLIGHT
-       ===================================================== */
-
     .card::before {
-
       content: "";
 
       position: absolute;
 
       top: 0;
-
       left: 0;
-
       right: 0;
 
       height: 1px;
 
       background:
-        rgba(255,255,255,0.78);
+        rgba(255,255,255,0.72);
 
       pointer-events: none;
     }
 
-
-    /* =====================================================
-       SOFT INNER LIGHT
-       ===================================================== */
-
     .card::after {
-
       content: "";
 
       position: absolute;
 
       top: -80px;
-
       left: -30px;
 
       width: 180px;
-
       height: 100px;
 
       background:
-        rgba(255,255,255,0.07);
+        rgba(255,255,255,0.04);
 
       filter:
         blur(25px);
@@ -299,15 +238,12 @@
       pointer-events: none;
     }
 
-
     /* =====================================================
        CARD TITLE
        ===================================================== */
 
     .card h2 {
-
       position: relative;
-
       z-index: 1;
 
       display: flex;
@@ -335,13 +271,11 @@
         -0.3px;
     }
 
-
     /* =====================================================
        FORM
        ===================================================== */
 
     .form-grid {
-
       display: grid;
 
       grid-template-columns:
@@ -350,22 +284,16 @@
       gap: 11px;
     }
 
-
     .form-field {
-
       min-width: 0;
     }
 
-
     .full {
-
       grid-column:
         1 / -1;
     }
 
-
     label {
-
       display: block;
 
       margin:
@@ -385,7 +313,6 @@
         rgba(255,255,255,0.25);
     }
 
-
     /* =====================================================
        INPUT / TEXTAREA / SELECT
        ===================================================== */
@@ -393,7 +320,6 @@
     input,
     textarea,
     select {
-
       position: relative;
 
       display: block;
@@ -407,7 +333,7 @@
 
       border:
         1px solid
-        rgba(255,255,255,0.55);
+        rgba(255,255,255,0.50);
 
       border-radius:
         18px;
@@ -423,50 +349,31 @@
       font-size:
         15px;
 
-      background:
-        rgba(255,255,255,0.12);
-
       /*
-        Input ยังคงมี blur เล็กน้อย
-        เพื่อให้ขอบดูเป็นกระจก
+        กล่องข้อความใสมาก
+        และไม่มี backdrop blur
       */
-
-      backdrop-filter:
-        blur(5px)
-        saturate(130%);
-
-      -webkit-backdrop-filter:
-        blur(5px)
-        saturate(130%);
+      background:
+        rgba(255,255,255,0.05);
 
       box-shadow:
-
         inset 0 1px 0
-        rgba(255,255,255,0.55),
+        rgba(255,255,255,0.45),
 
         inset 0 -1px 0
-        rgba(255,255,255,0.08),
+        rgba(255,255,255,0.06),
 
         0 2px 10px
-        rgba(0,0,0,0.035);
+        rgba(0,0,0,0.025);
 
       transition:
-
         background 0.2s ease,
-
         border-color 0.2s ease,
-
         box-shadow 0.2s ease;
     }
 
-
-    /* =====================================================
-       PLACEHOLDER
-       ===================================================== */
-
     input::placeholder,
     textarea::placeholder {
-
       color:
         #74797e;
 
@@ -474,36 +381,27 @@
         0.70;
     }
 
-
-    /* =====================================================
-       FOCUS
-       ===================================================== */
-
     input:focus,
     textarea:focus,
     select:focus {
-
       border-color:
-        rgba(255,255,255,0.78);
+        rgba(255,255,255,0.72);
 
       background:
-        rgba(255,255,255,0.18);
+        rgba(255,255,255,0.09);
 
       box-shadow:
-
         0 0 0 3px
-        rgba(255,255,255,0.12),
+        rgba(255,255,255,0.09),
 
         inset 0 1px 0
-        rgba(255,255,255,0.65),
+        rgba(255,255,255,0.58),
 
         0 3px 12px
-        rgba(0,0,0,0.04);
+        rgba(0,0,0,0.035);
     }
 
-
     textarea {
-
       min-height:
         82px;
 
@@ -514,9 +412,7 @@
         1.5;
     }
 
-
     select {
-
       appearance:
         auto;
 
@@ -524,14 +420,12 @@
         auto;
     }
 
-
     /* =====================================================
-       DATE / TIME
+       iOS DATE / TIME
        ===================================================== */
 
     input[type="date"],
     input[type="time"] {
-
       color:
         #4f555a;
 
@@ -542,10 +436,8 @@
         none;
     }
 
-
     input[type="date"]::-webkit-calendar-picker-indicator,
     input[type="time"]::-webkit-calendar-picker-indicator {
-
       opacity:
         0.65;
 
@@ -553,13 +445,11 @@
         grayscale(100%);
     }
 
-
     /* =====================================================
        BUTTONS
        ===================================================== */
 
     button {
-
       min-height:
         44px;
 
@@ -585,27 +475,20 @@
         pointer;
 
       transition:
-
         transform 0.15s ease,
-
         background 0.2s ease,
-
         box-shadow 0.2s ease;
 
       touch-action:
         manipulation;
     }
 
-
     button:active {
-
       transform:
         scale(0.97);
     }
 
-
     .buttons {
-
       display:
         flex;
 
@@ -616,13 +499,11 @@
         12px;
     }
 
-
     /* =====================================================
        PRIMARY BUTTON
        ===================================================== */
 
     .btn-primary {
-
       flex:
         1;
 
@@ -637,7 +518,6 @@
         rgba(255,255,255,0.35);
 
       box-shadow:
-
         0 7px 18px
         rgba(0,0,0,0.12),
 
@@ -645,80 +525,59 @@
         rgba(255,255,255,0.20);
     }
 
-
     .btn-primary:hover {
-
       background:
         rgba(65,70,75,0.90);
     }
-
 
     /* =====================================================
        SECONDARY BUTTON
        ===================================================== */
 
     .btn-secondary {
-
       color:
         #565c61;
 
       background:
-        rgba(255,255,255,0.14);
+        rgba(255,255,255,0.05);
 
       border:
         1px solid
-        rgba(255,255,255,0.42);
-
-      backdrop-filter:
-        blur(5px);
-
-      -webkit-backdrop-filter:
-        blur(5px);
+        rgba(255,255,255,0.38);
 
       box-shadow:
-
         inset 0 1px 0
-        rgba(255,255,255,0.50),
+        rgba(255,255,255,0.45),
 
         0 3px 10px
-        rgba(0,0,0,0.04);
+        rgba(0,0,0,0.035);
     }
-
 
     /* =====================================================
        DANGER BUTTON
        ===================================================== */
 
     .btn-danger {
-
       color:
         #5e6469;
 
       background:
-        rgba(255,255,255,0.13);
+        rgba(255,255,255,0.05);
 
       border:
         1px solid
-        rgba(255,255,255,0.40);
-
-      backdrop-filter:
-        blur(5px);
-
-      -webkit-backdrop-filter:
-        blur(5px);
+        rgba(255,255,255,0.36);
 
       box-shadow:
         inset 0 1px 0
-        rgba(255,255,255,0.40);
+        rgba(255,255,255,0.38);
     }
-
 
     /* =====================================================
        GOOGLE SHEETS STATUS
        ===================================================== */
 
     #syncStatus {
-
       min-height:
         20px;
 
@@ -735,13 +594,11 @@
         1.5;
     }
 
-
     /* =====================================================
        PERIOD
        ===================================================== */
 
     .period {
-
       display:
         flex;
 
@@ -758,16 +615,12 @@
         14px;
     }
 
-
     .period h2 {
-
       margin:
         0;
     }
 
-
     .period strong {
-
       color:
         #666c71;
 
@@ -781,13 +634,11 @@
         nowrap;
     }
 
-
     /* =====================================================
        SUMMARY
        ===================================================== */
 
     .summary {
-
       display:
         grid;
 
@@ -798,9 +649,7 @@
         8px;
     }
 
-
     .summary-box {
-
       min-width:
         0;
 
@@ -814,32 +663,21 @@
         20px;
 
       background:
-        rgba(255,255,255,0.10);
+        rgba(255,255,255,0.05);
 
       border:
         1px solid
-        rgba(255,255,255,0.42);
-
-      backdrop-filter:
-        blur(5px)
-        saturate(120%);
-
-      -webkit-backdrop-filter:
-        blur(5px)
-        saturate(120%);
+        rgba(255,255,255,0.38);
 
       box-shadow:
-
         inset 0 1px 0
-        rgba(255,255,255,0.48),
+        rgba(255,255,255,0.42),
 
         0 2px 8px
-        rgba(0,0,0,0.03);
+        rgba(0,0,0,0.025);
     }
 
-
     .summary-box .number {
-
       color:
         #5c6267;
 
@@ -853,9 +691,7 @@
         700;
     }
 
-
     .summary-box .label {
-
       margin-top:
         6px;
 
@@ -869,13 +705,11 @@
         1.35;
     }
 
-
     /* =====================================================
        RECORD LIST
        ===================================================== */
 
     .records-header {
-
       display:
         flex;
 
@@ -892,16 +726,12 @@
         12px;
     }
 
-
     .records-header h2 {
-
       margin:
         0;
     }
 
-
     .records-header .btn-danger {
-
       min-height:
         38px;
 
@@ -915,13 +745,11 @@
         nowrap;
     }
 
-
     /* =====================================================
        TABLE
        ===================================================== */
 
     .table-wrapper {
-
       width:
         100%;
 
@@ -935,9 +763,7 @@
         touch;
     }
 
-
     table {
-
       width:
         100%;
 
@@ -948,16 +774,14 @@
         650px;
     }
 
-
     th,
     td {
-
       padding:
         10px 8px;
 
       border-bottom:
         1px solid
-        rgba(255,255,255,0.20);
+        rgba(255,255,255,0.18);
 
       text-align:
         left;
@@ -972,9 +796,7 @@
         middle;
     }
 
-
     th {
-
       color:
         #646a6f;
 
@@ -982,12 +804,10 @@
         600;
 
       background:
-        rgba(255,255,255,0.08);
+        rgba(255,255,255,0.05);
     }
 
-
     td.hours {
-
       color:
         #5b6166;
 
@@ -995,9 +815,7 @@
         700;
     }
 
-
     td button {
-
       min-height:
         34px;
 
@@ -1011,9 +829,7 @@
         11px;
     }
 
-
     .empty {
-
       padding:
         35px 15px !important;
 
@@ -1027,13 +843,11 @@
         13px !important;
     }
 
-
     /* =====================================================
        FOOTER
        ===================================================== */
 
     .footer {
-
       padding:
         5px 0 15px;
 
@@ -1050,7 +864,6 @@
         1.5;
     }
 
-
     /* =====================================================
        MOBILE RECORD CARDS
        ===================================================== */
@@ -1058,14 +871,11 @@
     @media (max-width: 650px) {
 
       .table-wrapper {
-
         overflow:
           visible;
       }
 
-
       table {
-
         width:
           100%;
 
@@ -1073,18 +883,14 @@
           0;
       }
 
-
       thead {
-
         display:
           none;
       }
 
-
       tbody,
       tr,
       td {
-
         display:
           block;
 
@@ -1092,9 +898,7 @@
           100%;
       }
 
-
       tbody tr {
-
         position:
           relative;
 
@@ -1108,39 +912,26 @@
           20px;
 
         background:
-          rgba(255,255,255,0.10);
+          rgba(255,255,255,0.05);
 
         border:
           1px solid
-          rgba(255,255,255,0.40);
-
-        backdrop-filter:
-          blur(5px)
-          saturate(120%);
-
-        -webkit-backdrop-filter:
-          blur(5px)
-          saturate(120%);
+          rgba(255,255,255,0.38);
 
         box-shadow:
-
           0 5px 16px
-          rgba(0,0,0,0.06),
+          rgba(0,0,0,0.045),
 
           inset 0 1px 0
-          rgba(255,255,255,0.42);
+          rgba(255,255,255,0.40);
       }
 
-
       tbody tr:last-child {
-
         margin-bottom:
           0;
       }
 
-
       tbody td {
-
         display:
           grid;
 
@@ -1166,9 +957,7 @@
           1.4;
       }
 
-
       tbody td::before {
-
         color:
           #7a8085;
 
@@ -1179,58 +968,47 @@
           600;
       }
 
-
       tbody td:nth-child(1)::before {
         content:
           "วันที่";
       }
-
 
       tbody td:nth-child(2)::before {
         content:
           "ประเภท";
       }
 
-
       tbody td:nth-child(3)::before {
         content:
           "เวลาเริ่ม";
       }
-
 
       tbody td:nth-child(4)::before {
         content:
           "เวลาสิ้นสุด";
       }
 
-
       tbody td:nth-child(5)::before {
         content:
           "ชั่วโมง";
       }
-
 
       tbody td:nth-child(6)::before {
         content:
           "หมายเหตุ";
       }
 
-
       tbody td:nth-child(7)::before {
         content:
           "จัดการ";
       }
 
-
       tbody td:nth-child(5) {
-
         font-weight:
           700;
       }
 
-
       tbody td:nth-child(7) {
-
         display:
           flex;
 
@@ -1248,12 +1026,10 @@
 
         border-top:
           1px solid
-          rgba(255,255,255,0.20);
+          rgba(255,255,255,0.18);
       }
 
-
       tbody td:nth-child(7)::before {
-
         display:
           block;
 
@@ -1264,9 +1040,7 @@
           0;
       }
 
-
       tbody td:nth-child(7) button {
-
         flex:
           1;
 
@@ -1281,7 +1055,6 @@
       }
     }
 
-
     /* =====================================================
        SMALL MOBILE
        ===================================================== */
@@ -1289,7 +1062,6 @@
     @media (max-width: 390px) {
 
       .container {
-
         padding-left:
           9px;
 
@@ -1297,9 +1069,7 @@
           9px;
       }
 
-
       .card {
-
         padding:
           13px;
 
@@ -1307,25 +1077,19 @@
           24px;
       }
 
-
       .ot-banner {
-
         border-radius:
           20px;
       }
 
-
       .form-grid {
-
         gap:
           8px;
       }
 
-
       input,
       textarea,
       select {
-
         min-height:
           44px;
 
@@ -1339,30 +1103,22 @@
           17px;
       }
 
-
       label {
-
         font-size:
           12px;
       }
 
-
       .card h2 {
-
         font-size:
           17px;
       }
 
-
       .summary {
-
         gap:
           5px;
       }
 
-
       .summary-box {
-
         padding:
           11px 3px;
 
@@ -1370,30 +1126,22 @@
           18px;
       }
 
-
       .summary-box .number {
-
         font-size:
           21px;
       }
 
-
       .summary-box .label {
-
         font-size:
           9.5px;
       }
 
-
       .period strong {
-
         font-size:
           10.5px;
       }
 
-
       .records-header .btn-danger {
-
         font-size:
           10.5px;
 
@@ -1402,7 +1150,6 @@
       }
     }
 
-
     /* =====================================================
        DESKTOP / TABLET
        ===================================================== */
@@ -1410,62 +1157,49 @@
     @media (min-width: 651px) {
 
       .container {
-
         padding:
           20px 16px 50px;
       }
 
-
       .card {
-
         padding:
           20px;
       }
 
-
       .card h2 {
-
         font-size:
           20px;
       }
 
-
       input,
       textarea,
       select {
-
         min-height:
           48px;
       }
     }
-
   </style>
 </head>
-
 
 <body>
 
   <div class="container">
 
-
-    <!-- ===================================================
+    <!-- =================================================
          HEADER
-         =================================================== -->
+         ================================================= -->
 
     <header>
-
       <img
         src="nanas-ot-banner-final.png"
         alt="Nana's OT"
         class="ot-banner"
       />
-
     </header>
 
-
-    <!-- ===================================================
-         FORM
-         =================================================== -->
+    <!-- =================================================
+         OT FORM
+         ================================================= -->
 
     <div class="card">
 
@@ -1473,18 +1207,14 @@
         📝 บันทึก OT
       </h2>
 
-
       <form id="otForm">
-
 
         <input
           type="hidden"
           id="editId"
         />
 
-
         <div class="form-grid">
-
 
           <div class="form-field">
 
@@ -1499,7 +1229,6 @@
             />
 
           </div>
-
 
           <div class="form-field">
 
@@ -1525,7 +1254,6 @@
 
           </div>
 
-
           <div class="form-field">
 
             <label for="start">
@@ -1539,7 +1267,6 @@
             />
 
           </div>
-
 
           <div class="form-field">
 
@@ -1555,7 +1282,6 @@
 
           </div>
 
-
           <div class="form-field full">
 
             <label for="note">
@@ -1569,12 +1295,9 @@
 
           </div>
 
-
         </div>
 
-
         <div class="buttons">
-
 
           <button
             type="submit"
@@ -1583,7 +1306,6 @@
           >
             + บันทึก OT
           </button>
-
 
           <button
             type="button"
@@ -1594,45 +1316,33 @@
             ยกเลิกแก้ไข
           </button>
 
-
         </div>
-
 
         <div id="syncStatus">
-
           ☁️ ข้อมูลจะถูกส่งไป Google Sheets เมื่อกดบันทึก
-
         </div>
-
 
       </form>
 
     </div>
 
-
-    <!-- ===================================================
+    <!-- =================================================
          SUMMARY
-         =================================================== -->
+         ================================================= -->
 
     <div class="card">
 
-
       <div class="period">
-
 
         <h2>
           📊 สรุป OT
         </h2>
 
-
         <strong id="periodText"></strong>
-
 
       </div>
 
-
       <div class="summary">
-
 
         <div class="summary-box">
 
@@ -1649,7 +1359,6 @@
 
         </div>
 
-
         <div class="summary-box">
 
           <div
@@ -1664,7 +1373,6 @@
           </div>
 
         </div>
-
 
         <div class="summary-box">
 
@@ -1681,26 +1389,21 @@
 
         </div>
 
-
       </div>
 
     </div>
 
-
-    <!-- ===================================================
+    <!-- =================================================
          RECORDS
-         =================================================== -->
+         ================================================= -->
 
     <div class="card">
 
-
       <div class="records-header">
-
 
         <h2>
           📋 รายการที่บันทึกแล้ว
         </h2>
-
 
         <button
           class="btn-danger"
@@ -1709,15 +1412,11 @@
           ล้างข้อมูลทั้งหมด
         </button>
 
-
       </div>
-
 
       <div class="table-wrapper">
 
-
         <table>
-
 
           <thead>
 
@@ -1755,35 +1454,25 @@
 
           </thead>
 
-
           <tbody id="otTable"></tbody>
-
 
         </table>
 
-
       </div>
 
-
     </div>
 
-
-    <!-- ===================================================
+    <!-- =================================================
          FOOTER
-         =================================================== -->
+         ================================================= -->
 
     <div class="footer">
-
       Nana's OT • ข้อมูลถูกบันทึกในเครื่องและ Google Sheets
-
     </div>
-
 
   </div>
 
-
 <script>
-
 
   /* =====================================================
      ELEMENTS
@@ -1792,38 +1481,29 @@
   const form =
     document.getElementById("otForm");
 
-
   const dateInput =
     document.getElementById("date");
-
 
   const startInput =
     document.getElementById("start");
 
-
   const endInput =
     document.getElementById("end");
-
 
   const typeInput =
     document.getElementById("type");
 
-
   const noteInput =
     document.getElementById("note");
-
 
   const editIdInput =
     document.getElementById("editId");
 
-
   const table =
     document.getElementById("otTable");
 
-
   const saveBtn =
     document.getElementById("saveBtn");
-
 
   const cancelBtn =
     document.getElementById("cancelBtn");
@@ -1841,7 +1521,7 @@
 
 
   /* =====================================================
-     LOAD GOOGLE SHEETS
+     LOAD FROM GOOGLE SHEETS
      ===================================================== */
 
   async function loadRecordsFromGoogleSheets() {
@@ -1851,10 +1531,8 @@
       const response =
         await fetch(GOOGLE_SHEETS_API);
 
-
       const result =
         await response.json();
-
 
       if (
         result.success &&
@@ -1889,11 +1567,9 @@
             })
           );
 
-
         saveRecords();
 
         render();
-
       }
 
     } catch (error) {
@@ -1903,10 +1579,8 @@
         error
       );
 
-
       const localData =
         localStorage.getItem("nanasOT");
-
 
       if (localData) {
 
@@ -1939,7 +1613,6 @@
     const date =
       new Date(value);
 
-
     if (
       isNaN(date.getTime())
     ) {
@@ -1948,7 +1621,6 @@
         .substring(0, 10);
 
     }
-
 
     return date
       .toISOString()
@@ -1981,20 +1653,16 @@
         .split(":")
         .map(Number);
 
-
     const [eh, em] =
       end
         .split(":")
         .map(Number);
 
-
     let startMinutes =
       sh * 60 + sm;
 
-
     let endMinutes =
       eh * 60 + em;
-
 
     if (
       endMinutes <
@@ -2006,7 +1674,6 @@
 
     }
 
-
     return (
       endMinutes -
       startMinutes
@@ -2016,8 +1683,7 @@
 
 
   /* =====================================================
-     CURRENT PAY PERIOD
-     16 - 15
+     CURRENT PERIOD
      ===================================================== */
 
   function getCurrentPeriod() {
@@ -2025,14 +1691,11 @@
     const today =
       new Date();
 
-
     let year =
       today.getFullYear();
 
-
     let month =
       today.getMonth();
-
 
     if (
       today.getDate() <= 15
@@ -2040,17 +1703,14 @@
 
       month--;
 
-
       if (month < 0) {
 
         month = 11;
-
         year--;
 
       }
 
     }
-
 
     const start =
       new Date(
@@ -2059,25 +1719,20 @@
         16
       );
 
-
     let endMonth =
       month + 1;
 
-
     let endYear =
       year;
-
 
     if (
       endMonth > 11
     ) {
 
       endMonth = 0;
-
       endYear++;
 
     }
-
 
     const end =
       new Date(
@@ -2085,7 +1740,6 @@
         endMonth,
         15
       );
-
 
     return {
       start,
@@ -2108,7 +1762,6 @@
         dateString +
         "T00:00:00"
       );
-
 
     return date.toLocaleDateString(
       "th-TH",
@@ -2134,7 +1787,6 @@
     } =
       getCurrentPeriod();
 
-
     return `${start.toLocaleDateString(
       "th-TH"
     )} - ${end.toLocaleDateString(
@@ -2158,13 +1810,11 @@
     } =
       getCurrentPeriod();
 
-
     const date =
       new Date(
         dateString +
         "T00:00:00"
       );
-
 
     return (
       date >= start &&
@@ -2175,7 +1825,7 @@
 
 
   /* =====================================================
-     SAVE LOCAL STORAGE
+     LOCAL STORAGE
      ===================================================== */
 
   function saveRecords() {
@@ -2201,12 +1851,10 @@
       const payload =
         new URLSearchParams();
 
-
       payload.append(
         "payload",
         JSON.stringify(data)
       );
-
 
       await fetch(
         GOOGLE_SHEETS_API,
@@ -2225,7 +1873,6 @@
         }
       );
 
-
       return true;
 
     } catch (error) {
@@ -2234,7 +1881,6 @@
         "ส่งข้อมูลไป Google Sheets ไม่สำเร็จ:",
         error
       );
-
 
       return false;
 
@@ -2253,7 +1899,6 @@
 
       e.preventDefault();
 
-
       if (
         !dateInput.value ||
         !startInput.value ||
@@ -2265,7 +1910,6 @@
         );
 
         return;
-
       }
 
 
@@ -2283,7 +1927,6 @@
         );
 
         return;
-
       }
 
 
@@ -2328,9 +1971,7 @@
                 : item
           );
 
-      }
-
-      else {
+      } else {
 
         records.push(data);
 
@@ -2366,9 +2007,7 @@
 
             syncStatus.textContent =
               ok
-
                 ? "☁️ ส่งข้อมูลไป Google Sheets แล้ว • ข้อมูลสำรองอยู่ในเครื่องนี้"
-
                 : "⚠️ บันทึกในเครื่องแล้ว แต่ส่ง Google Sheets ไม่สำเร็จ";
 
           }
@@ -2390,7 +2029,7 @@
 
 
   /* =====================================================
-     EDIT
+     EDIT RECORD
      ===================================================== */
 
   function editRecord(id) {
@@ -2400,29 +2039,23 @@
         r => r.id === id
       );
 
-
     if (!item) return;
 
 
     editIdInput.value =
       item.id;
 
-
     dateInput.value =
       item.date;
-
 
     typeInput.value =
       item.type;
 
-
     startInput.value =
       item.start;
 
-
     endInput.value =
       item.end;
-
 
     noteInput.value =
       item.note;
@@ -2430,7 +2063,6 @@
 
     saveBtn.textContent =
       "💾 บันทึกการแก้ไข";
-
 
     cancelBtn.style.display =
       "block";
@@ -2445,7 +2077,7 @@
 
 
   /* =====================================================
-     DELETE
+     DELETE RECORD
      ===================================================== */
 
   function deleteRecord(id) {
@@ -2465,7 +2097,6 @@
       records.filter(
         r => r.id !== id
       );
-
 
     saveRecords();
 
@@ -2504,7 +2135,6 @@
 
     records = [];
 
-
     saveRecords();
 
     render();
@@ -2521,38 +2151,35 @@
     editIdInput.value =
       "";
 
-
     dateInput.value =
       new Date()
         .toISOString()
         .split("T")[0];
 
-
     typeInput.value =
       "OT";
-
 
     startInput.value =
       "";
 
-
     endInput.value =
       "";
-
 
     noteInput.value =
       "";
 
-
     saveBtn.textContent =
       "+ บันทึก OT";
-
 
     cancelBtn.style.display =
       "none";
 
   }
 
+
+  /* =====================================================
+     CANCEL EDIT
+     ===================================================== */
 
   cancelBtn.addEventListener(
     "click",
@@ -2575,14 +2202,12 @@
 
     const currentRecords =
       records
-
         .filter(
           item =>
             isInCurrentPeriod(
               item.date
             )
         )
-
         .sort(
           (a, b) =>
             b.date.localeCompare(
@@ -2634,18 +2259,14 @@
     ) {
 
       table.innerHTML = `
-
         <tr>
-
           <td
             colspan="7"
             class="empty"
           >
             ยังไม่มีรายการ OT ในรอบนี้ 🌷
           </td>
-
         </tr>
-
       `;
 
       return;
@@ -2666,13 +2287,11 @@
                 )}
               </td>
 
-
               <td>
                 ${escapeHTML(
                   item.type
                 )}
               </td>
-
 
               <td>
                 ${formatTime(
@@ -2680,34 +2299,25 @@
                 )}
               </td>
 
-
               <td>
                 ${formatTime(
                   item.end
                 )}
               </td>
 
-
               <td class="hours">
-
                 ${formatHours(
                   item.hours
                 )}
-
                 ชม.
-
               </td>
 
-
               <td>
-
                 ${escapeHTML(
                   item.note ||
                   "-"
                 )}
-
               </td>
-
 
               <td>
 
@@ -2717,7 +2327,6 @@
                 >
                   ✏️ แก้ไข
                 </button>
-
 
                 <button
                   class="btn-danger"
@@ -2745,10 +2354,8 @@
 
     if (!value) return "";
 
-
     const text =
       String(value).trim();
-
 
     const timeOnly =
       text.match(
@@ -2805,7 +2412,6 @@
 
     const h =
       Math.floor(hours);
-
 
     const m =
       Math.round(
@@ -2864,14 +2470,12 @@
 
 
   /* =====================================================
-     START
+     LOAD
      ===================================================== */
 
   loadRecordsFromGoogleSheets();
 
-
 </script>
-
 
 </body>
 </html>
