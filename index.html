@@ -1619,199 +1619,255 @@
       }
     }
     /* =========================================================
-   NANA'S OT — TEXT ONLY
-   ตัวหนังสือบาง เบา มีขอบและเงาแบบตัวอย่าง
-   ไม่เปลี่ยนโครงสร้าง / กล่อง / พื้นหลัง / ความโปร่งใส
-   ========================================================= */
+       NANA'S OT — TEXT ONLY
+       ฟอนต์บาง เบา กลมมน อ่านง่าย
+       เปลี่ยนเฉพาะตัวหนังสือเท่านั้น
+       ไม่เปลี่ยนพื้นหลัง / กล่อง / ความโปร่งใส / layout / banner
+       ========================================================= */
 
-body {
-  font-family:
-    "Leelawadee UI",
-    "Noto Sans Thai",
-    "Segoe UI",
-    Tahoma,
-    Arial,
-    sans-serif;
+    @import url("https://fonts.googleapis.com/css2?family=Mitr:wght@300;400&display=swap");
 
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-}
+    body {
+      font-family:
+        "Mitr",
+        "Noto Sans Thai",
+        "Leelawadee UI",
+        "Segoe UI",
+        Tahoma,
+        Arial,
+        sans-serif;
 
-/* หัวข้อ เช่น บันทึก OT / สรุป OT / รายการที่บันทึกแล้ว */
-.card h2,
-.section-title-text {
-  font-family:
-    "Leelawadee UI",
-    "Noto Sans Thai",
-    "Segoe UI",
-    Tahoma,
-    sans-serif;
+      font-weight: 300;
+      font-synthesis: none;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
-  font-weight: 400;
+    /* หัวข้อ เช่น บันทึก OT / สรุป OT / รายการที่บันทึกแล้ว */
+    .card h2,
+    .section-title-text {
+      font-family:
+        "Mitr",
+        "Noto Sans Thai",
+        "Leelawadee UI",
+        "Segoe UI",
+        Tahoma,
+        sans-serif;
 
-  -webkit-text-stroke: 0.35px rgba(0, 0, 0, 0.65);
+      font-weight: 300;
+      letter-spacing: 0;
+      -webkit-text-stroke: 0.28px rgba(0,0,0,0.62);
 
-  text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.45),
-    0 0 1px rgba(255, 255, 255, 0.85);
-}
+      text-shadow:
+        0 1px 2px rgba(0,0,0,0.42),
+        0 0 1px rgba(255,255,255,0.48);
+    }
 
-/* ชื่อช่อง วันที่ / ประเภท / เวลาเริ่ม / เวลาสิ้นสุด / หมายเหตุ */
-label {
-  font-family:
-    "Leelawadee UI",
-    "Noto Sans Thai",
-    "Segoe UI",
-    Tahoma,
-    sans-serif;
+    /* ชื่อช่อง */
+    label,
+    .history-select-label {
+      font-family:
+        "Mitr",
+        "Noto Sans Thai",
+        "Leelawadee UI",
+        "Segoe UI",
+        Tahoma,
+        sans-serif;
 
-  font-weight: 400;
+      font-weight: 300;
+      -webkit-text-stroke: 0.22px rgba(0,0,0,0.58);
 
-  -webkit-text-stroke: 0.25px rgba(0, 0, 0, 0.60);
+      text-shadow:
+        0 1px 2px rgba(0,0,0,0.38),
+        0 0 1px rgba(255,255,255,0.40);
+    }
 
-  text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.40),
-    0 0 1px rgba(255, 255, 255, 0.80);
-}
+    /* ตัวหนังสือในช่องกรอก */
+    input,
+    textarea,
+    select,
+    #historyPeriodSelect {
+      font-family:
+        "Mitr",
+        "Noto Sans Thai",
+        "Leelawadee UI",
+        "Segoe UI",
+        Tahoma,
+        sans-serif;
 
-/* ตัวหนังสือในช่องกรอก */
-input,
-textarea,
-select {
-  font-family:
-    "Leelawadee UI",
-    "Noto Sans Thai",
-    "Segoe UI",
-    Tahoma,
-    sans-serif;
+      font-weight: 300;
+      -webkit-text-stroke: 0.16px rgba(0,0,0,0.48);
 
-  font-weight: 400;
+      text-shadow:
+        0 1px 2px rgba(0,0,0,0.28);
+    }
 
-  -webkit-text-stroke: 0.18px rgba(0, 0, 0, 0.50);
+    /* Placeholder */
+    input::placeholder,
+    textarea::placeholder {
+      font-family:
+        "Mitr",
+        "Noto Sans Thai",
+        "Leelawadee UI",
+        "Segoe UI",
+        Tahoma,
+        sans-serif;
 
-  text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.30);
-}
+      font-weight: 300;
+      -webkit-text-stroke: 0.10px rgba(0,0,0,0.36);
 
-/* Placeholder */
-input::placeholder,
-textarea::placeholder {
-  font-family:
-    "Leelawadee UI",
-    "Noto Sans Thai",
-    "Segoe UI",
-    Tahoma,
-    sans-serif;
+      text-shadow:
+        0 1px 2px rgba(0,0,0,0.24);
+    }
 
-  font-weight: 400;
+    /* ปุ่ม */
+    button {
+      font-family:
+        "Mitr",
+        "Noto Sans Thai",
+        "Leelawadee UI",
+        "Segoe UI",
+        Tahoma,
+        sans-serif;
 
-  -webkit-text-stroke: 0.12px rgba(0, 0, 0, 0.35);
+      font-weight: 300;
+      -webkit-text-stroke: 0.14px rgba(0,0,0,0.46);
 
-  text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.25);
-}
+      text-shadow:
+        0 1px 2px rgba(0,0,0,0.30);
+    }
 
-/* ปุ่ม */
-button {
-  font-family:
-    "Leelawadee UI",
-    "Noto Sans Thai",
-    "Segoe UI",
-    Tahoma,
-    sans-serif;
+    /* ตัวเลขสรุป */
+    .summary-box .number,
+    .history-summary-box .number {
+      font-family:
+        "Mitr",
+        "Noto Sans Thai",
+        "Leelawadee UI",
+        "Segoe UI",
+        Tahoma,
+        sans-serif;
 
-  font-weight: 400;
+      font-weight: 300;
+      -webkit-text-stroke: 0.16px rgba(0,0,0,0.44);
 
-  -webkit-text-stroke: 0.15px rgba(0, 0, 0, 0.45);
-}
+      text-shadow:
+        0 1px 2px rgba(0,0,0,0.28);
+    }
 
-/* ตัวเลขสรุป */
-.summary-box .number,
-.history-summary-box .number {
-  font-weight: 400;
+    /* คำอธิบายใต้ตัวเลข */
+    .summary-box .label,
+    .history-summary-box .label {
+      font-family:
+        "Mitr",
+        "Noto Sans Thai",
+        "Leelawadee UI",
+        "Segoe UI",
+        Tahoma,
+        sans-serif;
 
-  -webkit-text-stroke: 0.18px rgba(0, 0, 0, 0.45);
+      font-weight: 300;
+      -webkit-text-stroke: 0.10px rgba(0,0,0,0.34);
 
-  text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.30);
-}
+      text-shadow:
+        0 1px 2px rgba(0,0,0,0.22);
+    }
 
-/* คำอธิบายใต้ตัวเลข */
-.summary-box .label,
-.history-summary-box .label {
-  font-weight: 400;
+    /* ช่วงวันที่ */
+    .period,
+    .period strong,
+    .history-period-text {
+      font-family:
+        "Mitr",
+        "Noto Sans Thai",
+        "Leelawadee UI",
+        "Segoe UI",
+        Tahoma,
+        sans-serif;
 
-  -webkit-text-stroke: 0.12px rgba(0, 0, 0, 0.35);
+      font-weight: 300;
+      -webkit-text-stroke: 0.14px rgba(0,0,0,0.42);
 
-  text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.25);
-}
+      text-shadow:
+        0 1px 2px rgba(0,0,0,0.28);
+    }
 
-/* ช่วงวันที่ */
-.period,
-.period strong,
-.history-period-text {
-  font-weight: 400;
+    /* ตาราง */
+    th,
+    td,
+    tbody td::before {
+      font-family:
+        "Mitr",
+        "Noto Sans Thai",
+        "Leelawadee UI",
+        "Segoe UI",
+        Tahoma,
+        sans-serif;
 
-  -webkit-text-stroke: 0.18px rgba(0, 0, 0, 0.45);
+      font-weight: 300;
+      -webkit-text-stroke: 0.10px rgba(0,0,0,0.36);
 
-  text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.30);
-}
+      text-shadow:
+        0 1px 1px rgba(0,0,0,0.22);
+    }
 
-/* ตาราง */
-th,
-td {
-  font-family:
-    "Leelawadee UI",
-    "Noto Sans Thai",
-    "Segoe UI",
-    Tahoma,
-    sans-serif;
+    /* ชั่วโมง OT */
+    td.hours,
+    tbody td:nth-child(5) {
+      font-weight: 300;
+    }
 
-  font-weight: 400;
+    /* ข้อความสถานะ Google Sheets */
+    #syncStatus {
+      font-family:
+        "Mitr",
+        "Noto Sans Thai",
+        "Leelawadee UI",
+        "Segoe UI",
+        Tahoma,
+        sans-serif;
 
-  -webkit-text-stroke: 0.12px rgba(0, 0, 0, 0.40);
+      font-weight: 300;
+      -webkit-text-stroke: 0.10px rgba(0,0,0,0.32);
 
-  text-shadow:
-    0 1px 1px rgba(0, 0, 0, 0.25);
-}
+      text-shadow:
+        0 1px 2px rgba(0,0,0,0.22);
+    }
 
-/* ชั่วโมง OT */
-td.hours {
-  font-weight: 400;
-}
+    /* ข้อความยังไม่มีข้อมูล */
+    .empty,
+    .history-empty {
+      font-family:
+        "Mitr",
+        "Noto Sans Thai",
+        "Leelawadee UI",
+        "Segoe UI",
+        Tahoma,
+        sans-serif;
 
-/* ข้อความสถานะ Google Sheets */
-#syncStatus {
-  font-weight: 400;
+      font-weight: 300;
+      -webkit-text-stroke: 0.10px rgba(0,0,0,0.32);
 
-  -webkit-text-stroke: 0.12px rgba(0, 0, 0, 0.35);
+      text-shadow:
+        0 1px 2px rgba(0,0,0,0.22);
+    }
 
-  text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.25);
-}
+    /* Footer */
+    .footer {
+      font-family:
+        "Mitr",
+        "Noto Sans Thai",
+        "Leelawadee UI",
+        "Segoe UI",
+        Tahoma,
+        sans-serif;
 
-/* ข้อความยังไม่มีข้อมูล */
-.empty,
-.history-empty {
-  font-weight: 400;
+      font-weight: 300;
+      -webkit-text-stroke: 0.08px rgba(0,0,0,0.28);
 
-  -webkit-text-stroke: 0.12px rgba(0, 0, 0, 0.35);
-
-  text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.25);
-}
-
-/* Footer */
-.footer {
-  font-weight: 400;
-
-  -webkit-text-stroke: 0.10px rgba(0, 0, 0, 0.30);
-
-  text-shadow:
-    0 1px 1px rgba(0, 0, 0, 0.20);
-}
+      text-shadow:
+        0 1px 1px rgba(0,0,0,0.18);
+    }
   </style>
 </head>
 
