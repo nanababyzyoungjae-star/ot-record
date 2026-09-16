@@ -2,337 +2,883 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
   <title>Nana's OT</title>
 
   <style>
+    /* =====================================================
+       NANA'S OT
+       Mobile First • Glassmorphism
+       ===================================================== */
+
     * {
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     html {
-      background: #d9d9d9;
+      min-height: 100%;
+      background: #d8d8d8;
     }
 
     body {
       position: relative;
       min-height: 100vh;
       margin: 0;
-      font-family: "Segoe UI", Tahoma, sans-serif;
-      color: #4f5357;
+      padding: 0;
+
+      font-family:
+        "Segoe UI",
+        Tahoma,
+        Arial,
+        sans-serif;
+
+      color: #50555a;
       overflow-x: hidden;
+
       background: transparent;
     }
 
-    /* ภาพพื้นหลังขาวดำ */
+    /* =====================================================
+       BACKGROUND
+       ===================================================== */
+
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      z-index: -2;
+
+      z-index: -3;
+
       background-image: url("nanas-ot-bg.jpg");
       background-size: cover;
-      background-position: center top;
+      background-position: center center;
       background-repeat: no-repeat;
-      filter: grayscale(100%) contrast(0.92) brightness(1.05);
+
+      filter:
+        grayscale(100%)
+        contrast(0.90)
+        brightness(1.04);
+
+      transform: scale(1.02);
     }
 
-    /* ชั้นสีขาวบาง ๆ */
+    /* ชั้นหมอกขาวบาง ๆ */
     body::after {
       content: "";
       position: fixed;
       inset: 0;
-      z-index: -1;
-      background: rgba(255, 255, 255, 0.14);
+
+      z-index: -2;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,0.20) 0%,
+          rgba(255,255,255,0.12) 45%,
+          rgba(255,255,255,0.20) 100%
+        );
+
       pointer-events: none;
     }
+
+    /* =====================================================
+       MAIN CONTAINER
+       ===================================================== */
 
     .container {
       position: relative;
       z-index: 1;
+
       width: 100%;
-      max-width: 820px;
-      margin: auto;
-      padding: 18px 14px 45px;
+      max-width: 760px;
+
+      margin: 0 auto;
+
+      padding:
+        max(12px, env(safe-area-inset-top))
+        12px
+        max(35px, env(safe-area-inset-bottom));
     }
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
 
     header {
-      text-align: center;
-      margin-bottom: 18px;
-    }
-
-    header h1,
-    header p {
-      display: none;
+      width: 100%;
+      margin-bottom: 14px;
     }
 
     .ot-banner {
       display: block;
+
       width: 100%;
-      max-width: 760px;
       height: auto;
+
       margin: 0 auto;
-      border-radius: 20px;
-      box-shadow: 0 10px 28px rgba(50, 50, 50, 0.16);
+
+      border-radius: 22px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.78);
+
+      box-shadow:
+        0 12px 35px rgba(50,50,50,0.16),
+        inset 0 1px 0 rgba(255,255,255,0.70);
+
+      background: rgba(255,255,255,0.18);
     }
 
-    /* กล่องกระจก */
+    /* =====================================================
+       GLASS CARD
+       ===================================================== */
+
     .card {
-      background: rgba(255, 255, 255, 0.68);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.72);
-      border-radius: 20px;
-      padding: 18px;
-      margin-bottom: 16px;
-      box-shadow: 0 10px 30px rgba(60, 60, 60, 0.12);
+      position: relative;
+
+      width: 100%;
+
+      margin-bottom: 14px;
+      padding: 16px;
+
+      border-radius: 22px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.72),
+          rgba(255,255,255,0.48)
+        );
+
+      border:
+        1px solid
+        rgba(255,255,255,0.78);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      box-shadow:
+        0 10px 32px rgba(50,50,50,0.13),
+        inset 0 1px 0 rgba(255,255,255,0.72);
+
+      overflow: hidden;
     }
+
+    .card::before {
+      content: "";
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 1px;
+
+      background:
+        rgba(255,255,255,0.90);
+
+      pointer-events: none;
+    }
+
+    /* =====================================================
+       CARD TITLE
+       ===================================================== */
 
     .card h2 {
-      margin-top: 0;
-      font-size: 19px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      margin: 0 0 15px;
+
       color: #555a5f;
-      font-weight: 700;
+
+      font-size: 19px;
+      line-height: 1.3;
+
+      font-weight: 600;
+      letter-spacing: -0.2px;
     }
+
+    /* =====================================================
+       FORM
+       ===================================================== */
 
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 11px;
     }
 
-    label {
-      display: block;
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: #5c6064;
-    }
-
-    input,
-    textarea,
-    select {
-      width: 100%;
-      padding: 11px 12px;
-      border: 1px solid rgba(130, 130, 130, 0.28);
-      border-radius: 11px;
-      font-size: 15px;
-      outline: none;
-      color: #4f5357;
-      background: rgba(255, 255, 255, 0.72);
-      box-shadow: none;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color: rgba(100, 105, 110, 0.55);
-      box-shadow: 0 0 0 3px rgba(120, 120, 120, 0.10);
-    }
-
-    textarea {
-      min-height: 72px;
-      resize: vertical;
+    .form-field {
+      min-width: 0;
     }
 
     .full {
       grid-column: 1 / -1;
     }
 
-    button {
-      border: none;
-      border-radius: 10px;
-      padding: 11px 18px;
+    label {
+      display: block;
+
+      margin: 0 0 6px 2px;
+
+      color: #62676b;
+
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    input,
+    textarea,
+    select {
+      display: block;
+
+      width: 100%;
+
+      min-height: 46px;
+
+      padding:
+        10px
+        12px;
+
+      border:
+        1px solid
+        rgba(125,125,125,0.24);
+
+      border-radius: 13px;
+
+      outline: none;
+
+      color: #4f5458;
+
+      font-family: inherit;
       font-size: 15px;
+
+      background:
+        rgba(255,255,255,0.67);
+
+      box-shadow:
+        inset 0 1px 2px rgba(70,70,70,0.03);
+
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #9a9da0;
+      opacity: 0.82;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color:
+        rgba(90,95,100,0.46);
+
+      background:
+        rgba(255,255,255,0.82);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(110,110,110,0.09);
+    }
+
+    textarea {
+      min-height: 82px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    select {
+      appearance: auto;
+    }
+
+    /* =====================================================
+       BUTTONS
+       ===================================================== */
+
+    button {
+      min-height: 44px;
+
+      border: none;
+      border-radius: 13px;
+
+      padding:
+        10px
+        15px;
+
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+
       cursor: pointer;
-      transition: 0.2s;
+
+      transition:
+        transform 0.15s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+
+      touch-action: manipulation;
     }
 
-    .btn-primary {
-      background: rgba(105, 110, 115, 0.90);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      box-shadow: 0 5px 14px rgba(60, 60, 60, 0.12);
-    }
-
-    .btn-primary:hover {
-      background: rgba(80, 85, 90, 0.95);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.65);
-      color: #5e6368;
-      border: 1px solid rgba(120, 120, 120, 0.22);
-    }
-
-    .btn-danger {
-      background: rgba(245, 245, 245, 0.72);
-      color: #777b7f;
-      border: 1px solid rgba(120, 120, 120, 0.20);
+    button:active {
+      transform: scale(0.97);
     }
 
     .buttons {
       display: flex;
+
       gap: 8px;
+
       margin-top: 12px;
-      flex-wrap: wrap;
     }
 
-    .summary {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+    .btn-primary {
+      flex: 1;
+
+      color: #fff;
+
+      background:
+        rgba(91,96,101,0.88);
+
+      border:
+        1px solid
+        rgba(255,255,255,0.35);
+
+      box-shadow:
+        0 6px 16px
+        rgba(60,60,60,0.13);
     }
 
-    .summary-box {
-      background: rgba(255, 255, 255, 0.52);
-      border: 1px solid rgba(255, 255, 255, 0.55);
-      border-radius: 14px;
-      padding: 14px 8px;
-      text-align: center;
+    .btn-primary:hover {
+      background:
+        rgba(72,77,82,0.94);
     }
 
-    .summary-box .number {
-      font-size: 27px;
-      font-weight: 700;
-      color: #60656a;
+    .btn-secondary {
+      color: #5e6367;
+
+      background:
+        rgba(255,255,255,0.58);
+
+      border:
+        1px solid
+        rgba(115,115,115,0.20);
+
+      box-shadow:
+        0 3px 10px
+        rgba(60,60,60,0.05);
     }
 
-    .summary-box .label {
-      margin-top: 4px;
-      color: #777c80;
-      font-size: 13px;
+    .btn-danger {
+      color: #696e72;
+
+      background:
+        rgba(255,255,255,0.58);
+
+      border:
+        1px solid
+        rgba(115,115,115,0.18);
     }
+
+    /* =====================================================
+       GOOGLE SHEETS STATUS
+       ===================================================== */
+
+    #syncStatus {
+      min-height: 20px;
+
+      margin-top: 10px;
+
+      color: #7b8084;
+
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* =====================================================
+       PERIOD
+       ===================================================== */
 
     .period {
       display: flex;
-      justify-content: space-between;
+
       align-items: center;
+      justify-content: space-between;
+
       gap: 10px;
-      margin-bottom: 15px;
-      flex-wrap: wrap;
+
+      margin-bottom: 14px;
+    }
+
+    .period h2 {
+      margin: 0;
     }
 
     .period strong {
-      color: #62676b;
+      color: #676c70;
+
+      font-size: 12px;
+      font-weight: 600;
+
+      white-space: nowrap;
     }
 
+    /* =====================================================
+       SUMMARY
+       ===================================================== */
+
+    .summary {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 8px;
+    }
+
+    .summary-box {
+      min-width: 0;
+
+      padding:
+        13px
+        5px;
+
+      text-align: center;
+
+      border-radius: 16px;
+
+      background:
+        rgba(255,255,255,0.48);
+
+      border:
+        1px solid
+        rgba(255,255,255,0.62);
+
+      box-shadow:
+        inset 0 1px 0
+        rgba(255,255,255,0.52);
+    }
+
+    .summary-box .number {
+      color: #60666a;
+
+      font-size: 25px;
+      line-height: 1.1;
+
+      font-weight: 700;
+    }
+
+    .summary-box .label {
+      margin-top: 6px;
+
+      color: #777c80;
+
+      font-size: 10.5px;
+      line-height: 1.35;
+    }
+
+    /* =====================================================
+       RECORD LIST
+       ===================================================== */
+
+    .records-header {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 8px;
+
+      margin-bottom: 12px;
+    }
+
+    .records-header h2 {
+      margin: 0;
+    }
+
+    .records-header .btn-danger {
+      min-height: 38px;
+
+      padding:
+        7px
+        11px;
+
+      font-size: 12px;
+
+      white-space: nowrap;
+    }
+
+    /* =====================================================
+       TABLE
+       ===================================================== */
+
     .table-wrapper {
+      width: 100%;
+
       overflow-x: auto;
-      border-radius: 12px;
+
+      border-radius: 15px;
+
+      -webkit-overflow-scrolling: touch;
     }
 
     table {
       width: 100%;
+
       border-collapse: collapse;
+
       min-width: 650px;
     }
 
     th,
     td {
-      padding: 12px 10px;
-      border-bottom: 1px solid rgba(100, 100, 100, 0.13);
+      padding:
+        10px
+        8px;
+
+      border-bottom:
+        1px solid
+        rgba(100,100,100,0.11);
+
       text-align: left;
-      font-size: 14px;
-      color: #555a5e;
+
+      color: #5b6064;
+
+      font-size: 13px;
+
+      vertical-align: middle;
     }
 
     th {
-      background: rgba(255, 255, 255, 0.58);
-      color: #64696d;
+      color: #676c70;
+
+      font-weight: 600;
+
+      background:
+        rgba(255,255,255,0.40);
     }
 
     td.hours {
+      color: #5f6569;
+
       font-weight: 700;
-      color: #62676c;
+    }
+
+    td button {
+      min-height: 34px;
+
+      padding:
+        6px
+        9px;
+
+      margin:
+        2px
+        2px;
+
+      font-size: 11px;
     }
 
     .empty {
-      text-align: center;
-      padding: 30px;
-      color: #85898d;
+      padding: 35px 15px !important;
+
+      text-align: center !important;
+
+      color: #85898d !important;
+
+      font-size: 13px !important;
     }
 
-    #syncStatus {
-      margin-top: 10px;
-      font-size: 13px;
-      color: #777c80;
-    }
+    /* =====================================================
+       FOOTER
+       ===================================================== */
 
     .footer {
+      padding:
+        5px
+        0
+        15px;
+
       text-align: center;
-      color: rgba(80, 80, 80, 0.72);
-      font-size: 12px;
-      margin-top: 25px;
+
+      color:
+        rgba(70,70,70,0.68);
+
+      font-size: 11px;
+
+      line-height: 1.5;
     }
 
+    /* =====================================================
+       MOBILE RECORD CARDS
+       ===================================================== */
+
     @media (max-width: 650px) {
-      .container {
-        padding: 12px 10px 35px;
+
+      .table-wrapper {
+        overflow: visible;
       }
 
-      .ot-banner {
+      table {
+        width: 100%;
+        min-width: 0;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tbody,
+      tr,
+      td {
+        display: block;
+        width: 100%;
+      }
+
+      tbody tr {
+        position: relative;
+
+        margin-bottom: 10px;
+        padding: 11px;
+
         border-radius: 16px;
-        margin-bottom: 12px;
+
+        background:
+          rgba(255,255,255,0.43);
+
+        border:
+          1px solid
+          rgba(255,255,255,0.55);
+
+        box-shadow:
+          0 4px 13px
+          rgba(60,60,60,0.05);
+      }
+
+      tbody tr:last-child {
+        margin-bottom: 0;
+      }
+
+      tbody td {
+        display: grid;
+
+        grid-template-columns:
+          72px 1fr;
+
+        gap: 8px;
+
+        width: 100%;
+
+        padding:
+          5px
+          2px;
+
+        border: none;
+
+        font-size: 12.5px;
+
+        line-height: 1.4;
+      }
+
+      tbody td::before {
+        color: #85898c;
+
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      tbody td:nth-child(1)::before {
+        content: "วันที่";
+      }
+
+      tbody td:nth-child(2)::before {
+        content: "ประเภท";
+      }
+
+      tbody td:nth-child(3)::before {
+        content: "เวลาเริ่ม";
+      }
+
+      tbody td:nth-child(4)::before {
+        content: "เวลาสิ้นสุด";
+      }
+
+      tbody td:nth-child(5)::before {
+        content: "ชั่วโมง";
+      }
+
+      tbody td:nth-child(6)::before {
+        content: "หมายเหตุ";
+      }
+
+      tbody td:nth-child(7)::before {
+        content: "จัดการ";
+      }
+
+      tbody td:nth-child(5) {
+        font-weight: 700;
+      }
+
+      tbody td:nth-child(7) {
+        display: flex;
+
+        align-items: center;
+
+        gap: 7px;
+
+        padding-top: 9px;
+
+        margin-top: 4px;
+
+        border-top:
+          1px solid
+          rgba(100,100,100,0.09);
+      }
+
+      tbody td:nth-child(7)::before {
+        display: block;
+
+        width: 72px;
+
+        flex-shrink: 0;
+      }
+
+      tbody td:nth-child(7) button {
+        flex: 1;
+
+        min-height: 38px;
+
+        margin: 0;
+
+        font-size: 12px;
+      }
+    }
+
+    /* =====================================================
+       SMALL MOBILE
+       ===================================================== */
+
+    @media (max-width: 390px) {
+
+      .container {
+        padding-left: 9px;
+        padding-right: 9px;
       }
 
       .card {
-        padding: 14px;
-        border-radius: 17px;
+        padding: 13px;
+
+        border-radius: 19px;
+      }
+
+      .ot-banner {
+        border-radius: 18px;
+      }
+
+      .form-grid {
+        gap: 8px;
+      }
+
+      input,
+      textarea,
+      select {
+        min-height: 44px;
+
+        padding:
+          9px
+          10px;
+
+        font-size: 14px;
+      }
+
+      label {
+        font-size: 12px;
       }
 
       .card h2 {
         font-size: 17px;
       }
 
-      .form-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 9px;
+      .summary {
+        gap: 5px;
       }
 
-      .full {
-        grid-column: 1 / -1;
+      .summary-box {
+        padding:
+          11px
+          3px;
+      }
+
+      .summary-box .number {
+        font-size: 21px;
+      }
+
+      .summary-box .label {
+        font-size: 9.5px;
+      }
+
+      .period strong {
+        font-size: 10.5px;
+      }
+
+      .records-header .btn-danger {
+        font-size: 10.5px;
+
+        padding:
+          6px
+          8px;
+      }
+    }
+
+    /* =====================================================
+       DESKTOP / TABLET
+       ===================================================== */
+
+    @media (min-width: 651px) {
+
+      .container {
+        padding:
+          20px
+          16px
+          50px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .card h2 {
+        font-size: 20px;
       }
 
       input,
       textarea,
       select {
-        font-size: 14px;
-        padding: 9px 10px;
-      }
-
-      label {
-        font-size: 13px;
-        margin-bottom: 4px;
-      }
-
-      button {
-        font-size: 13px;
-        padding: 9px 12px;
-      }
-
-      .summary {
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 7px;
-      }
-
-      .summary-box {
-        padding: 11px 5px;
-      }
-
-      .summary-box .number {
-        font-size: 22px;
-      }
-
-      .summary-box .label {
-        font-size: 11px;
+        min-height: 48px;
       }
     }
   </style>
 </head>
 
 <body>
+
   <div class="container">
+
+    <!-- ===================================================
+         HEADER
+         =================================================== -->
 
     <header>
       <img
@@ -342,53 +888,120 @@
       />
     </header>
 
-    <!-- ฟอร์มบันทึก -->
+
+    <!-- ===================================================
+         FORM
+         =================================================== -->
+
     <div class="card">
+
       <h2>📝 บันทึก OT</h2>
 
       <form id="otForm">
-        <input type="hidden" id="editId">
+
+        <input
+          type="hidden"
+          id="editId"
+        />
 
         <div class="form-grid">
 
-          <div>
-            <label for="date">วันที่</label>
-            <input type="date" id="date" required>
+          <div class="form-field">
+
+            <label for="date">
+              วันที่
+            </label>
+
+            <input
+              type="date"
+              id="date"
+              required
+            />
+
           </div>
 
-          <div>
-            <label for="type">ประเภท</label>
+
+          <div class="form-field">
+
+            <label for="type">
+              ประเภท
+            </label>
+
             <select id="type">
-              <option value="OT">OT</option>
-              <option value="WFH">WFH</option>
-              <option value="อื่น ๆ">อื่น ๆ</option>
+
+              <option value="OT">
+                OT
+              </option>
+
+              <option value="WFH">
+                WFH
+              </option>
+
+              <option value="อื่น ๆ">
+                อื่น ๆ
+              </option>
+
             </select>
+
           </div>
 
-          <div>
-            <label for="start">เวลาเริ่ม</label>
-            <input type="time" id="start" required>
+
+          <div class="form-field">
+
+            <label for="start">
+              เวลาเริ่ม
+            </label>
+
+            <input
+              type="time"
+              id="start"
+              required
+            />
+
           </div>
 
-          <div>
-            <label for="end">เวลาสิ้นสุด</label>
-            <input type="time" id="end" required>
+
+          <div class="form-field">
+
+            <label for="end">
+              เวลาสิ้นสุด
+            </label>
+
+            <input
+              type="time"
+              id="end"
+              required
+            />
+
           </div>
 
-          <div class="full">
-            <label for="note">หมายเหตุ</label>
+
+          <div class="form-field full">
+
+            <label for="note">
+              หมายเหตุ
+            </label>
+
             <textarea
               id="note"
               placeholder="เช่น ปิดงานประจำเดือน / งานด่วน / Support ลูกค้า"
             ></textarea>
+
           </div>
 
         </div>
 
+
         <div class="buttons">
-          <button type="submit" class="btn-primary" id="saveBtn">
+
+          <button
+            type="submit"
+            class="btn-primary"
+            id="saveBtn"
+          >
             + บันทึก OT
           </button>
+
 
           <button
             type="button"
@@ -398,73 +1011,165 @@
           >
             ยกเลิกแก้ไข
           </button>
+
         </div>
+
 
         <div id="syncStatus">
           ☁️ ข้อมูลจะถูกส่งไป Google Sheets เมื่อกดบันทึก
         </div>
+
       </form>
+
     </div>
 
-    <!-- สรุป -->
+
+    <!-- ===================================================
+         SUMMARY
+         =================================================== -->
+
     <div class="card">
+
       <div class="period">
-        <h2 style="margin:0;">📊 สรุป OT</h2>
+
+        <h2>
+          📊 สรุป OT
+        </h2>
+
         <strong id="periodText"></strong>
+
       </div>
+
 
       <div class="summary">
 
         <div class="summary-box">
-          <div class="number" id="totalDays">0</div>
-          <div class="label">จำนวนวันที่ทำ OT</div>
+
+          <div
+            class="number"
+            id="totalDays"
+          >
+            0
+          </div>
+
+          <div class="label">
+            จำนวนวันที่ทำ OT
+          </div>
+
         </div>
 
-        <div class="summary-box">
-          <div class="number" id="totalHours">0</div>
-          <div class="label">ชั่วโมง OT รวม</div>
-        </div>
 
         <div class="summary-box">
-          <div class="number" id="totalRecords">0</div>
-          <div class="label">รายการทั้งหมดในรอบ</div>
+
+          <div
+            class="number"
+            id="totalHours"
+          >
+            0
+          </div>
+
+          <div class="label">
+            ชั่วโมง OT รวม
+          </div>
+
+        </div>
+
+
+        <div class="summary-box">
+
+          <div
+            class="number"
+            id="totalRecords"
+          >
+            0
+          </div>
+
+          <div class="label">
+            รายการทั้งหมดในรอบ
+          </div>
+
         </div>
 
       </div>
+
     </div>
 
-    <!-- รายการ -->
+
+    <!-- ===================================================
+         RECORDS
+         =================================================== -->
+
     <div class="card">
-      <div class="period">
 
-        <h2 style="margin:0;">📋 รายการที่บันทึกแล้ว</h2>
+      <div class="records-header">
 
-        <button class="btn-danger" onclick="clearAll()">
+        <h2>
+          📋 รายการที่บันทึกแล้ว
+        </h2>
+
+        <button
+          class="btn-danger"
+          onclick="clearAll()"
+        >
           ล้างข้อมูลทั้งหมด
         </button>
 
       </div>
 
+
       <div class="table-wrapper">
+
         <table>
 
           <thead>
+
             <tr>
-              <th>วันที่</th>
-              <th>ประเภท</th>
-              <th>เริ่ม</th>
-              <th>สิ้นสุด</th>
-              <th>ชั่วโมง</th>
-              <th>หมายเหตุ</th>
-              <th>จัดการ</th>
+
+              <th>
+                วันที่
+              </th>
+
+              <th>
+                ประเภท
+              </th>
+
+              <th>
+                เริ่ม
+              </th>
+
+              <th>
+                สิ้นสุด
+              </th>
+
+              <th>
+                ชั่วโมง
+              </th>
+
+              <th>
+                หมายเหตุ
+              </th>
+
+              <th>
+                จัดการ
+              </th>
+
             </tr>
+
           </thead>
+
 
           <tbody id="otTable"></tbody>
 
         </table>
+
       </div>
+
     </div>
+
+
+    <!-- ===================================================
+         FOOTER
+         =================================================== -->
 
     <div class="footer">
       Nana's OT • ข้อมูลถูกบันทึกในเครื่องและ Google Sheets
@@ -472,473 +1177,1002 @@
 
   </div>
 
-<script>
-  const form = document.getElementById("otForm");
-  const dateInput = document.getElementById("date");
-  const startInput = document.getElementById("start");
-  const endInput = document.getElementById("end");
-  const typeInput = document.getElementById("type");
-  const noteInput = document.getElementById("note");
-  const editIdInput = document.getElementById("editId");
-  const table = document.getElementById("otTable");
-  const saveBtn = document.getElementById("saveBtn");
-  const cancelBtn = document.getElementById("cancelBtn");
 
-  // Google Apps Script Web App
+<script>
+
+  /* =====================================================
+     ELEMENTS
+     ===================================================== */
+
+  const form =
+    document.getElementById("otForm");
+
+  const dateInput =
+    document.getElementById("date");
+
+  const startInput =
+    document.getElementById("start");
+
+  const endInput =
+    document.getElementById("end");
+
+  const typeInput =
+    document.getElementById("type");
+
+  const noteInput =
+    document.getElementById("note");
+
+  const editIdInput =
+    document.getElementById("editId");
+
+  const table =
+    document.getElementById("otTable");
+
+  const saveBtn =
+    document.getElementById("saveBtn");
+
+  const cancelBtn =
+    document.getElementById("cancelBtn");
+
+
+  /* =====================================================
+     GOOGLE SHEETS API
+     ===================================================== */
+
   const GOOGLE_SHEETS_API =
     "https://script.google.com/macros/s/AKfycbzzopOmcphO3E4GkmH9TSk8jSyXCB3brYTvEf1FU8dY8MVlgSQIhCSiuSJMCBJiIFI/exec";
 
+
   let records = [];
 
-  async function loadRecordsFromGoogleSheets() {
-    try {
-      const response = await fetch(GOOGLE_SHEETS_API);
-      const result = await response.json();
 
-      if (result.success && Array.isArray(result.records)) {
-        records = result.records.map((item, index) => ({
-          id: "sheet-" + index,
-          date: normalizeDate(item.date),
-          type: "OT",
-          start: item.start || "",
-          end: item.end || "",
-          hours: Number(item.hours) || 0,
-          note: item.note || ""
-        }));
+  /* =====================================================
+     LOAD GOOGLE SHEETS
+     ===================================================== */
+
+  async function loadRecordsFromGoogleSheets() {
+
+    try {
+
+      const response =
+        await fetch(GOOGLE_SHEETS_API);
+
+      const result =
+        await response.json();
+
+
+      if (
+        result.success &&
+        Array.isArray(result.records)
+      ) {
+
+        records =
+          result.records.map(
+            (item, index) => ({
+
+              id:
+                "sheet-" + index,
+
+              date:
+                normalizeDate(item.date),
+
+              type:
+                item.type || "OT",
+
+              start:
+                item.start || "",
+
+              end:
+                item.end || "",
+
+              hours:
+                Number(item.hours) || 0,
+
+              note:
+                item.note || ""
+
+            })
+          );
+
+
+        saveRecords();
 
         render();
+
       }
+
     } catch (error) {
+
       console.error(
         "โหลดข้อมูลจาก Google Sheets ไม่สำเร็จ:",
         error
       );
+
+      /* ถ้า Google Sheets โหลดไม่ได้
+         ใช้ข้อมูลจากเครื่องแทน */
+
+      const localData =
+        localStorage.getItem("nanasOT");
+
+      if (localData) {
+
+        try {
+
+          records =
+            JSON.parse(localData);
+
+          render();
+
+        } catch (e) {
+
+          console.error(e);
+
+        }
+
+      }
+
     }
+
   }
+
+
+  /* =====================================================
+     NORMALIZE DATE
+     ===================================================== */
 
   function normalizeDate(value) {
-    const date = new Date(value);
 
-    if (isNaN(date.getTime())) {
-      return String(value).substring(0, 10);
+    const date =
+      new Date(value);
+
+
+    if (
+      isNaN(date.getTime())
+    ) {
+
+      return String(value)
+        .substring(0, 10);
+
     }
 
-    return date.toISOString().split("T")[0];
+
+    return date
+      .toISOString()
+      .split("T")[0];
+
   }
 
-  // ตั้งวันที่วันนี้เป็นค่าเริ่มต้น
-  dateInput.value = new Date().toISOString().split("T")[0];
 
-  function calculateHours(start, end) {
-    const [sh, sm] = start.split(":").map(Number);
-    const [eh, em] = end.split(":").map(Number);
+  /* =====================================================
+     DEFAULT DATE
+     ===================================================== */
 
-    let startMinutes = sh * 60 + sm;
-    let endMinutes = eh * 60 + em;
+  dateInput.value =
+    new Date()
+      .toISOString()
+      .split("T")[0];
 
-    // รองรับ OT ข้ามเที่ยงคืน
-    if (endMinutes < startMinutes) {
-      endMinutes += 24 * 60;
+
+  /* =====================================================
+     CALCULATE HOURS
+     ===================================================== */
+
+  function calculateHours(
+    start,
+    end
+  ) {
+
+    const [sh, sm] =
+      start
+        .split(":")
+        .map(Number);
+
+    const [eh, em] =
+      end
+        .split(":")
+        .map(Number);
+
+
+    let startMinutes =
+      sh * 60 + sm;
+
+    let endMinutes =
+      eh * 60 + em;
+
+
+    /* รองรับ OT ข้ามเที่ยงคืน */
+
+    if (
+      endMinutes <
+      startMinutes
+    ) {
+
+      endMinutes +=
+        24 * 60;
+
     }
 
-    return (endMinutes - startMinutes) / 60;
+
+    return (
+      endMinutes -
+      startMinutes
+    ) / 60;
+
   }
+
+
+  /* =====================================================
+     CURRENT PAY PERIOD
+     16 - 15
+     ===================================================== */
 
   function getCurrentPeriod() {
-    const today = new Date();
 
-    let year = today.getFullYear();
-    let month = today.getMonth();
+    const today =
+      new Date();
 
-    // วันที่ 1-15 = รอบเริ่มวันที่ 16 ของเดือนก่อน
-    if (today.getDate() <= 15) {
+
+    let year =
+      today.getFullYear();
+
+    let month =
+      today.getMonth();
+
+
+    /* วันที่ 1-15
+       = รอบเริ่มวันที่ 16 เดือนก่อน */
+
+    if (
+      today.getDate() <= 15
+    ) {
+
       month--;
 
+
       if (month < 0) {
+
         month = 11;
         year--;
+
       }
+
     }
 
-    const start = new Date(year, month, 16);
 
-    let endMonth = month + 1;
-    let endYear = year;
+    const start =
+      new Date(
+        year,
+        month,
+        16
+      );
 
-    if (endMonth > 11) {
+
+    let endMonth =
+      month + 1;
+
+    let endYear =
+      year;
+
+
+    if (
+      endMonth > 11
+    ) {
+
       endMonth = 0;
       endYear++;
+
     }
 
-    const end = new Date(endYear, endMonth, 15);
+
+    const end =
+      new Date(
+        endYear,
+        endMonth,
+        15
+      );
+
 
     return {
       start,
       end
     };
+
   }
 
-  function formatDate(dateString) {
-    const date = new Date(dateString + "T00:00:00");
 
-    return date.toLocaleDateString("th-TH", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric"
-    });
+  /* =====================================================
+     FORMAT DATE
+     ===================================================== */
+
+  function formatDate(
+    dateString
+  ) {
+
+    const date =
+      new Date(
+        dateString +
+        "T00:00:00"
+      );
+
+
+    return date.toLocaleDateString(
+      "th-TH",
+      {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric"
+      }
+    );
+
   }
+
+
+  /* =====================================================
+     PERIOD TEXT
+     ===================================================== */
 
   function getPeriodText() {
+
     const {
       start,
       end
-    } = getCurrentPeriod();
+    } =
+      getCurrentPeriod();
 
-    return `${start.toLocaleDateString("th-TH")} - ${end.toLocaleDateString("th-TH")}`;
+
+    return `${start.toLocaleDateString(
+      "th-TH"
+    )} - ${end.toLocaleDateString(
+      "th-TH"
+    )}`;
+
   }
 
-  function isInCurrentPeriod(dateString) {
+
+  /* =====================================================
+     CHECK CURRENT PERIOD
+     ===================================================== */
+
+  function isInCurrentPeriod(
+    dateString
+  ) {
+
     const {
       start,
       end
-    } = getCurrentPeriod();
+    } =
+      getCurrentPeriod();
 
-    const date = new Date(dateString + "T00:00:00");
 
-    return date >= start && date <= end;
+    const date =
+      new Date(
+        dateString +
+        "T00:00:00"
+      );
+
+
+    return (
+      date >= start &&
+      date <= end
+    );
+
   }
+
+
+  /* =====================================================
+     SAVE LOCAL STORAGE
+     ===================================================== */
 
   function saveRecords() {
+
     localStorage.setItem(
       "nanasOT",
       JSON.stringify(records)
     );
+
   }
 
-  // ส่งข้อมูลไป Google Sheets
-  async function sendToGoogleSheets(data) {
+
+  /* =====================================================
+     SEND TO GOOGLE SHEETS
+     ===================================================== */
+
+  async function sendToGoogleSheets(
+    data
+  ) {
+
     try {
-      const payload = new URLSearchParams();
+
+      const payload =
+        new URLSearchParams();
+
 
       payload.append(
         "payload",
         JSON.stringify(data)
       );
 
-      await fetch(GOOGLE_SHEETS_API, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type":
-            "application/x-www-form-urlencoded;charset=UTF-8"
-        },
-        body: payload.toString()
-      });
+
+      await fetch(
+        GOOGLE_SHEETS_API,
+        {
+          method: "POST",
+
+          mode: "no-cors",
+
+          headers: {
+            "Content-Type":
+              "application/x-www-form-urlencoded;charset=UTF-8"
+          },
+
+          body:
+            payload.toString()
+        }
+      );
+
 
       return true;
 
     } catch (error) {
+
       console.error(
         "ส่งข้อมูลไป Google Sheets ไม่สำเร็จ:",
         error
       );
 
+
       return false;
+
     }
+
   }
 
-  form.addEventListener("submit", function(e) {
-    e.preventDefault();
 
-    if (
-      !dateInput.value ||
-      !startInput.value ||
-      !endInput.value
-    ) {
-      alert("กรุณากรอกวันที่และเวลาให้ครบค่ะ");
-      return;
-    }
+  /* =====================================================
+     FORM SUBMIT
+     ===================================================== */
 
-    const hours = calculateHours(
-      startInput.value,
-      endInput.value
-    );
+  form.addEventListener(
+    "submit",
+    function(e) {
 
-    if (hours <= 0) {
-      alert(
-        "เวลาสิ้นสุดต้องไม่เท่ากับเวลาเริ่มค่ะ"
-      );
-      return;
-    }
+      e.preventDefault();
 
-    const editId = editIdInput.value;
 
-    const data = {
-      id: editId || Date.now().toString(),
-      date: dateInput.value,
-      type: typeInput.value,
-      start: startInput.value,
-      end: endInput.value,
-      hours: hours,
-      note: noteInput.value.trim()
-    };
+      if (
+        !dateInput.value ||
+        !startInput.value ||
+        !endInput.value
+      ) {
 
-    if (editId) {
-      records = records.map(item =>
-        item.id === editId ? data : item
-      );
-    } else {
-      records.push(data);
-    }
+        alert(
+          "กรุณากรอกวันที่และเวลาให้ครบค่ะ"
+        );
 
-    // เก็บข้อมูลในเครื่อง
-    saveRecords();
-    render();
+        return;
 
-    const syncStatus =
-      document.getElementById("syncStatus");
+      }
 
-    if (syncStatus) {
-      syncStatus.textContent =
-        "☁️ กำลังส่งข้อมูลไป Google Sheets...";
-    }
 
-    resetForm();
+      const hours =
+        calculateHours(
+          startInput.value,
+          endInput.value
+        );
 
-    sendToGoogleSheets(data).then(ok => {
+
+      if (hours <= 0) {
+
+        alert(
+          "เวลาสิ้นสุดต้องไม่เท่ากับเวลาเริ่มค่ะ"
+        );
+
+        return;
+
+      }
+
+
+      const editId =
+        editIdInput.value;
+
+
+      const data = {
+
+        id:
+          editId ||
+          Date.now().toString(),
+
+        date:
+          dateInput.value,
+
+        type:
+          typeInput.value,
+
+        start:
+          startInput.value,
+
+        end:
+          endInput.value,
+
+        hours:
+          hours,
+
+        note:
+          noteInput.value.trim()
+
+      };
+
+
+      /* แก้ไข */
+
+      if (editId) {
+
+        records =
+          records.map(
+            item =>
+              item.id === editId
+                ? data
+                : item
+          );
+
+      }
+
+      /* เพิ่ม */
+
+      else {
+
+        records.push(data);
+
+      }
+
+
+      /* เก็บข้อมูลในเครื่อง */
+
+      saveRecords();
+
+      render();
+
+
+      const syncStatus =
+        document.getElementById(
+          "syncStatus"
+        );
+
 
       if (syncStatus) {
-        syncStatus.textContent = ok
-          ? "☁️ ส่งข้อมูลไป Google Sheets แล้ว • ข้อมูลสำรองอยู่ในเครื่องนี้"
-          : "⚠️ บันทึกในเครื่องแล้ว แต่ส่ง Google Sheets ไม่สำเร็จ";
+
+        syncStatus.textContent =
+          "☁️ กำลังส่งข้อมูลไป Google Sheets...";
+
       }
 
-      // โหลดข้อมูลจาก Google Sheets หลังส่งสำเร็จ
-      if (ok) {
-        setTimeout(
-          loadRecordsFromGoogleSheets,
-          800
-        );
-      }
-    });
-  });
+
+      resetForm();
+
+
+      /* ส่ง Google Sheets */
+
+      sendToGoogleSheets(data)
+        .then(ok => {
+
+          if (syncStatus) {
+
+            syncStatus.textContent =
+              ok
+
+                ? "☁️ ส่งข้อมูลไป Google Sheets แล้ว • ข้อมูลสำรองอยู่ในเครื่องนี้"
+
+                : "⚠️ บันทึกในเครื่องแล้ว แต่ส่ง Google Sheets ไม่สำเร็จ";
+
+          }
+
+
+          /* โหลดข้อมูลใหม่ */
+
+          if (ok) {
+
+            setTimeout(
+              loadRecordsFromGoogleSheets,
+              800
+            );
+
+          }
+
+        });
+
+    }
+  );
+
+
+  /* =====================================================
+     EDIT
+     ===================================================== */
 
   function editRecord(id) {
-    const item = records.find(
-      r => r.id === id
-    );
+
+    const item =
+      records.find(
+        r => r.id === id
+      );
+
 
     if (!item) return;
 
-    editIdInput.value = item.id;
-    dateInput.value = item.date;
-    typeInput.value = item.type;
-    startInput.value = item.start;
-    endInput.value = item.end;
-    noteInput.value = item.note;
+
+    editIdInput.value =
+      item.id;
+
+    dateInput.value =
+      item.date;
+
+    typeInput.value =
+      item.type;
+
+    startInput.value =
+      item.start;
+
+    endInput.value =
+      item.end;
+
+    noteInput.value =
+      item.note;
+
 
     saveBtn.textContent =
       "💾 บันทึกการแก้ไข";
 
+
     cancelBtn.style.display =
-      "inline-block";
+      "block";
+
 
     window.scrollTo({
       top: 0,
       behavior: "smooth"
     });
+
   }
 
+
+  /* =====================================================
+     DELETE
+     ===================================================== */
+
   function deleteRecord(id) {
+
     if (
       !confirm(
         "ต้องการลบรายการนี้ใช่ไหมคะ?"
       )
     ) {
+
       return;
+
     }
 
-    records = records.filter(
-      r => r.id !== id
-    );
+
+    records =
+      records.filter(
+        r => r.id !== id
+      );
+
 
     saveRecords();
+
     render();
+
   }
 
+
+  /* =====================================================
+     CLEAR ALL
+     ===================================================== */
+
   function clearAll() {
+
     if (!records.length) {
-      alert("ยังไม่มีข้อมูลให้ล้างค่ะ");
+
+      alert(
+        "ยังไม่มีข้อมูลให้ล้างค่ะ"
+      );
+
       return;
+
     }
+
 
     if (
       !confirm(
         "ต้องการลบข้อมูล OT ทั้งหมดหรือไม่?"
       )
     ) {
+
       return;
+
     }
+
 
     records = [];
 
+
     saveRecords();
+
     render();
+
   }
 
+
+  /* =====================================================
+     RESET FORM
+     ===================================================== */
+
   function resetForm() {
+
     editIdInput.value = "";
 
-    dateInput.value =
-      new Date().toISOString().split("T")[0];
 
-    typeInput.value = "OT";
-    startInput.value = "";
-    endInput.value = "";
-    noteInput.value = "";
+    dateInput.value =
+      new Date()
+        .toISOString()
+        .split("T")[0];
+
+
+    typeInput.value =
+      "OT";
+
+
+    startInput.value =
+      "";
+
+    endInput.value =
+      "";
+
+    noteInput.value =
+      "";
+
 
     saveBtn.textContent =
       "+ บันทึก OT";
 
+
     cancelBtn.style.display =
       "none";
+
   }
+
 
   cancelBtn.addEventListener(
     "click",
     resetForm
   );
 
+
+  /* =====================================================
+     RENDER
+     ===================================================== */
+
   function render() {
+
     document.getElementById(
       "periodText"
     ).textContent =
-      "รอบ " + getPeriodText();
+      "รอบ " +
+      getPeriodText();
 
-    const currentRecords = records
-      .filter(item =>
-        isInCurrentPeriod(item.date)
-      )
-      .sort((a, b) =>
-        b.date.localeCompare(a.date)
-      );
+
+    const currentRecords =
+      records
+
+        .filter(
+          item =>
+            isInCurrentPeriod(
+              item.date
+            )
+        )
+
+        .sort(
+          (a, b) =>
+            b.date.localeCompare(
+              a.date
+            )
+        );
+
+
+    /* รวมชั่วโมง */
 
     const totalHours =
       currentRecords.reduce(
         (sum, item) =>
-          sum + Number(item.hours),
+          sum +
+          Number(item.hours),
         0
       );
+
+
+    /* จำนวนวัน */
 
     const uniqueDays =
       new Set(
         currentRecords.map(
-          item => item.date
+          item =>
+            item.date
         )
       ).size;
 
+
+    /* Summary */
+
     document.getElementById(
       "totalDays"
-    ).textContent = uniqueDays;
+    ).textContent =
+      uniqueDays;
+
 
     document.getElementById(
       "totalHours"
     ).textContent =
-      formatHours(totalHours);
+      formatHours(
+        totalHours
+      );
+
 
     document.getElementById(
       "totalRecords"
     ).textContent =
       currentRecords.length;
 
-    if (!currentRecords.length) {
+
+    /* ไม่มีรายการ */
+
+    if (
+      !currentRecords.length
+    ) {
 
       table.innerHTML = `
+
         <tr>
-          <td colspan="7" class="empty">
+
+          <td
+            colspan="7"
+            class="empty"
+          >
             ยังไม่มีรายการ OT ในรอบนี้ 🌷
           </td>
+
         </tr>
+
       `;
 
       return;
+
     }
 
+
+    /* แสดงรายการ */
+
     table.innerHTML =
-      currentRecords.map(item => `
+      currentRecords
+        .map(
+          item => `
 
-      <tr>
+            <tr>
 
-        <td>
-          ${formatDate(item.date)}
-        </td>
+              <td>
+                ${formatDate(
+                  item.date
+                )}
+              </td>
 
-        <td>
-          ${escapeHTML(item.type)}
-        </td>
 
-        <td>
-          ${formatTime(item.start)}
-        </td>
+              <td>
+                ${escapeHTML(
+                  item.type
+                )}
+              </td>
 
-        <td>
-          ${formatTime(item.end)}
-        </td>
 
-        <td class="hours">
-          ${formatHours(item.hours)} ชม.
-        </td>
+              <td>
+                ${formatTime(
+                  item.start
+                )}
+              </td>
 
-        <td>
-          ${escapeHTML(item.note || "-")}
-        </td>
 
-        <td>
+              <td>
+                ${formatTime(
+                  item.end
+                )}
+              </td>
 
-          <button
-            class="btn-secondary"
-            onclick="editRecord('${item.id}')">
-            แก้ไข
-          </button>
 
-          <button
-            class="btn-danger"
-            onclick="deleteRecord('${item.id}')">
-            ลบ
-          </button>
+              <td class="hours">
+                ${formatHours(
+                  item.hours
+                )}
+                ชม.
+              </td>
 
-        </td>
 
-      </tr>
+              <td>
+                ${escapeHTML(
+                  item.note ||
+                  "-"
+                )}
+              </td>
 
-    `).join("");
+
+              <td>
+
+                <button
+                  class="btn-secondary"
+                  onclick="editRecord('${item.id}')"
+                >
+                  ✏️ แก้ไข
+                </button>
+
+
+                <button
+                  class="btn-danger"
+                  onclick="deleteRecord('${item.id}')"
+                >
+                  🗑️ ลบ
+                </button>
+
+              </td>
+
+            </tr>
+
+          `
+        )
+        .join("");
+
   }
 
+
+  /* =====================================================
+     FORMAT TIME
+     ===================================================== */
+
   function formatTime(value) {
+
     if (!value) return "";
+
 
     const text =
       String(value).trim();
 
-    // เช่น 18:00
+
+    /* เช่น 18:00 */
+
     const timeOnly =
       text.match(
         /^(\d{1,2}):(\d{2})/
       );
 
+
     if (timeOnly) {
+
       return `${
-        timeOnly[1].padStart(2, "0")
+        timeOnly[1]
+          .padStart(2, "0")
       }:${
         timeOnly[2]
       }`;
+
     }
 
-    // วันที่พร้อมเวลา
+
+    /* วันที่พร้อมเวลา */
+
     const date =
       new Date(text);
 
-    if (!isNaN(date.getTime())) {
+
+    if (
+      !isNaN(
+        date.getTime()
+      )
+    ) {
 
       return date.toLocaleTimeString(
         "th-TH",
@@ -946,58 +2180,91 @@
           hour: "2-digit",
           minute: "2-digit",
           hour12: false,
-          timeZone: "Asia/Bangkok"
+          timeZone:
+            "Asia/Bangkok"
         }
       );
+
     }
 
+
     return text;
+
   }
 
+
+  /* =====================================================
+     FORMAT HOURS
+     ===================================================== */
+
   function formatHours(hours) {
+
     const h =
       Math.floor(hours);
+
 
     const m =
       Math.round(
         (hours - h) * 60
       );
 
+
     if (m === 0) {
+
       return h;
+
     }
+
 
     return `${h}.${String(
       Math.round(m / 6)
     ).padStart(1, "0")}`;
+
   }
 
+
+  /* =====================================================
+     ESCAPE HTML
+     ===================================================== */
+
   function escapeHTML(value) {
+
     return String(value)
+
       .replaceAll(
         "&",
         "&amp;"
       )
+
       .replaceAll(
         "<",
         "&lt;"
       )
+
       .replaceAll(
         ">",
         "&gt;"
       )
+
       .replaceAll(
         '"',
         "&quot;"
       )
+
       .replaceAll(
         "'",
         "&#039;"
       );
+
   }
 
-  // โหลดข้อมูลจาก Google Sheets
+
+  /* =====================================================
+     START
+     ===================================================== */
+
   loadRecordsFromGoogleSheets();
+
 </script>
 
 </body>
